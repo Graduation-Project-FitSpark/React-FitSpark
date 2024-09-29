@@ -1,0 +1,70 @@
+.about-us-section {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+}
+.about-us-section-1 {
+  display: flex;
+  align-items: flex-end;
+}
+
+.about-us-section-1 hr {
+  height: 1px;
+  width: 30px; 
+  background-color: #f25f3a;
+  border: none; 
+  margin-bottom: 17px;
+}
+
+.section-subtitle {
+  color: #f25f3a; 
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+}
+
+.section-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.section-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-mission,
+.btn-vision {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: 2px solid #f25f3a;
+  cursor: pointer;
+  background: none;
+  color: #f25f3a;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn-mission {
+  background-color: #f25f3a;
+  color: #fff;
+}
+
+.btn-mission:hover {
+  background-color: #d94c26;
+}
+
+.btn-vision:hover {
+  background-color: #f25f3a;
+  color: #fff;
+}

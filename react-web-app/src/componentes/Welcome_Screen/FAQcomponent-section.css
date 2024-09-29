@@ -1,0 +1,155 @@
+.faq-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  padding: 0 20px; 
+}
+
+.faq-container-0 {
+  width: 100%;
+  background-color: #1c1b29;
+  color: #ffffff;
+  margin-top: -100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.faq-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.faq-container p {
+  font-size: 16px;
+  color: #a1a1a1; 
+  margin-bottom: 30px;
+}
+
+.faq-list {
+}
+
+.faq-item {
+  border-bottom: 1px solid #333; 
+  padding: 15px 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 10px;
+  color: #ffffff; 
+}
+
+.faq-question.active {
+  background-color: #33334d; 
+}
+
+.faq-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  color: #a1a1a1; 
+}
+
+.faq-answer {
+  display: none;
+  font-size: 14px;
+  color: #d1d1d1; 
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.faq-answer.show {
+  display: block;
+}
+
+.faq-question.active .faq-icon {
+  transform: rotate(90deg);
+}
+
+
+@media (max-width: 412px) {
+  .faq-container {
+    padding: 0 15px; 
+  }
+
+  .faq-container h2 {
+    font-size: 28px; 
+  }
+
+  .faq-container p {
+    font-size: 15px;
+  }
+
+  .faq-question {
+    font-size: 16px; 
+  }
+
+  .faq-icon {
+    font-size: 18px;
+  }
+
+  .faq-answer {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 390px) {
+  .faq-container {
+    padding: 0 10px; 
+  }
+
+  .faq-container h2 {
+    font-size: 26px; 
+  }
+
+  .faq-container p {
+    font-size: 14px; 
+  }
+
+  .faq-question {
+    font-size: 15px; 
+  }
+
+  .faq-icon {
+    font-size: 16px; 
+  }
+
+  .faq-answer {
+    font-size: 12px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 0 15px; 
+  }
+
+  .faq-container h2 {
+    font-size: 28px; 
+  }
+
+  .faq-container p {
+    font-size: 15px;
+  }
+
+  .faq-question {
+    font-size: 16px; 
+  }
+
+  .faq-icon {
+    font-size: 18px;
+  }
+
+  .faq-answer {
+    font-size: 13px; 
+  }
+}
