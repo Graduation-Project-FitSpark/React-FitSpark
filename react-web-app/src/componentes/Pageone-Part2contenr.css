@@ -1,0 +1,30 @@
+.exp5-1-contener {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.exp5-1-contener img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.exp5-1-contener p {
+  max-width: 600px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  text-align: justify;
+}
+
+.exp5-2-contener {
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}

@@ -1,0 +1,34 @@
+.map-location {
+  width: 600px;
+  height: 330px;
+  margin-top: -10px;
+  overflow: hidden;
+}
+
+.Height-Weight-signup {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: -20px;
+}
+
+.Gender-signup {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.botton-submit-back {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+}
+
+.form-signup h2 {
+  margin-top: -30px;
+}
+
+.div-outer-signin-up img {
+  margin-top: -30px;
+}

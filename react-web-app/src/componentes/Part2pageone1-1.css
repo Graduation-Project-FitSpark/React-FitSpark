@@ -1,0 +1,54 @@
+.Services1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0;
+  gap: 200px;
+}
+
+.Services1-1 {
+  display: flex;
+}
+
+.Services1-0 {
+  text-align: left;
+}
+
+.Services1-1 hr {
+  height: 1px;
+  width: 30px;
+  background-color: #f25f3a;
+  border: none;
+}
+
+.Services1-1 h5 {
+  color: #f25f3a;
+  margin: 0;
+  font-weight: bold;
+}
+
+.Services1-1-h5 {
+  color: #f25f3a;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+}
+
+.Services1-1-h2 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+button {
+  background-color: #f25f3a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d14e2f;
+}

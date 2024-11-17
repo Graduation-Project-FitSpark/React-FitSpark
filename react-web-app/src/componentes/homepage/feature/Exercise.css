@@ -1,0 +1,161 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  background-color: #fff;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+}
+
+.toptitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.toptitlenameContainer {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.toptitlename {
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.rootcontnervideo {
+  width: 100%;
+  margin-top: 100px;
+}
+.image1 {
+  width: 100%;
+
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.videocontner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Detail {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  margin-top: -93px;
+  width: 100%;
+}
+
+.Detailiner {
+  display: flex;
+  align-items: center;
+}
+
+.iconback {
+  background-color: #bbf246;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelText {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.valueText {
+  color: #bbf246;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.line {
+  width: 2px;
+  height: 80%;
+  background-color: #b0b0b0;
+  opacity: 0.6;
+  margin: 0 10px;
+}
+
+.cardBackground {
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.headingText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.bodyText {
+  font-size: 16px;
+  color: #000;
+  line-height: 24px;
+}
+
+.footer-1 {
+  height: 150px;
+  margin-top: -20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #1a1a2e;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.startButton {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #bbf246;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.startText {
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+}

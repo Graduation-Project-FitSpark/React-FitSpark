@@ -1,0 +1,60 @@
+.fitness-section {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  padding: 20px;
+  background-color: #fff;
+  min-height: 100px;
+  max-height: 1000px; /* Full viewport height to vertically center content */
+}
+
+.fitness-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.fitness-content {
+  max-width: 500px;
+  margin: 0 50px; /* Space between image and content */
+  text-align: left;
+  padding: 40px;
+  background-color: #fff;
+  /* Optional: add shadow for better visuals */
+}
+
+.fitness-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.fitness-content h2 {
+  font-size: 1.5rem;
+  color: #ff7f27;
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+
+.fitness-content p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.fitness-content .find-out-more {
+  display: inline-block;
+  font-size: 1rem;
+  color: #ff7f27;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #ff7f27;
+  padding-bottom: 5px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.fitness-content .find-out-more:hover {
+  color: #333;
+  border-color: #333;
+}

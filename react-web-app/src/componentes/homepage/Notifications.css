@@ -1,0 +1,75 @@
+.container2 {
+  max-width: 300px; /* Set a fixed, reasonable width */
+
+  max-height: 300px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  position: fixed; /* Fixes the element relative to the viewport */
+  top: 10px; /* 10px from the top */
+  right: 30px; /* 10px from the right */
+  z-index: 2; /* Ensure it stays on top */
+  /* White background */
+  /* Add shadow for elevation */
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.text-header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Button styling */
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Notifications list styling */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual notification */
+.notification {
+  background-color: #f9f9f9; /* Light background for notifications */
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #e0e0e0; /* Subtle border for separation */
+}
+
+/* Timestamp styles */
+.timestamp {
+  font-size: 12px;
+  color: #b6b6b6;
+  text-align: right;
+}
+
+/* Notification text styles */
+.notification-text {
+  font-size: 15px;
+}

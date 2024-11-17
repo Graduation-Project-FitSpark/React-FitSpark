@@ -1,0 +1,61 @@
+.container1 {
+  width: 100%;
+  height: 600px;
+  padding: 100px;
+  box-sizing: border-box;
+}
+.container1-outer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 250px;
+}
+
+.info-section {
+  flex: 1;
+  max-width: 400px;
+  text-align: left;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.find-out-more2 {
+  display: inline-block;
+  font-size: 1rem;
+  color: #ff7f27;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #ff7f27;
+  padding-bottom: 5px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.macimage {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
+
+.exp3-0-container {
+  padding: 50px;
+
+  text-align: left;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+.exp3-1-header {
+  margin-bottom: 20px;
+}
+
+.exp3-1-header h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: -webkit-linear-gradient(45deg, #0091ffca, #ec3e5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 2s ease-in-out;
+  margin: 0;
+}
+
+.exp4-1-container {
+  display: block;
+}
+
+.exp4-2-container {
+  max-width: 700px;
+  margin: 0;
+  padding: 0;
+}
+
+.exp4-2-container p {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #f1f1f1;
+  margin-top: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 390px) {
+  .exp3-1-header h1 {
+    font-size: 2rem;
+  }
+
+  .exp4-2-container p {
+    font-size: 0.9rem;
+  }
+}

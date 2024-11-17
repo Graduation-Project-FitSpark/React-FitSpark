@@ -1,0 +1,26 @@
+.exp5-0-contener {
+  background-color: #1c1b29;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  max-height: 100%;
+}
+
+.exp5-0-contener img {
+  width: 400px;
+}
+
+@media (max-width: 768px) {
+  .exp5-0-contener img {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .exp5-0-contener img {
+    display: none;
+  }
+}
+@media (max-width: 390px) {
+  .exp5-0-contener img {
+    width: 300px;
+  }
+}

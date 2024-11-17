@@ -1,0 +1,11 @@
+.part2-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.about-image {
+  max-width: 50%;
+  height: auto;
+}
