@@ -3,8 +3,8 @@ import Slidermotin from "./Slidermotin";
 import Navbarhomepage from "./Navbarhomepage";
 import Qiuzecompunent from "./Qiuzecompunent";
 import Ibuttoninfobody from "./Ibuttoninfobody";
-import Footer from "../Footer";
-import FAQ from "../FAQcomponent-section";
+import Footer from "../Welcome_Screen/Footer";
+import FAQ from "../Welcome_Screen/FAQcomponent-section";
 import Notifications from "./Notifications";
 import Body from "./Body";
 function homepagetrinier() {

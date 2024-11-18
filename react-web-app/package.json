@@ -13,24 +13,16 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
-<<<<<<< HEAD
     "bootstrap": "^5.3.3",
     "date-fns": "^4.1.0",
-=======
->>>>>>> a0df0e9d30a07f52719ba7ed6783b0e4154d53de
     "leaflet": "^1.9.4",
     "mdb-react-ui-kit": "^9.0.0",
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.3.1",
-<<<<<<< HEAD
     "react-icons": "^5.3.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.28.0",
-=======
-    "react-leaflet": "^4.2.1",
-    "react-router-dom": "^6.26.2",
->>>>>>> a0df0e9d30a07f52719ba7ed6783b0e4154d53de
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },

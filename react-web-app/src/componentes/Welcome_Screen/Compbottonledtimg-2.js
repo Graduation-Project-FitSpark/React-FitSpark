@@ -1,4 +1,4 @@
-import img2 from "../img/img-2.png";
+import img2 from "../../img/img-2.png";
 import "./Compbottonledtimg-2.css";
 
 const Compbl1img = () => {

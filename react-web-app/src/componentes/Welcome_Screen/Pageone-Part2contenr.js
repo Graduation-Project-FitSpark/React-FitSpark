@@ -1,4 +1,4 @@
-import img from "../img/man-2.jpg";
+import img from "../../img/man-2.jpg";
 import "./Pageone-Part2contenr.css";
 const Part2contenr = () => {
   return (

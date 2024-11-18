@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../img/man-1.png";
+import img from "../../img/man-1.png";
 import "./Compimagefristpart-botton.css";
 
 const Compimagefirstpb = () => {

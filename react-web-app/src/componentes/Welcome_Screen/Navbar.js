@@ -2,7 +2,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../img/logo.png";
+import logo from "../../img/logo.png";
 const Navbar = () => {
   const navigate = useNavigate();
   const handleSignup = () => {

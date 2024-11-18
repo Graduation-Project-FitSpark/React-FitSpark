@@ -1,7 +1,7 @@
 import AboutUsSection from "./Part2contenr1-2";
 
 import "./Pageone.css";
-import img from "../img/about-3.png";
+import img from "../../img/about-3.png";
 const Part2contenr1 = () => {
   return (
     <div className="part2-container">
