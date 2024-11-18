@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import URL from "../enum/enum.js";
+import URL from "../../enum/enum.js";
 
 const Authentication = () => {
   const navigate = useNavigate();

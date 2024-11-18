@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import URL from "../enum/enum";
+import URL from "../../enum/enum";
 import {
   MapContainer,
   TileLayer,
@@ -13,9 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-import img from "../img/wemon-2.png";
+import img from "../../img/wemon-2.png";
 import "./Supplement-sginup.css";
-import logo from "../img/logo.png";
+import logo from "../../img/logo.png";
 
 let DefaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -72,7 +72,6 @@ const SignUp = ({ navigation }) => {
         setCoordinates({ latitude: e.latlng.lat, longitude: e.latlng.lng });
         console.log("Selected Location: ", e.latlng);
         setLocation(`${e.latlng.lat}, ${e.latlng.lng}`);
-        console.log("Address: " + location);
       },
     });
     return coordinates.latitude && coordinates.longitude ? (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import URL from "../enum/enum.js";
-import logo from "../img/logo.png";
+import URL from "../../enum/enum.js";
+import logo from "../../img/logo.png";
 import "./signin.css";
 
 const Signin = () => {
