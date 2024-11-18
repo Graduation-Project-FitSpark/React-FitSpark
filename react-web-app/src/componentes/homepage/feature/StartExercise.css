@@ -1,65 +1,107 @@
-.container {
+.start-exercise-container {
   display: flex;
   flex-direction: column;
   background-color: #fff;
   height: 100vh;
 }
-.video-section {
+
+.start-exercise-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.start-exercise-calories {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.start-exercise-calories-value {
+  display: flex;
+  align-items: center;
+}
+
+.start-exercise-calories-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.start-exercise-icon-fire {
+  font-size: 24px;
+}
+
+.start-exercise-close-button {
+  background-color: #ededed;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.start-exercise-video-section {
   width: 100%;
   height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 500px;
 }
-.video {
+
+.start-exercise-video {
   width: 100%;
   height: 100%;
 }
-.control-page {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.info-cal {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-.control-video {
+
+.start-exercise-controls {
   background-color: #1a1a2e;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  padding: 20px;
+  padding: 10px;
   position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 320px;
 }
-.main-timer {
+
+.start-exercise-main-timer {
   font-size: 50px;
   color: #fff;
+  text-align: left;
 }
-.slider {
+
+.start-exercise-slider {
   width: 90%;
+  margin: 10px 0;
 }
-.buttons {
+
+.start-exercise-buttons {
   display: flex;
   justify-content: space-between;
   width: 80%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
-.control-text {
-  font-size: 25px;
+
+.start-exercise-control-button {
+  font-size: 20px;
   color: #fff;
   background: none;
   border: none;
   cursor: pointer;
 }
-.play-pause-button {
+
+.start-exercise-play-pause-button {
   background-color: #bbf246;
   border: none;
   border-radius: 50%;
@@ -68,49 +110,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 24px;
   cursor: pointer;
 }
-.time-info {
+
+.start-exercise-timer-section {
+  text-align: center;
+
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.start-exercise-time-text,
+.start-exercise-percentage-text {
+  font-size: 20px;
+  color: #fff;
+}
+
+.start-exercise-label-text {
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+}
+.start-exercise-labels {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
 }
-
-.timer-section {
+.start-exercise-timer-values {
   width: 100%;
-  margin-bottom: 30px;
-  align-items: center;
-}
-.stop-page {
-  background-color: #ededed;
-  height: 50px;
-  width: 50px;
-  border-radius: 30px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-timer {
-  font-size: 50px;
-  color: #fff;
-}
-
-.time-text {
-  font-size: 24px;
-  color: #fff;
-}
-
-.label-text {
-  font-size: 12px;
-  color: #fff;
-  opacity: 0.7;
-}
-.time-infouter {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  margin-left: 90px;
 }

@@ -18,52 +18,52 @@ function Exercise() {
     location.state || {};
 
   return (
-    <div className="outer">
+    <div className="exercise-page">
       <Navbarhomepage />
-      <div className="container">
-        <div className="rootcontnervideo">
+      <div className="exercise-content-container">
+        <div className="exercise-video-section">
           <div>
-            <div className="videocontner">
-              <img src={imageUrl} alt={name} className="image1" />
-              <div className="Detail">
-                <div className="Detailiner">
-                  <div className="iconback">
+            <div className="exercise-video-container">
+              <img src={imageUrl} alt={name} className="exercise-image" />
+              <div className="exercise-details-overlay">
+                <div className="exercise-detail-item">
+                  <div className="exercise-icon-container">
                     <Icon path={mdiClockOutline} size={1.5} color="#000" />
                   </div>
-                  <div className="textContainer">
-                    <p className="labelText">Time</p>
-                    <p className="valueText">{progress} min</p>
+                  <div className="exercise-text-container">
+                    <p className="exercise-label-text">Time</p>
+                    <p className="exercise-value-text">{progress} min</p>
                   </div>
                 </div>
-                <div className="line" />
-                <div className="Detailiner">
-                  <div className="iconback">
+                <div className="exercise-divider" />
+                <div className="exercise-detail-item">
+                  <div className="exercise-icon-container">
                     <Icon path={mdiFire} size={1.5} color="#000" />
                   </div>
-                  <div className="textContainer">
-                    <p className="labelText">Burn</p>
-                    <p className="valueText">{cal} kcal</p>
+                  <div className="exercise-text-container">
+                    <p className="exercise-label-text">Burn</p>
+                    <p className="exercise-value-text">{cal} kcal</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="cardBackground">
-            <h2 className="headingText">{name}</h2>
-            <p className="bodyText">{description}</p>
+          <div className="exercise-card-background">
+            <h2 className="exercise-heading">{name}</h2>
+            <p className="exercise-description">{description}</p>
           </div>
         </div>
       </div>
 
-      <div className="footer-1">
+      <div className="exercise-footer">
         <Icon path={mdiMusicNoteOutline} size={1.5} color="#ffffff" />
         <button
-          className="startButton"
+          className="exercise-start-button"
           onClick={() =>
             navigate("/Counttostart", { state: { videolink, cal } })
           }
         >
-          <span className="startText">Start</span>
+          <span className="exercise-start-text">Start</span>
         </button>
         <Icon path={mdiHeartOutline} size={1.5} color="#ffffff" />
       </div>

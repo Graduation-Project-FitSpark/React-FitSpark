@@ -1,55 +1,35 @@
-.outer {
+.exercise-page {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.container {
+.exercise-content-container {
   background-color: #fff;
   min-height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
-}
-
-.toptitle {
-  display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-top: 50px;
 }
 
-.toptitlenameContainer {
+.exercise-video-section {
+  width: 60%;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
-  flex: 1;
+  flex-direction: column;
 }
 
-.toptitlename {
-  font-size: 20px;
-  color: #000;
-  text-align: center;
-}
-
-.iconButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.rootcontnervideo {
+.exercise-image {
   width: 100%;
-  margin-top: 100px;
-}
-.image1 {
-  width: 100%;
-
   height: 400px;
   object-fit: cover;
   border-radius: 20px;
   border: 1px solid #ccc;
 }
 
-.videocontner {
+.exercise-video-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -57,7 +37,7 @@
   flex-direction: column;
 }
 
-.Detail {
+.exercise-details-overlay {
   display: flex;
   justify-content: space-around;
   background-color: rgba(0, 0, 0, 0.4);
@@ -68,12 +48,12 @@
   width: 100%;
 }
 
-.Detailiner {
+.exercise-detail-item {
   display: flex;
   align-items: center;
 }
 
-.iconback {
+.exercise-icon-container {
   background-color: #bbf246;
   border-radius: 50%;
   display: flex;
@@ -84,24 +64,24 @@
   margin-right: 10px;
 }
 
-.textContainer {
+.exercise-text-container {
   display: flex;
   flex-direction: column;
 }
 
-.labelText {
+.exercise-label-text {
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
 }
 
-.valueText {
+.exercise-value-text {
   color: #bbf246;
   font-size: 16px;
   font-weight: bold;
 }
 
-.line {
+.exercise-divider {
   width: 2px;
   height: 80%;
   background-color: #b0b0b0;
@@ -109,7 +89,7 @@
   margin: 0 10px;
 }
 
-.cardBackground {
+.exercise-card-background {
   padding: 16px;
   border-radius: 8px;
   margin-top: 20px;
@@ -117,23 +97,22 @@
   text-align: left;
 }
 
-.headingText {
+.exercise-heading {
   font-size: 20px;
   font-weight: bold;
   color: #000;
   margin-bottom: 8px;
 }
 
-.bodyText {
+.exercise-description {
   font-size: 16px;
   color: #000;
   line-height: 24px;
 }
 
-.footer-1 {
+.exercise-footer {
   height: 150px;
   margin-top: -20px;
-
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -142,7 +121,7 @@
   border-top-right-radius: 30px;
 }
 
-.startButton {
+.exercise-start-button {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -154,7 +133,7 @@
   cursor: pointer;
 }
 
-.startText {
+.exercise-start-text {
   color: #000000;
   font-size: 16px;
   font-weight: bold;

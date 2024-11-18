@@ -1,0 +1,107 @@
+.container {
+  background-color: #ffa07a;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 350px;
+  height: 350px;
+}
+
+.prfofood {
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+.backButton {
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.imgcontainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.infoContainer {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+}
+
+.statText {
+  margin-left: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.ingredients {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+}
+
+.ingredientContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.image2 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.ingredientText {
+  font-size: 16px;
+}

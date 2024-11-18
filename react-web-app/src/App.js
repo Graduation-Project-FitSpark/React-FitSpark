@@ -12,6 +12,8 @@ import Workout from "./componentes/homepage/feature/Workout";
 import Exercise from "./componentes/homepage/feature/Exercise";
 import Counttostart from "./componentes/homepage/feature/Counttostart";
 import StartExercise from "./componentes/homepage/feature/StartExercise";
+import Foodplan from "./componentes/homepage/feature/Foodplan";
+import Detelsfoode from "./componentes/homepage/feature/Detelsfoode";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
           <Route path="/Exercise" element={<Exercise />} />
           <Route path="/Counttostart" element={<Counttostart />} />
           <Route path="/StartExercise" element={<StartExercise />} />
+          <Route path="/Foodplan" element={<Foodplan />} />
+          <Route path="/Detelsfoode" element={<Detelsfoode />} />
         </Routes>
       </BrowserRouter>
     </div>

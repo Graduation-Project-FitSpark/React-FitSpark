@@ -15,7 +15,6 @@ function StartExercise() {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    console.log("Video data in StartExercise:", videolink);
     const updateProgress = setInterval(() => {
       if (video.current) {
         setPosition(video.current.currentTime * 1000);
@@ -27,7 +26,7 @@ function StartExercise() {
     }, 1000);
 
     return () => clearInterval(updateProgress);
-  }, []);
+  }, [time]);
 
   useEffect(() => {
     if (time > 0) {
@@ -81,62 +80,75 @@ function StartExercise() {
     : 0;
 
   return (
-    <div className="container">
-      <div className="control-page">
-        <div className="info-cal">
+    <div className="start-exercise-container">
+      <div className="start-exercise-header">
+        <div className="start-exercise-calories">
           <span>KCAL BURNED</span>
-          <div className="cal">
-            <span className="cal-text">{cal}</span>
-            <i className="icon-fire">🔥</i>
+          <div className="start-exercise-calories-value">
+            <span className="start-exercise-calories-text">{cal}</span>
+            <i className="start-exercise-icon-fire">🔥</i>
           </div>
         </div>
-        <button className="stop-page" onClick={() => navigate(-2)}>
+        <button
+          className="start-exercise-close-button"
+          onClick={() => navigate(-2)}
+        >
           ✖
         </button>
       </div>
 
-      <div className="video-section">
+      <div className="start-exercise-video-section">
         <video
           ref={video}
           src={videolink}
-          className="video"
+          className="start-exercise-video"
           controls
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
         />
       </div>
 
-      <div className="control-video">
-        <div className="timer-section">
-          <p className="main-timer">{formatTime(time * 1000)}</p>
-          <div className="time-infouter">
-            <div className="time-info">
-              <p className="time-text">{formatTime(duration)}</p>
-              <p className="time-text">{percentageCompleted}%</p>
+      <div className="start-exercise-controls">
+        <div className="start-exercise-timer-section">
+          <p className="start-exercise-main-timer">{formatTime(time * 1000)}</p>
+          <div className="start-exercise-timer-info">
+            <div className="start-exercise-timer-values">
+              <p className="start-exercise-time-text">{formatTime(duration)}</p>
+              <p className="start-exercise-percentage-text">
+                {percentageCompleted}%
+              </p>
             </div>
-
-            <div className="time-info">
-              <p className="label-text">TOTAL TIME</p>
-              <p className="label-text">COMPLETED</p>
+            <div className="start-exercise-labels">
+              <p className="start-exercise-label-text">TOTAL TIME</p>
+              <p className="start-exercise-label-text">COMPLETED</p>
             </div>
           </div>
         </div>
         <input
           type="range"
-          className="slider"
+          className="start-exercise-slider"
           min="0"
           max={duration}
           value={position}
           onChange={(e) => onSliderValueChange(e.target.value)}
         />
-        <div className="buttons">
-          <button onClick={handleRewind} className="control-text">
+        <div className="start-exercise-buttons">
+          <button
+            onClick={handleRewind}
+            className="start-exercise-control-button"
+          >
             Prev
           </button>
-          <button onClick={togglePlayPause} className="play-pause-button">
+          <button
+            onClick={togglePlayPause}
+            className="start-exercise-play-pause-button"
+          >
             {isPlaying ? "| |" : "▶"}
           </button>
-          <button onClick={handleFastForward} className="control-text">
+          <button
+            onClick={handleFastForward}
+            className="start-exercise-control-button"
+          >
             Next
           </button>
         </div>

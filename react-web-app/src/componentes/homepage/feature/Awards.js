@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Awards.css"; // Use a CSS file for styles
-import { LinearProgress, IconButton } from "@mui/material";
+import "./Awards.css"; // Updated CSS file
+import { LinearProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Navbarhomepage from "./../Navbarhomepage";
 import img20 from "../../../img/point/20.png";
 import img40 from "../../../img/point/40.png";
 import img60 from "../../../img/point/60.png";
@@ -14,6 +13,7 @@ import img150 from "../../../img/point/150.png";
 import img170 from "../../../img/point/170.png";
 import img200 from "../../../img/point/200.png";
 import img250 from "../../../img/point/250.png";
+
 const Award = ({ navigation }) => {
   const navigate = useNavigate();
 
@@ -63,24 +63,26 @@ const Award = ({ navigation }) => {
       const batch = Awards.slice(i, i + 5);
 
       elements.push(
-        <div key={i} className="batchContainer">
+        <div key={i} className="award-batch-container">
           {batch.map((item, index) => {
             const progress =
               Awardspoint >= item.point ? 1 : Awardspoint / item.point;
 
             return (
-              <div key={index} className="outer">
-                <div className="outerItem">
+              <div key={index} className="award-card-wrapper">
+                <div className="award-card">
                   <img
                     className={
-                      Awardspoint >= item.point ? "pointImg" : "notPointImg"
+                      Awardspoint >= item.point
+                        ? "award-img-active"
+                        : "award-img-inactive"
                     }
                     src={item.photo}
                     alt={item.name}
                   />
-                  <div className="namePoint">{item.name}</div>
-                  <div className="pointOf">
-                    {Awardspoint + (item.point - Awardspoint)}of {item.point}
+                  <div className="award-name">{item.name}</div>
+                  <div className="award-points">
+                    {Awardspoint + (item.point - Awardspoint)} of {item.point}
                   </div>
                   <LinearProgress
                     variant="determinate"
@@ -98,16 +100,19 @@ const Award = ({ navigation }) => {
   };
 
   return (
-    <div className="container">
-      <div className="header-1">
-        <div className="inertHeader">
-          <h1 className="textHeader">Awards</h1>
+    <div className="awards-container">
+      <Navbarhomepage />
+      <div className="conthedout">
+        <div className="awards-header">
+          <div className="header-title-container">
+            <h1 className="header-title">Awards</h1>
+          </div>
+
+          <div className="points-info">Your Points: {Awardspoint}</div>
         </div>
 
-        <div className="textPoint">Your Points: {Awardspoint}</div>
+        <div className="awards-scroll">{pointAwards()}</div>
       </div>
-
-      <div className="scrollContainer">{pointAwards()}</div>
     </div>
   );
 };

@@ -1,5 +1,4 @@
-/* Main container to hold the entire layout */
-.container {
+.containerbody {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -12,17 +11,17 @@
   width: 300px;
   height: 400px;
   padding: 20px;
-  background-color: #fff; /* Optional: Add a background color for clarity */
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(175, 51, 51, 0.2);
 }
-/* Side sections with red border */
+
 .side-section {
   margin-left: 150px;
   width: 300px;
   height: 400px;
   padding: 20px;
-  background-color: #fff; /* Optional: Add a background color for clarity */
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -32,67 +31,59 @@
 .side-section1 * {
   text-align: left;
 }
-/* Main container for the connected human body */
 .human-body {
   position: relative;
-  width: 200px; /* Adjust width based on the size of your images */
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Styling for individual parts */
 .body-part {
   position: absolute;
   margin-top: 120px;
 }
 
-/* Body */
 .body-part.body {
-  top: 50px; /* Position below the head */
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
 }
 
-/* Left Hand */
 .body-part.hand-left {
-  top: 121px; /* Align with the body */
-  left: -16.7px; /* Position slightly to the left */
-  z-index: 1; /* Behind body to make it look connected */
+  top: 121px;
+  left: -16.7px;
+  z-index: 1;
 }
 
-/* Right Hand */
 .body-part.hand-right {
-  top: 125px; /* Align with the body */
-  right: -45.2px; /* Position slightly to the right */
-  z-index: 1; /* Behind body to make it look connected */
+  top: 125px;
+  right: -45.2px;
+  z-index: 1;
 }
 
-/* Feet */
 .body-part.feet {
-  top: 312px; /* Position below the body */
+  top: 312px;
   left: 50%;
   right: 5px;
   transform: translateX(-50%);
   z-index: 2;
 }
 
-/* Image Styling */
 .body-part-image {
-  width: 100%; /* Ensures images fit within their container */
-  max-width: 140px; /* Restrict max size for body harmony */
+  width: 100%;
+  max-width: 140px;
   height: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 5px;
 }
 
 .body-part:hover .body-part-image {
-  transform: scale(1.1); /* Slight zoom on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Tooltip Styling */
 .info-tooltip {
   position: absolute;
   top: -20px;
@@ -110,84 +101,78 @@
   z-index: 10;
 }
 
-/* Show tooltip on hover */
 .body-part:hover .info-tooltip {
   opacity: 1;
   visibility: visible;
 }
 
-/* Container for the progress bars */
 .progress-container {
   padding: 40px;
-  width: 600px; /* Full width of the human-body container */
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 200px;
-  background-color: #fff; /* Optional: Add a background color for clarity */
+  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Correct CSS for box-shadow */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Style for individual progress bar sections */
 .progress-section {
   display: flex;
-  width: 100%; /* Adjust width as needed */
-  margin-bottom: 10px; /* Space between each progress bar */
+  width: 100%;
+  margin-bottom: 10px;
   text-align: center;
   flex-direction: row;
   gap: 50px;
 }
 .progress-section2 {
   display: flex;
-  width: 100%; /* Adjust width as needed */
-  margin-bottom: 10px; /* Space between each progress bar */
+  width: 100%;
+  margin-bottom: 10px;
   text-align: center;
   flex-direction: row;
   gap: 30px;
 }
 .progress-section p {
-  margin: 0 0 5px; /* Add space between text and progress bar */
+  margin: 0 0 5px;
   font-weight: bold;
-  color: #333; /* Darker text color */
+  color: #333;
 }
 
-/* Style for the progress bars */
 .progress-section progress {
-  width: 100%; /* Full width of the container */
-  height: 20px; /* Adjust height for a more visible bar */
-  appearance: none; /* Reset default styles */
-  -webkit-appearance: none; /* For Safari */
+  width: 100%;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .progress-section2 p {
-  margin: 0 0 5px; /* Add space between text and progress bar */
+  margin: 0 0 5px;
   font-weight: bold;
-  color: #333; /* Darker text color */
+  color: #333;
 }
 
-/* Style for the progress bars */
 .progress-section2 progress {
-  width: 100%; /* Full width of the container */
-  height: 20px; /* Adjust height for a more visible bar */
-  appearance: none; /* Reset default styles */
-  -webkit-appearance: none; /* For Safari */
+  width: 100%;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-/* Custom styling for the progress bar */
 progress::-webkit-progress-bar {
-  background-color: #e0e0e0; /* Light grey background */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Ensure corners stay rounded */
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 progress::-webkit-progress-value {
-  background-color: #1c1b29; /* Green fill color */
-  border-radius: 10px; /* Rounded corners */
-  transition: width 0.3s ease; /* Smooth animation for progress change */
+  background-color: #1c1b29;
+  border-radius: 10px;
+  transition: width 0.3s ease;
 }
 
 progress::-moz-progress-bar {
-  background-color: #1c1b29; /* Green fill color for Firefox */
-  border-radius: 10px; /* Rounded corners */
+  background-color: #1c1b29;
+  border-radius: 10px;
 }

@@ -71,7 +71,7 @@ const BodyParts = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="containerbody">
       <div className="side-section1">
         <p style={{ fontWeight: "bold" }}>Report:</p>
         {report.map((part) => (
