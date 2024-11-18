@@ -8,7 +8,7 @@ const AboutUsSection = () => {
         <hr />
         <h5 className="section-subtitle">About Us</h5>
       </div>
-      <h2 className="section-title">
+      <h2 className="section-title-Help">
         We Help To Get The <br />
         Fitness Goals
       </h2>
