@@ -1,12 +1,11 @@
 // Navbar.js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbarhomepage.css"; // Optional: Add this for custom styles
+import "./Navbarhomepage.css";
 import logo from "../../img/logo.png";
 const Navbar = () => {
   const navigate = useNavigate();
   const handleSignup = () => {
-    // Redirect to another page (e.g., Supplement-signup)
     navigate("/firstpage");
   };
   return (

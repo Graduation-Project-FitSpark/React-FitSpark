@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FaChevronLeft } from "react-icons/fa"; // Icon replacement for web
-import "./Notifications.css"; // Assuming you're using CSS for styling
-import { FaBell } from "react-icons/fa"; // FontAwesome bell icon
+import { FaChevronLeft } from "react-icons/fa";
+import "./Notifications.css";
+import { FaBell } from "react-icons/fa";
 
 function Notificationspage() {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
 
   useEffect(() => {
-    // Simulate fetching notifications
     const fetchedNotifications = [
       {
         id: "1",
@@ -44,8 +43,8 @@ function Notificationspage() {
       >
         <FaBell
           style={{
-            color: showNotifications ? "#5ce65c" : "rgb(236, 91, 39)", // Change color here
-            fontSize: "30px", // Adjust icon size if needed
+            color: showNotifications ? "#5ce65c" : "rgb(236, 91, 39)",
+            fontSize: "30px",
           }}
         />
       </button>

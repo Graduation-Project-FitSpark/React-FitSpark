@@ -6,13 +6,12 @@ import img3 from "../../img/slider-3.png";
 function Slidermotin() {
   const [slideIndex, setSlideIndex] = useState(1);
 
-  // Automatically change slides every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prevIndex) => (prevIndex === 3 ? 1 : prevIndex + 1));
-    }, 3500); // Adjust the time interval as needed (3000ms = 3 seconds)
+    }, 3500);
 
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

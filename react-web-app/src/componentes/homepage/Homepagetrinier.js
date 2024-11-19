@@ -2,6 +2,7 @@ import React from "react";
 import Slidermotin from "./Slidermotin";
 import Navbarhomepage from "./Navbarhomepage";
 import Qiuzecompunent from "./Qiuzecompunent";
+import Gotosectiontrine from "./Gotosectiontrine";
 import Ibuttoninfobody from "./Ibuttoninfobody";
 import Footer from "../Welcome_Screen/Footer";
 import FAQ from "../Welcome_Screen/FAQcomponent-section";
@@ -13,7 +14,7 @@ function homepagetrinier() {
       <Navbarhomepage></Navbarhomepage>
       <Notifications></Notifications>
       <Slidermotin></Slidermotin>
-      <Qiuzecompunent></Qiuzecompunent>
+      <Gotosectiontrine></Gotosectiontrine>
       <Ibuttoninfobody></Ibuttoninfobody>
       <FAQ />
 

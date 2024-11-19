@@ -3,12 +3,11 @@ import "./BodyParts.css";
 import img1 from "../../img/body/hand-1.png";
 import img2 from "../../img/body/hand-2.png";
 import img3 from "../../img/body/feet.png";
-import img4 from "../../img/body/body.png"; // Renamed from duplicate `img3`
+import img4 from "../../img/body/body.png";
 
 const BodyParts = () => {
   const [hoveredPart, setHoveredPart] = useState(null);
 
-  // State for body part stats
   const [bodyFats, setBodyFats] = useState(20);
   const [bodyMuscle, setBodyMuscle] = useState(60);
   const [handFats, setHandFats] = useState(0);
