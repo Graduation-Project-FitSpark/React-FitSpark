@@ -1,0 +1,87 @@
+.quiz-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.quiz-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 0 20px;
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.quiz-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+.quiz-container p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #555;
+  font-weight: bold;
+}
+
+.quiz-container .MuiFormControl-root {
+  display: block;
+  margin-bottom: 25px;
+}
+
+.quiz-container .MuiFormControlLabel-root {
+  margin-bottom: 10px;
+}
+
+.quiz-container .MuiTextField-root {
+  margin-bottom: 25px;
+}
+
+.quiz-container button {
+  align-self: center;
+  margin-top: 20px;
+  font-weight: 700;
+  letter-spacing: 1ch;
+}
+
+.quiz-container .MuiButton-root {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.quiz-container .MuiButton-root:hover {
+  background-color: #45a049;
+}
+
+.quiz-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.quiz-container::-webkit-scrollbar-thumb {
+  background-color: #4caf50;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+.quiz-container::-webkit-scrollbar-thumb:hover {
+  background-color: #45a049;
+}
+
+.quiz-container::-webkit-scrollbar-track {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}

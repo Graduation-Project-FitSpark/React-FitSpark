@@ -42,7 +42,7 @@ function Exercise() {
                   </div>
                   <div className="exercise-text-container">
                     <p className="exercise-label-text">Burn</p>
-                    <p className="exercise-value-text">{cal} kcal</p>
+                    <p className="exercise-value-text">{cal * goal} kcal</p>
                   </div>
                 </div>
               </div>

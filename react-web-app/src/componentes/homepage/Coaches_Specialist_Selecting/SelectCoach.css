@@ -1,0 +1,134 @@
+.coaches-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.coaches-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.coaches-list::-webkit-scrollbar-thumb {
+  background-color: #003366;
+  border-radius: 4px;
+}
+
+.coaches-list::-webkit-scrollbar-thumb:hover {
+  background-color: #0057a0;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e3f2d5;
+}
+
+.card-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 20px;
+}
+
+.logo {
+  width: 30%;
+  height: 30%;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.coach-container {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.selected-coach {
+  background-color: #003366;
+  color: white;
+}
+
+.coach-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 16px;
+}
+
+.coach-info {
+  flex: 1;
+}
+
+.coach-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.coach-age,
+.coach-experience {
+  font-size: 14px;
+  color: #666;
+}
+
+.selected-text {
+  color: white;
+}
+
+.next-button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #0057a0;
+}
+
+.next-button:active {
+  background-color: #002d52;
+}
+.containerForLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.input {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 700px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}

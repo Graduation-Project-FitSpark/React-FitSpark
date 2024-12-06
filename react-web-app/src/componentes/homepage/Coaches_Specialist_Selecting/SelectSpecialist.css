@@ -1,0 +1,157 @@
+.specialist-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.specialist-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.specialist-list::-webkit-scrollbar-thumb {
+  background-color: #003366;
+  border-radius: 4px;
+}
+
+.specialist-list::-webkit-scrollbar-thumb:hover {
+  background-color: #0057a0;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e3f2d5;
+}
+.card-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 20px;
+}
+
+.header-text {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.specialist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  padding-right: 8px;
+}
+
+.specialist-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.specialist-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.specialist-list::-webkit-scrollbar-thumb {
+  background-color: #003366;
+  border-radius: 4px;
+  border: 2px solid #f0f0f0;
+}
+
+.specialist-list::-webkit-scrollbar-thumb:hover {
+  background-color: #0057a0;
+}
+
+.specialist-container {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.selected-specialist {
+  background-color: #003366;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.specialist-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 16px;
+}
+
+.specialist-info {
+  flex: 1;
+}
+
+.specialist-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.specialist-age {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+}
+
+.selected-text {
+  color: #fff;
+}
+
+.next-button {
+  background-color: #003366;
+  padding: 16px;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.next-button-text {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo {
+  width: 30%;
+  height: 30%;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.containerForLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.input {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 700px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}

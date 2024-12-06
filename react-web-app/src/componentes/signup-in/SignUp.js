@@ -36,7 +36,10 @@ const SignUp = ({ navigation }) => {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [age, setAge] = useState("");
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+  });
   const [yearsOfExperience, setYearsOfExperience] = useState("");
   const [gender, setGender] = useState("");
   const [cvc, setCvc] = useState("");
@@ -50,6 +53,15 @@ const SignUp = ({ navigation }) => {
   const [coordinates, setCoordinates] = useState({ latitude: 0, longitude: 0 });
   const navigate = useNavigate();
 
+  const MapClickHandler = () => {
+    useMapEvents({
+      click(e) {
+        const { lat, lng } = e.latlng;
+        setLocation({ latitude: lat, longitude: lng });
+      },
+    });
+    return null; // No visual elements needed
+  };
   const nav = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -65,21 +77,6 @@ const SignUp = ({ navigation }) => {
   useEffect(() => {
     nav();
   }, []);
-
-  function LocationSelector() {
-    useMapEvents({
-      click(e) {
-        setCoordinates({ latitude: e.latlng.lat, longitude: e.latlng.lng });
-        console.log("Selected Location: ", e.latlng);
-        setLocation(`${e.latlng.lat}, ${e.latlng.lng}`);
-      },
-    });
-    return coordinates.latitude && coordinates.longitude ? (
-      <Marker position={[coordinates.latitude, coordinates.longitude]}>
-        <Popup>You selected this location!</Popup>
-      </Marker>
-    ) : null;
-  }
 
   const handleNextStep = async () => {
     if (step === 1) {
@@ -133,7 +130,7 @@ const SignUp = ({ navigation }) => {
     let additionalData = {};
     let endpoint = "";
 
-    if (type === "Trainer") {
+    if (type === "Trainee") {
       additionalData = {
         Weight: weight,
         Height: height,
@@ -147,7 +144,7 @@ const SignUp = ({ navigation }) => {
         YearsOfExperience: yearsOfExperience,
       };
       endpoint = `${URL}/signUpCoach`;
-    } else if (type === "Specialist") {
+    } else if (type === "Nutrition expert") {
       additionalData = {
         YearsOfExperience: yearsOfExperience,
       };
@@ -204,25 +201,13 @@ const SignUp = ({ navigation }) => {
         onChange={(e) => setConfirmPassword(e.target.value)}
         style={styles.input}
       />
-      <div className="map-location">
-        <MapContainer
-          center={[coordinates.latitude, coordinates.longitude]}
-          zoom={13}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <LocationSelector />
-        </MapContainer>
-      </div>
+
       <label>Type</label>
       <select value={type} onChange={(e) => setType(e.target.value)}>
         <option value="">Select Type</option>
-        <option value="Trainer">Trainer</option>
+        <option value="Trainee">Trainee</option>
         <option value="Coach">Coach</option>
-        <option value="Specialist">Specialist</option>
+        <option value="Nutrition expert">Nutrition expert</option>
       </select>
       <button onClick={handleNextStep}>Next</button>
     </div>
@@ -265,13 +250,26 @@ const SignUp = ({ navigation }) => {
         onChange={(e) => setAge(e.target.value)}
         style={styles.input}
       />
-      <input
-        type="text"
-        placeholder="Location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        style={styles.input}
-      />
+      <div className="map-location" style={{ height: "400px", width: "100%" }}>
+        <MapContainer
+          center={[location.latitude, location.longitude]}
+          zoom={13}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <MapClickHandler /> {/* This must be rendered inside MapContainer */}
+          <Marker position={[location.latitude, location.longitude]}>
+            <Popup>
+              Latitude: {location.latitude.toFixed(6)}, Longitude:{" "}
+              {location.longitude.toFixed(6)}
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+
       <select
         value={gender}
         onChange={(e) => setGender(e.target.value)}
@@ -282,7 +280,7 @@ const SignUp = ({ navigation }) => {
         <option value="Female">Female</option>
       </select>
 
-      {type === "Coach" || type === "Specialist" ? (
+      {type === "Coach" || type === "Nutrition expert" ? (
         <input
           type="number"
           placeholder="Years of Experience"
@@ -314,7 +312,7 @@ const SignUp = ({ navigation }) => {
         style={styles.input}
       />
 
-      {type === "Trainer" && (
+      {type === "Trainee" && (
         <>
           <input
             type="number"

@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { format, addDays, subDays } from "date-fns";
 import { LinearProgress, IconButton } from "@mui/material";
-import "./Workout.css"; // Assuming the CSS file is named Workout.css
+import "./Workout.css";
 import Navbarhomepage from "./../Navbarhomepage";
 import { useNavigate } from "react-router-dom";
+import URL from "../../../enum/enum";
+import axios from "axios";
+
 function Workout() {
   const navigate = useNavigate();
-  const cal = 5;
+  const [cal, setCal] = useState(0);
+  const [steps, setSteps] = useState(0);
+  const [meters, setMeters] = useState(0);
   const maxcal = 5;
-  const steps = 99;
   const maxsteps = 2000;
-  const meters = 23;
-  const maxmeters = 40;
-
+  const maxmeters = 1000;
   const howmuchvideoshow = 23;
   const MAXhowmuchvideoshow = 23;
 
@@ -28,37 +30,8 @@ function Workout() {
     weekday: "long",
   });
 
-  const [todayPlan, settodayPlan] = useState([
-    {
-      id: 1,
-      name: "Push Up",
-      description:
-        "The lower abdomen and hips are the most difficult areas of the body to reduce.",
-      goal: "100 Push up a day",
-      progress: 45,
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSv8DHqz8RFaA8jEqtRODUG6o9WQktS0RX_Q&s",
-      videolink:
-        "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-      cal: 95,
-    },
-    {
-      id: 2,
-      name: "Sit Up",
-      description: "Reduce weight, especially in the lower abdomen and hips.",
-      goal: "20 Sit up a day",
-      progress: 75,
-      imageUrl: "https://via.placeholder.com/150",
-      videolink:
-        "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-      cal: 45,
-    },
-  ]);
-
-  const [trineday] = useState([
-    { ID_Trains: [1, 3], Day_Of_Week: "Monday" },
-    { ID_Trains: [2], Day_Of_Week: "Tuesday" },
-  ]);
+  const [todayPlan, settodayPlan] = useState([]);
+  const [trineday, settrineday] = useState([]);
 
   const [data, setData] = useState([
     {
@@ -108,6 +81,70 @@ function Workout() {
   const [filteredPlan, setFilteredPlan] = useState([]);
 
   useEffect(() => {
+    const fetchTodayCalories = async () => {
+      try {
+        const ID = localStorage.getItem("ID");
+
+        const response = await axios.post(`${URL}/getTodayCalories`, {
+          trainerId: ID,
+        });
+        const { Calories, Steps, Distance } = response.data;
+
+        setCal(Calories);
+        setSteps(Steps);
+        setMeters(Distance);
+        console.log("Calories:", Calories);
+        console.log("Steps:", Steps);
+        console.log("Distance (Meters):", Distance);
+      } catch (error) {
+        console.error("Error fetching today's calories:", error);
+      }
+    };
+
+    const fetchWorks = async () => {
+      try {
+        const ID = localStorage.getItem("ID");
+        const response = await axios.post(`${URL}/getWorks`);
+        const works = response.data;
+        const trainerResponse = await fetch(`${URL}/getTrainerWorks`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ trainerId: ID }),
+        });
+        const result = await trainerResponse.json();
+        const worksWithGoal = works.map((work) => {
+          const trainerWork = result.find((day) =>
+            day.ID_Trains.includes(work.id)
+          );
+          const goal = trainerWork
+            ? trainerWork.Steps[trainerWork.ID_Trains.indexOf(work.id)]
+            : 0;
+          return {
+            id: work.id,
+            name: work.name,
+            description: work.description,
+            goal: goal,
+            progress: Math.floor(Math.random() * 100),
+            imageUrl: work.imageUrl,
+            videolink: work.videolink,
+            cal: work.cal,
+          };
+        });
+
+        settodayPlan(worksWithGoal);
+        settrineday(result);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchWorks();
+    fetchTodayCalories();
+  }, []);
+
+  useEffect(() => {
     const matchingTrains = trineday
       .filter((train) => train.Day_Of_Week === formattedDate)
       .flatMap((train) => train.ID_Trains);
@@ -124,7 +161,7 @@ function Workout() {
           : { ...item, isSelected: false }
       )
     );
-  }, [formattedDate, todayPlan]);
+  }, [formattedDate, trineday, todayPlan]);
 
   const selectDay = (selectedDay) => {
     setData((prevData) =>

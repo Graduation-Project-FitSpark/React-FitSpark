@@ -2,27 +2,31 @@ import React, { useState, useEffect } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import "./Notifications.css";
 import { FaBell } from "react-icons/fa";
-
+import axios from "axios";
 function Notificationspage() {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
 
   useEffect(() => {
-    const fetchedNotifications = [
-      {
-        id: "1",
-        name: "Hey there, fitness warrior! 💪 Every step, every rep, every drop of sweat brings you closer.",
-      },
-      {
-        id: "2",
-        name: "Keep pushing, keep showing up, because you’re unstoppable!",
-      },
-      {
-        id: "3",
-        name: "Stay hydrated and stay motivated. You're doing great!",
-      },
-    ];
-    setNotifications(fetchedNotifications);
+    const fetchNotifications = async () => {
+      const username = localStorage.getItem("username");
+      try {
+        const response = await axios.post(`${URL}/getNotifications`, {
+          Msg_To: username,
+        });
+
+        const data = response.data.notifications.map((item) => ({
+          id: item.Date,
+          name: item.Description,
+        }));
+
+        setNotifications(data);
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+      }
+    };
+
+    fetchNotifications();
   }, []);
 
   const toggleNotifications = () => {
@@ -53,7 +57,7 @@ function Notificationspage() {
         <div className="notifications-list">
           {notifications.map((item) => (
             <div key={item.id} className="notification">
-              <span className="timestamp">2m ago</span>
+              <span className="timestamp">{item.id}</span>
               <p className="notification-text">{item.name}</p>
             </div>
           ))}

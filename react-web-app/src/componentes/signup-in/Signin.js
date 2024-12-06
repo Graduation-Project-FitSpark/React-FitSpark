@@ -28,6 +28,8 @@ const Signin = () => {
       const data = await response.json();
       if (data.message) {
         const { Email } = data.user;
+        localStorage.setItem("username", username);
+
         navigate("/Authentication", {
           state: { username: username, Email: Email },
         });

@@ -1,0 +1,38 @@
+/* SuccessScreen Styles */
+
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff;
+  text-align: center;
+}
+
+.animated-icon {
+  animation: rotate 2s infinite linear;
+}
+
+.check-circle-icon {
+  font-size: 100px;
+  color: #4caf50;
+}
+
+.success-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+/* Keyframes for rotating animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

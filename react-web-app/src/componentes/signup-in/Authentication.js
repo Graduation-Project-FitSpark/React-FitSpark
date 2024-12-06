@@ -32,8 +32,10 @@ const Authentication = () => {
   };
 
   const handleVerify = () => {
+    console.log(verificationCode);
+    console.log(verificationCodeSended);
     if (verificationCode === verificationCodeSended) {
-      alert("Success! Verification code is valid.");
+      navigate("/Homepage");
     } else {
       alert("Error: Verification code is invalid.");
     }

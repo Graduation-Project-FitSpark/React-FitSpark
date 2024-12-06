@@ -3,7 +3,6 @@ import "./Gotosectiontrine.css";
 import img from "../../img/man-4.jpg";
 function Gotosectiontrine() {
   return (
-    //هاد الملف متعلق بالتمرين واذا كان مش اول مرة بستخدم البرنامج  اذا كبس عليه ببلش
     <div>
       <div className="fitness-section">
         <div className="fitness-image">
@@ -20,7 +19,7 @@ function Gotosectiontrine() {
             Challenges are variables, solutions are constants, and every result
             adds to our proof of concept.
           </p>
-          <a href="#more" className="find-out-more">
+          <a href="/Workout" className="find-out-more">
             → START YOUR DAY NOW
           </a>
         </div>

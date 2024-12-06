@@ -1,41 +1,68 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import "./StartExercise.css";
-
+import URL from "../../../enum/enum";
 function StartExercise() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { videolink, cal } = location.state || {};
+  const { videolink = "", cal = 0 } = location.state || {};
 
   const video = useRef(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(0); // Remaining time
+  const [pointsIncremented, setPointsIncremented] = useState(false); // Track points increment status
 
   useEffect(() => {
     const updateProgress = setInterval(() => {
       if (video.current) {
-        setPosition(video.current.currentTime * 1000);
-        setDuration(video.current.duration * 1000);
-        if (time === 0 && video.current.duration) {
-          setTime(Math.floor(video.current.duration));
+        const currentPosition = video.current.currentTime * 1000; // Convert to milliseconds
+        const videoDuration = video.current.duration * 1000; // Convert to milliseconds
+
+        setPosition(currentPosition);
+        setDuration(videoDuration);
+
+        if (videoDuration > 0) {
+          const remainingTime = Math.floor(
+            (videoDuration - currentPosition) / 1000
+          );
+          setTime(remainingTime);
+        }
+
+        if (
+          currentPosition >= videoDuration &&
+          videoDuration > 0 &&
+          !pointsIncremented
+        ) {
+          setPointsIncremented(true);
+          handleVideoWatched(); // Call the function when the video ends
         }
       }
     }, 1000);
 
-    return () => clearInterval(updateProgress);
-  }, [time]);
+    return () => clearInterval(updateProgress); // Cleanup the interval when component unmounts
+  }, [pointsIncremented]);
 
-  useEffect(() => {
-    if (time > 0) {
-      const countdownInterval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
-      }, 1000);
-      return () => clearInterval(countdownInterval);
+  // Function to handle video watched and update points
+  const handleVideoWatched = async () => {
+    try {
+      const trainerId = localStorage.getItem("ID");
+
+      await axios.post(`${URL}/updatePoints`, {
+        trainerId: trainerId,
+        pointsToAdd: 2,
+      });
+
+      await axios.post(`${URL}/updateWatched`, {
+        trainerId: trainerId,
+      });
+    } catch (error) {
+      console.error("Error updating points or watched videos:", error);
     }
-  }, [time]);
+  };
 
   const togglePlayPause = () => {
     if (video.current) {
@@ -66,12 +93,13 @@ function StartExercise() {
   const onSliderValueChange = (value) => {
     if (video.current) {
       video.current.currentTime = value / 1000;
+      setPosition(value);
     }
   };
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
+    const remainingSeconds = Math.round(seconds % 60);
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
@@ -110,10 +138,14 @@ function StartExercise() {
 
       <div className="start-exercise-controls">
         <div className="start-exercise-timer-section">
-          <p className="start-exercise-main-timer">{formatTime(time * 1000)}</p>
+          <p className="start-exercise-main-timer">{formatTime(time)}</p>{" "}
+          {/* Display remaining time */}
           <div className="start-exercise-timer-info">
             <div className="start-exercise-timer-values">
-              <p className="start-exercise-time-text">{formatTime(duration)}</p>
+              <p className="start-exercise-time-text">
+                {formatTime(duration / 1000)}
+              </p>{" "}
+              {/* Total duration */}
               <p className="start-exercise-percentage-text">
                 {percentageCompleted}%
               </p>

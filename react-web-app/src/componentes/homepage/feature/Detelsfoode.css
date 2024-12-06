@@ -37,9 +37,10 @@
 }
 
 .recipe-card-main-image {
-  width: 350px;
-  height: 350px;
-  border-radius: 20px;
+  width: 30%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10%;
 }
 
 .recipe-card-info {

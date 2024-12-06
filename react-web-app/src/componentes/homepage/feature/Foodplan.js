@@ -5,42 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire, faClock } from "@fortawesome/free-solid-svg-icons";
 import Navbarhomepage from "./../Navbarhomepage";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import URL from "../../../enum/enum";
 const colors = ["#EDF7DB", "#DAF0F6", "#F4D8D4", "#F6EDD7"];
-let trainerId = 1;
 
 function Foodplan() {
+  const [trainerId, settrainerid] = useState("");
   const navigate = useNavigate();
   const [food, setFood] = useState("");
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(null);
-  const [foodData, setFoodData] = useState([
-    {
-      id: 1,
-      name: "Baked Sweet Potato",
-      details: "A baked sweet potato seasoned with cinnamon.",
-      img: "https://png.pngtree.com/png-clipart/20221001/ourmid/pngtree-fast-food-big-ham-burger-png-image_6244235.png",
-      min: 20,
-      cal: 500,
-    },
-    {
-      id: 2,
-      name: "Almond Butter Toast",
-      details: "Almond butter spread on whole-grain toast.",
-      img: "https://png.pngtree.com/png-clipart/20221001/ourmid/pngtree-fast-food-big-ham-burger-png-image_6244235.png",
-      min: 15,
-      cal: 350,
-    },
-    {
-      id: 2,
-      name: "Almond Butter Toast",
-      details: "Almond butter spread on whole-grain toast.",
-      img: "https://png.pngtree.com/png-clipart/20221001/ourmid/pngtree-fast-food-big-ham-burger-png-image_6244235.png",
-      min: 15,
-      cal: 350,
-    },
-
-    // Add more food items as needed...
-  ]);
+  const [foodData, setFoodData] = useState([]);
 
   const [mealPlan, setMealPlan] = useState([
     { idTrainer: 1, idFood: 1, dayOfWeek: "Monday", time: "Breakfast" },
@@ -94,6 +69,61 @@ function Foodplan() {
   ]);
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const trainerId = localStorage.getItem("ID");
+        settrainerid(trainerId);
+        try {
+          const response = await fetch(`${URL}/getAllFoods`);
+          if (!response.ok) {
+            throw new Error("Failed to fetch food data");
+          }
+          const data = await response.json();
+          setFoodData(data);
+        } catch (error) {
+          console.error("Error fetching food data:", error);
+        }
+        try {
+          const response = await fetch(`${URL}/getAllFoodsTrainer`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ trainerId }),
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch meal plan");
+          }
+          const data = await response.json();
+          setMealPlan(data);
+        } catch (error) {
+          console.error("Error fetching meal plan:", error);
+        }
+      } catch (error) {
+        console.error("Error fetching:", error);
+      }
+
+      if (selectedDate) {
+        setDaysOfWeek((prevDays) =>
+          prevDays.map((day) =>
+            day.dayOfWeek === selectedDate
+              ? { ...day, isSelected: true }
+              : { ...day, isSelected: false }
+          )
+        );
+      }
+
+      const currentHour = new Date().getHours();
+      if (currentHour >= 3 && currentHour < 12) {
+        setFood("Breakfast");
+      } else if (currentHour >= 12 && currentHour < 18) {
+        setFood("Lunch");
+      } else {
+        setFood("Dinner");
+      }
+    };
+    fetchUserData();
+
     if (selectedDate) {
       setDaysOfWeek((prevDays) =>
         prevDays.map((day) =>
