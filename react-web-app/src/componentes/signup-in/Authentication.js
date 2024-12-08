@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import URL from "../../enum/enum.js";
-
+import "./auth.css";
 const Authentication = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,23 +43,26 @@ const Authentication = () => {
 
   return (
     <div className="auth-container">
-      <h2>Verification</h2>
-      <p>
-        A verification code has been sent to your email:{" "}
-        <strong>{Email}</strong>.
-      </p>
-
-      <input
-        type="text"
-        placeholder="Enter verification code"
-        value={verificationCode}
-        onChange={(e) => setVerificationCode(e.target.value)}
-        className="auth-input"
-      />
-
-      <button onClick={handleVerify} className="auth-button">
-        Verify
-      </button>
+      <div className="auth-left">
+        <div className="auth-form">
+          <h2>Verification</h2>
+          <p>
+            A verification code has been sent to your email:{" "}
+            <strong>{Email}</strong>.
+          </p>
+          <input
+            type="text"
+            placeholder="Enter verification code"
+            value={verificationCode}
+            onChange={(e) => setVerificationCode(e.target.value)}
+            className="auth-input"
+          />
+          <button onClick={handleVerify} className="auth-button">
+            Verify
+          </button>
+        </div>
+      </div>
+      <div className="auth-right"></div>
     </div>
   );
 };

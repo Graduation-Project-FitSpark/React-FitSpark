@@ -44,29 +44,32 @@ const Signin = () => {
 
   return (
     <div className="auth-container">
-      <img src={logo} alt="Logo" className="auth-logo" />
-      <form onSubmit={handleSignIn} className="signin-form">
-        <h2>Sign In</h2>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign In</button>
-        <p>
-          Don't have an account?{" "}
-          <button onClick={() => navigate("/signup")}>Sign Up</button>
-        </p>
-      </form>
+      <div className="auth-left">
+        <img src={logo} alt="Logo" className="auth-logo" />
+        <form onSubmit={handleSignIn} className="signin-form">
+          <h2>Sign In</h2>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Sign In</button>
+          <p>
+            Don't have an account?{" "}
+            <button onClick={() => navigate("/signup")}>Sign Up</button>
+          </p>
+        </form>
+      </div>
+      <div className="auth-right"></div>
     </div>
   );
 };
