@@ -15,7 +15,7 @@ const Part2pageonein1 = () => {
         </p>
       </div>
       <div>
-        <button>All Services</button>
+        <button className="buttonAllServices">All Services</button>
       </div>
     </div>
   );

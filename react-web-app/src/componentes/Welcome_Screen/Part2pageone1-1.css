@@ -49,6 +49,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.buttonAllServices:hover {
   background-color: #d14e2f;
 }

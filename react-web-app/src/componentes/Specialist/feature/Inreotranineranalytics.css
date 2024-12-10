@@ -1,0 +1,135 @@
+.trainerTableContainer-Analytics-requsrt {
+  background: linear-gradient(135deg, #bbf246, #333);
+}
+.traineertitle-outer-Analytics-requsrt {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 25px;
+  gap: 40px;
+  min-height: 100vh;
+  font-family: "Verdana", sans-serif;
+  color: #fff;
+}
+.trainerCount-Analytics-requsrt {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: #333;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-top: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+  width: 20%;
+  height: 150px;
+}
+.trainerCount-Analytics-requsrt p {
+  font-size: 30px;
+}
+.trainerCount-Analytics-requsrt:hover {
+  background: #bbf246;
+  color: #333;
+}
+.trainerCount-fysical-Analytics-requsrt {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.icon-Analytics-requsrt {
+  margin-top: 10px;
+  font-size: 30px;
+}
+.boxInfoTrainer-Analytics-requsrt {
+  width: 75%;
+  min-height: 240px;
+  background: linear-gradient(135deg, #bbf246 50%, #333 50%);
+  border-radius: 20px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px;
+  cursor: pointer;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxInfoTrainer-Analytics-requsrt:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  background: #bbf246;
+  color: #333;
+}
+
+.trainerImage-Analytics-requsrt {
+  width: 25%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 4px solid #fff;
+}
+
+.trainerinfodetels-Analytics-requsrt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.trainerinfodetels-Analytics-requsrt p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: inherit;
+}
+
+.trainerinfodetels-Analytics-requsrt p span {
+  font-weight: bold;
+  color: #bbf246;
+}
+
+.trainerinfodetels-Analytics-requsrt .info-extra {
+  font-size: 16px;
+  color: #e1e1e1;
+  font-style: italic;
+}
+
+.traineertitle-Analytics-requsrt {
+  margin-top: 80px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-Analytics-requsrt {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.additionalInfo-Analytics-requsrt {
+  margin-top: 25px;
+  width: 85%;
+  padding: 20px 25px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  font-family: "Verdana", sans-serif;
+}
+
+.additionalInfo-Analytics-requsrt span {
+  font-weight: bold;
+  color: #bbf246;
+}

@@ -1,0 +1,230 @@
+.trainee-food-info-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+.cont-food-outer {
+  padding-top: 100px;
+}
+
+.trainee-food-header {
+  display: flex;
+  justify-content: flex-start;
+  width: 55%;
+}
+
+.trainee-food-trainer-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.trainee-food-trainer-info img {
+  border-radius: 100px;
+  width: 200px;
+}
+.deltels-info {
+  padding: 50px;
+}
+.trainee-food-days {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.trainee-food-day {
+  border-radius: 30px;
+  background-color: #bbf246;
+  color: #333;
+}
+.trainee-food-selected {
+  border-radius: 30px;
+  background-color: #333;
+  color: #ffff;
+}
+.daye-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.trainee-food-add-meals select,
+.trainee-food-add-meals input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #bbf246;
+  border-radius: 4px;
+  background-color: #444444;
+  color: #bbf246;
+}
+
+.trainee-food-add-meals select:focus,
+.trainee-food-add-meals input:focus {
+  border-color: #bbf246;
+  outline: none;
+}
+
+.trainee-food-add-meals button {
+  width: 100%;
+  padding: 10px;
+  background-color: #bbf246;
+  color: #333333;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.trainee-food-add-meals button:hover {
+  background-color: #a6e03e;
+}
+
+.trainee-food-add-mealsr button:active {
+  background-color: #8ebf36;
+}
+.trainee-food-add-meals {
+  background-color: #333333;
+  color: #bbf246;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 240px;
+}
+
+.trainee-food-add-meals h2 {
+  color: #bbf246;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.trainee-food-plan {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+.paln-food-day {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  width: 60%;
+  flex-direction: column;
+}
+
+.paln-food-day {
+  padding: 20px;
+
+  border-radius: 8px;
+  max-width: 800px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+.add-food {
+  width: 35%;
+  padding-left: 100px;
+}
+.paln-food-day h2 {
+  text-align: left;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.trainee-food-header {
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.trainee-food-exercise-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 80%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trainee-food-exercise-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.trainee-food-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.trainee-food-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.trainee-food-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.trainee-food-contdis {
+  display: flex;
+  gap: 100px;
+}
+
+.trainee-food-detailcamin {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trainee-food-dis {
+  font-size: 14px;
+  color: #333;
+}
+
+.trainee-food-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+.trainee-food-image2 {
+  margin-top: 300px;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+
+  background-color: #ffff;
+}
+.foods {
+  display: flex;
+  flex-direction: column;
+}
+.boutton-remov {
+  background-color: #ff5252;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+.boutton-remov:hover {
+  background-color: #ff1744;
+}
