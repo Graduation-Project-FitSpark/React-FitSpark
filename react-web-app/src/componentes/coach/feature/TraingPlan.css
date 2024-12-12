@@ -1,0 +1,53 @@
+.trainerTableContainer {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  gap: 30px;
+  min-height: 100vh;
+}
+
+.boxInfoTrainer {
+  width: 80%;
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.boxInfoTrainer:hover {
+  background-color: #f0f0f0;
+}
+
+.trainerImage {
+  width: 30%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.trainerinfodetels {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.traineertitle {
+  margin-top: 120px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}

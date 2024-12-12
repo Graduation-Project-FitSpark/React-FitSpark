@@ -22,6 +22,17 @@ import { QuizProvider } from "./componentes/homepage/Quiz/QuizContext";
 import SuccessScreen from "./componentes/homepage/Quiz/SuccessScreen";
 import SelectCoach from "./componentes/homepage/Coaches_Specialist_Selecting/SelectCoach";
 import SelectSpecialist from "./componentes/homepage/Coaches_Specialist_Selecting/SelectSpecialist";
+import Coahhomepage from "./componentes/coach/homepage/homepagecoach";
+import TraingPlan from "./componentes/coach/feature/TraingPlan";
+import Traineeexercise from "./componentes/coach/feature/Traineeexercise";
+import Requesttraining from "./componentes/coach/feature/Requesttraining";
+import AnalyticsSection from "./componentes/coach/feature/AnalyticsSection";
+import Homepagespecialist from "./componentes/Specialist/homepage/homepagespecialist";
+import RequesttrainingSpecialist from "./componentes/Specialist/feature/RequesttrainingSpecialist";
+import TraingPlanSpecialist from "./componentes/Specialist/feature/TraingPlanSpecialist";
+import Traineefood from "./componentes/Specialist/feature/Traineefood";
+import Inreotranineranalytics from "./componentes/Specialist/feature/Inreotranineranalytics";
+import AnalyticsSectionSpecialist from "./componentes/Specialist/feature/AnalyticsSectionSpecialist";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -51,7 +62,32 @@ function App() {
             <Route path="/SuccessScreen" element={<SuccessScreen />} />
             <Route path="/SelectCoach" element={<SelectCoach />} />
             <Route path="/SelectSpecialist" element={<SelectSpecialist />} />
-          </Routes>
+              {/*coach */}
+          <Route path="/Coahhomepage" element={<Coahhomepage />} />
+          <Route path="/TraingPlan" element={<TraingPlan />} />
+          <Route path="/Traineeexercise" element={<Traineeexercise />} />
+          <Route path="/Requesttraining" element={<Requesttraining />} />
+          <Route path="/AnalyticsSection" element={<AnalyticsSection />} />
+          {/*Specialist */}
+          <Route path="/Homepagespecialist" element={<Homepagespecialist />} />
+          <Route
+            path="/RequesttrainingSpecialist"
+            element={<RequesttrainingSpecialist />}
+          />
+          <Route
+            path="/TraingPlanSpecialist"
+            element={<TraingPlanSpecialist />}
+          />
+          <Route path="/Traineefood" element={<Traineefood />} />
+          <Route
+            path="/Inreotranineranalytics"
+            element={<Inreotranineranalytics />}
+          />
+          <Route
+            path="/AnalyticsSectionSpecialist"
+            element={<AnalyticsSectionSpecialist />}
+          />
+        </Routes>
         </BrowserRouter>
       </QuizProvider>
     </div>

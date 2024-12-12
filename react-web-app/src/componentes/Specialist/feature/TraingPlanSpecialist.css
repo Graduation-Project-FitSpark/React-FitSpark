@@ -1,0 +1,72 @@
+.trainerTableContainer {
+  width: 100%;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.traineertitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.boxInfoTrainer {
+  width: 75%;
+  min-height: 320px;
+  background: linear-gradient(135deg, #bbf246 50%, #333 50%);
+  border-radius: 20px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px;
+  cursor: pointer;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxInfoTrainer:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  background: #bbf246;
+  color: #333;
+}
+.trainerImage {
+  width: 25%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 4px solid #fff;
+}
+
+.trainerinfodetels {
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.trainerinfodetels p {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.trainerinfodetels p strong {
+  color: #000;
+  font-weight: bold;
+}
