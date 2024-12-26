@@ -1,0 +1,84 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28, 27, 41, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  width: 40%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-upload {
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.input-container {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #1c1b29;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #1c1b29;
+  border-radius: 5px;
+  padding: 0 8px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cancel-button {
+  background-color: #749de1;
+  color: white;
+  border: none;
+}
+
+.submit-button {
+  background-color: #b2f200;
+  color: black;
+  border: none;
+}
+
+.button:hover {
+  opacity: 0.9;
+}

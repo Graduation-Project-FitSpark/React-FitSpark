@@ -25,6 +25,15 @@ import TraingPlanSpecialist from "./componentes/Specialist/feature/TraingPlanSpe
 import Traineefood from "./componentes/Specialist/feature/Traineefood";
 import Inreotranineranalytics from "./componentes/Specialist/feature/Inreotranineranalytics";
 import AnalyticsSectionSpecialist from "./componentes/Specialist/feature/AnalyticsSectionSpecialist";
+import AdminHomeScreen from "./componentes/Adminuser/homescreen/Homescreen";
+import Chosseuser from "./componentes/Adminuser/AdminActivities/Chosseuser";
+import EditTrainees from "./componentes/Adminuser/AdminActivities/Editeuser/EditTrainees";
+import EditCoach from "./componentes/Adminuser/AdminActivities/Editeuser/EditCoach";
+import EditSpecialist from "./componentes/Adminuser/AdminActivities/Editeuser/EditSpecialist";
+import AddAwards from "./componentes/Adminuser/AdminActivities/AddAwards";
+import Requestcoachspecialist from "./componentes/Adminuser/AdminActivities/Requestcoachspecialist";
+import Applicantscoach from "./componentes/Adminuser/AdminActivities/Applicantscoach";
+import ApplicantsSpecialist from "./componentes/Adminuser/AdminActivities/ApplicantsSpecialist";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -32,7 +41,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route index element={<Homepagespecialist />} />
+          <Route index element={<AdminHomeScreen />} />
           <Route path="/firstpage" element={<Hello />} />
           <Route path="/Signin" element={<Signin />} />
           <Route path="/SignUp" element={<SignUp />} />
@@ -69,6 +78,22 @@ function App() {
           <Route
             path="/AnalyticsSectionSpecialist"
             element={<AnalyticsSectionSpecialist />}
+          />
+          {/*Admin */}
+          <Route path="/AdminHomeScreen" element={<AdminHomeScreen />} />
+          <Route path="/Chosseuser" element={<Chosseuser />} />
+          <Route path="/EditTrainees" element={<EditTrainees />} />
+          <Route path="/EditCoach" element={<EditCoach />} />
+          <Route path="/EditSpecialist" element={<EditSpecialist />} />
+          <Route path="/AddAwards" element={<AddAwards />} />
+          <Route
+            path="/Requestcoachspecialist"
+            element={<Requestcoachspecialist />}
+          />
+          <Route path="/Applicantscoach" element={<Applicantscoach />} />
+          <Route
+            path="/ApplicantsSpecialist"
+            element={<ApplicantsSpecialist />}
           />
         </Routes>
       </BrowserRouter>
