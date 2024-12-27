@@ -3,6 +3,9 @@ import { Bar } from "react-chartjs-2";
 import "./AnalyticsSectionSpecialist.css";
 import { useLocation } from "react-router-dom";
 import Navbarspecialist from "../homepage/Navbarspecialist";
+import { useNavigate } from "react-router-dom";
+import URL from "../../../enum/enum";
+import axios from "axios";
 const AnalyticsSectionSpecialist = () => {
   const location = useLocation();
   const { trainerDetails } = location.state || {};
@@ -13,18 +16,9 @@ const AnalyticsSectionSpecialist = () => {
     img = "",
   } = trainerDetails || {};
 
-  const [initialTableData] = useState([
-    {
-      ID_Trainer: 1,
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Activity_Level: "Fat",
-      Height: 150,
-      Weight: 100,
-    },
-  ]);
+  const [initialTableData, setInitialTableData] = useState([]);
 
-  const [fullTableData] = useState([
+  const [fullTableData, setfullTableData] = useState([
     {
       ID_Trainer: 1,
       Calories: 100,
@@ -36,6 +30,34 @@ const AnalyticsSectionSpecialist = () => {
     labels: [],
     datasets: [{ data: [] }],
   });
+
+  useEffect(() => {
+    const fetchSpecialistDetails = async () => {
+      try {
+        const username = localStorage.getItem("username");
+        const ID = localStorage.getItem("ID");
+
+        const response1 = await fetch(`${URL}/getTrainerSpecificDetails`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response1.ok) throw new Error(`Failed: ${response1.status}`);
+        const data1 = await response1.json();
+        setInitialTableData(data1);
+        const response3 = await fetch(`${URL}/getTrainerClorieDetails`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response3.ok) throw new Error(`Failed: ${response3.status}`);
+        const data3 = await response3.json();
+        setfullTableData(data3);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchSpecialistDetails();
+  }, []);
 
   const calculateChartData = useCallback(() => {
     const filteredData = fullTableData.filter(

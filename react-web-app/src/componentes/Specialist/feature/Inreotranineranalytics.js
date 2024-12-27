@@ -1,72 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Inreotranineranalytics.css";
 import Navbarspecialist from "../homepage/Navbarspecialist";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import axios from "axios";
+import URL from "../../../enum/enum";
 function TraingPlanSpecialist() {
   const navigate = useNavigate();
-  const [IDSpecialist, setIDSpecialist] = useState(10);
-  const [trainerSpecialistData, setTrainerSpecialistData] = useState([
-    {
-      ID_Trainer: 13,
-      ID_Specialist: 10,
-      Accepted: "t",
-      Description:
-        "Trainer 1 is paired with Coach 2 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 9,
-      ID_Specialist: 10,
-      Accepted: "f",
-      Description:
-        "Trainer 3 is paired with Coach 4 and the request is declined.",
-    },
-    {
-      ID_Trainer: 1,
-      ID_Specialist: 10,
-      Accepted: "t",
-      Description:
-        "Trainer 5 is paired with Coach 10 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 4,
-      ID_Specialist: 10,
-      Accepted: "p",
-      Description:
-        "Trainer 7 is paired with Coach 8 and the request is declined.",
-    },
-  ]);
+  const [IDSpecialist, setIDSpecialist] = useState(0);
+  const [trainerSpecialistData, setTrainerSpecialistData] = useState([]);
+  const [infoTrainer, setInfoTrainer] = useState([]);
 
-  const [infoTrainer] = useState([
-    {
-      ID_Trainer: 13,
-      name: "Mahmoud",
-      Age: 23,
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      ID_Trainer: 9,
-      name: "Ali",
-      Age: 25,
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      ID_Trainer: 1,
-      name: "Sara",
-      Age: 22,
-      img: "https://via.placeholder.com/150",
-    },
-    {
-      ID_Trainer: 4,
-      name: "John",
-      Age: 28,
-      img: "https://via.placeholder.com/150",
-    },
-  ]);
+  useEffect(() => {
+    const fetchSpecialistDetails = async () => {
+      try {
+        const username = localStorage.getItem("username");
+        const ID = localStorage.getItem("ID");
+        setIDSpecialist(ID);
+
+        const response1 = await fetch(`${URL}/getTrainerWithDetails`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response1.ok) throw new Error(`Failed: ${response1.status}`);
+        const data1 = await response1.json();
+        setInfoTrainer(data1);
+
+        const response2 = await fetch(`${URL}/getTrainerSpecialist`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response2.ok) throw new Error(`Failed: ${response2.status}`);
+        const data2 = await response2.json();
+        setTrainerSpecialistData(data2);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchSpecialistDetails();
+  }, []);
+
   const acceptedTrainersCount = trainerSpecialistData.filter(
-    (item) =>
-      item.ID_Specialist === IDSpecialist &&
-      (item.Accepted === "t" || item.Accepted === "T")
+    (item) => item.ID_Specialist === IDSpecialist && item.Accepted === "A"
   ).length;
   return (
     <div className="trainerTableContainer-Analytics-requsrt">
@@ -89,7 +67,7 @@ function TraingPlanSpecialist() {
           .filter(
             (item) =>
               item.ID_Specialist === IDSpecialist &&
-              (item.Accepted === "t" || item.Accepted === "T")
+              (item.Accepted === "A" || item.Accepted === "A")
           )
           .map((item) => {
             const trainerInfo = infoTrainer.find(

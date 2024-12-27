@@ -2,111 +2,79 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RequesttrainingSpecialist.css";
 import Navbarspecialist from "../homepage/Navbarspecialist";
+import URL from "../../../enum/enum";
+import axios from "axios";
 function RequestTraining() {
   const navigate = useNavigate();
   const [IDSpecialist, setIDSpecialist] = useState(10);
   const [countTrainers, setCountTrainers] = useState(0);
+  const [trainerSpecialistData, setTrainerSpecialistData] = useState([]);
+  const [infoTrainer, setInfoTrainer] = useState([]);
 
-  const [trainerSpecialistData, setTrainerSpecialistData] = useState([
-    {
-      ID_Trainer: 1,
-      ID_Specialist: 10,
-      Accepted: "t",
-      Description:
-        "Trainer 1 is paired with Coach 2 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 3,
-      ID_Specialist: 4,
-      Accepted: "f",
-      Description:
-        "Trainer 3 is paired with Coach 4 and the request is declined.",
-    },
-    {
-      ID_Trainer: 13,
-      ID_Specialist: 10,
-      Accepted: "p",
-      Description:
-        "Trainer 5 is paired with Coach 10 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 7,
-      ID_Specialist: 8,
-      Accepted: "f",
-      Description:
-        "Trainer 7 is paired with Coach 8 and the request is declined.",
-    },
-    {
-      ID_Trainer: 9,
-      ID_Specialist: 10,
-      Accepted: "p",
-      Description:
-        "Trainer 9 is paired with Coach 10 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 10,
-      ID_Specialist: 10,
-      Accepted: "p",
-      Description:
-        "Trainer 10 is paired with Coach 10 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 12,
-      ID_Specialist: 10,
-      Accepted: "T",
-      Description:
-        "Trainer 12 is paired with Coach 10 and the request is pending.",
-    },
-    {
-      ID_Trainer: 13,
-      ID_Specialist: 10,
-      Accepted: "T",
-      Description:
-        "Trainer 13 is paired with Coach 10 and the request is pending.",
-    },
-    {
-      ID_Trainer: 15,
-      ID_Specialist: 16,
-      Accepted: "f",
-      Description:
-        "Trainer 15 is paired with Coach 16 and the request is declined.jjsldkcklsjcjlnsdjcbdcljsjlbjldc",
-    },
-    {
-      ID_Trainer: 17,
-      ID_Specialist: 18,
-      Accepted: "t",
-      Description:
-        "Trainer 17 is paired with Coach 18 and the request is accepted.",
-    },
-    {
-      ID_Trainer: 19,
-      ID_Specialist: 20,
-      Accepted: "f",
-      Description:
-        "Trainer 19 is paired with Coach 20 and the request is declined.",
-    },
-  ]);
+  const handlePageLeave = async () => {
+    try {
+      let filteredData = trainerSpecialistData.filter(
+        (item) => item.ID_Specialist === IDSpecialist
+      );
+      const response = await fetch(`${URL}/processRequestsSpecialist`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(filteredData),
+      });
 
-  const [infoTrainer, setInfoTrainer] = useState([
-    {
-      ID_Trainer: 13,
-      name: "Mahmoud",
-      Age: 23,
-      img: "https://via.placeholder.com/80",
-    },
-    {
-      ID_Trainer: 9,
-      name: "Ali",
-      Age: 25,
-      img: "https://via.placeholder.com/80",
-    },
-  ]);
+      if (!response.ok) {
+        throw new Error(`Failed: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log(result.message);
+    } catch (error) {
+      console.error("Error processing requests:", error.message);
+    }
+  };
+  useEffect(() => {
+    const fetchCoachDetails = async () => {
+      try {
+        const ID = localStorage.getItem("ID");
+        setIDSpecialist(ID);
+
+        const response1 = await fetch(`${URL}/getTrainerWithDetails`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response1.ok) throw new Error(`Failed: ${response1.status}`);
+        const data1 = await response1.json();
+        setInfoTrainer(data1);
+
+        const response2 = await fetch(
+          `${URL}/getTrainerSpecialistWithDescription`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        if (!response2.ok) throw new Error(`Failed: ${response2.status}`);
+        const data2 = await response2.json();
+        setTrainerSpecialistData(data2);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCoachDetails();
+  }, []);
+
+  useEffect(() => {
+    if (trainerSpecialistData.length > 0) {
+      handlePageLeave();
+    }
+  }, [trainerSpecialistData]);
 
   useEffect(() => {
     const count = trainerSpecialistData.filter(
       (item) =>
         item.ID_Specialist === IDSpecialist &&
-        (item.Accepted === "t" || item.Accepted === "T")
+        (item.Accepted === "A" || item.Accepted === "A")
     ).length;
     setCountTrainers(count);
   }, [trainerSpecialistData, IDSpecialist]);
@@ -114,7 +82,7 @@ function RequestTraining() {
   const acceptRequest = (id) => {
     setTrainerSpecialistData((prevData) =>
       prevData.map((item) =>
-        item.ID_Trainer === id ? { ...item, Accepted: "t" } : item
+        item.ID_Trainer === id ? { ...item, Accepted: "A" } : item
       )
     );
   };
@@ -122,13 +90,9 @@ function RequestTraining() {
   const rejectRequest = (id) => {
     setTrainerSpecialistData((prevData) =>
       prevData.map((item) =>
-        item.ID_Trainer === id ? { ...item, Accepted: "f" } : item
+        item.ID_Trainer === id ? { ...item, Accepted: "R" } : item
       )
     );
-  };
-
-  const goBack = () => {
-    navigate(-1);
   };
 
   return (

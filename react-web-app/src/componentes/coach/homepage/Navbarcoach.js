@@ -3,6 +3,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbarcoach.css";
 import logo from "../../../img/logo.png";
+
 const Navbarcoach = () => {
   const navigate = useNavigate();
   const handleSignup = () => {
@@ -12,19 +13,19 @@ const Navbarcoach = () => {
     <div className="root-navbar">
       <nav className="navbar">
         <div className="navbar-logo">
-          <Link to="/">
+          <Link to="/Coahhomepage">
             <img src={logo} />
           </Link>
         </div>
         <ul className="navbar-links">
           <li>
-            <Link to="/TraingPlan">Traing Plan</Link>
+            <Link to="/TraingPlan">Training Plan</Link>
           </li>
           <li>
             <Link to="/AnalyticsSection">Analysis Plan </Link>
           </li>
           <li>
-            <Link to="/Foodplan">Add exercise</Link>
+            <Link to="/Uploading">Add exercise</Link>
           </li>
 
           <li>

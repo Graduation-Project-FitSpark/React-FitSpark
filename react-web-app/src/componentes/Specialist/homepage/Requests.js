@@ -7,7 +7,6 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 
 function Requests() {
   const navigate = useNavigate();
-
   return (
     <div className="container-requests">
       <div className="container-requests-inner">

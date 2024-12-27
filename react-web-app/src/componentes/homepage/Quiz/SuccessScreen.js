@@ -7,7 +7,7 @@ const SuccessScreen = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/SelectCoach", { state: { from: "SuccessScreen" } });
+      navigate("/Homepage", { state: { from: "SuccessScreen" } });
     }, 5000);
 
     return () => clearTimeout(timer);

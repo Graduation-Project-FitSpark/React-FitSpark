@@ -33,6 +33,7 @@ const SignUp = ({ navigation }) => {
   const [type, setType] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [description, setDescription] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [age, setAge] = useState("");
@@ -202,11 +203,13 @@ const SignUp = ({ navigation }) => {
     } else if (type === "Coach") {
       additionalData = {
         YearsOfExperience: yearsOfExperience,
+        Description: description,
       };
       endpoint = `${EnumURL}/signUpCoach`;
     } else if (type === "Nutrition expert") {
       additionalData = {
         YearsOfExperience: yearsOfExperience,
+        Description: description,
       };
       endpoint = `${EnumURL}/signUpSpecialist`;
     }
@@ -364,15 +367,26 @@ const SignUp = ({ navigation }) => {
           </Marker>
         </MapContainer>
       </div>
-      {type === "Coach" || type === "Nutrition expert" ? (
-        <input
-          type="number"
-          placeholder="Years of Experience"
-          value={yearsOfExperience}
-          onChange={(e) => setYearsOfExperience(e.target.value)}
-          className="input"
-        />
-      ) : null}
+      {type === "Coach" || type === "Nutrition expert"
+        ? ((
+            <input
+              type="number"
+              placeholder="Years of Experience"
+              value={yearsOfExperience}
+              onChange={(e) => setYearsOfExperience(e.target.value)}
+              className="input"
+            />
+          ),
+          (
+            <input
+              type="text"
+              placeholder="Description (Write why you want to sign for this site)"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="input"
+            />
+          ))
+        : null}
       <input
         type="text"
         placeholder="Credit Card Number"

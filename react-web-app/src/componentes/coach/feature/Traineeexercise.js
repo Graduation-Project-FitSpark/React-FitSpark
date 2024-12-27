@@ -6,7 +6,11 @@ import notraining from "../../../img/notraining.png";
 import Navbarcoach from "../homepage/Navbarcoach";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import axios from "axios";
+import URL from "../../../enum/enum";
+import { useNavigate } from "react-router-dom";
 function TraineeExercise() {
+  const navigate = useNavigate();
   const location = useLocation();
   const { trainerDetails } = location.state || {};
   const {
@@ -25,37 +29,31 @@ function TraineeExercise() {
   const formattedDate = useMemo(() => {
     return today.toLocaleDateString("en-US", { weekday: "long" });
   }, [today]);
-  const save = () => {
-    console.log(trainedDays);
-    //عشان انا خليت الداتا الي في trineday وبتبدلها مكان trinedayهون بتاخذ
-    //الي بالكود هون  trineday الي بداتا بيس وحط مكانها trineday نفسها بس ظاف عليها فا الداتا القديمة ما تعدلت فا امسح الي في trineday الي في الداتا بيس
-  };
-  const [todayPlan] = useState([
-    {
-      id: 1,
-      name: "Push Up",
-      description: "Strengthen your arms and chest.",
-      progress: 45,
-      imageUrl: "https://via.placeholder.com/150",
-      cal: 95,
-    },
-    {
-      id: 2,
-      name: "Sit Up",
-      description: "Strengthen your core muscles.",
-      progress: 75,
-      imageUrl: "https://via.placeholder.com/150",
-      cal: 45,
-    },
-  ]);
+  const save = async () => {
+    try {
+      console.log(ID_Trainer);
+      const response = await fetch(`${URL}/editTrainerTrains`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ trainerId: ID_Trainer, trineday: trainedDays }),
+      });
 
-  const [trainedDays, setTrainedDays] = useState([
-    { ID_Trains: 1, ID_Trainer: 12, Day_Of_Week: "Monday", Steps: 40 },
-    { ID_Trains: 2, ID_Trainer: 9, Day_Of_Week: "Tuesday", Steps: 20 },
-    { ID_Trains: 6, ID_Trainer: 9, Day_Of_Week: "Wednesday", Steps: 20 },
-    { ID_Trains: 1, ID_Trainer: 9, Day_Of_Week: "Wednesday", Steps: 60 },
-    { ID_Trains: 5, ID_Trainer: 9, Day_Of_Week: "Wednesday", Steps: 20 },
-  ]);
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      const result = await response.json();
+      console.log("Server response:", result);
+      navigate(-1);
+    } catch (error) {
+      console.error("Error updating trainer trains:", error);
+    }
+  };
+  const [todayPlan, settodayPlan] = useState([]);
+
+  const [trainedDays, setTrainedDays] = useState([]);
 
   const [data, setData] = useState([
     {
@@ -103,11 +101,50 @@ function TraineeExercise() {
   ]);
 
   useEffect(() => {
+    const fetchWorks = async () => {
+      try {
+        const response = await axios.post(`${URL}/getWorks`);
+        const works = response.data;
+        const trainerResponse = await fetch(`${URL}/getOriginalTrainerTrains`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ trainerId: ID_Trainer }),
+        });
+        const result = await trainerResponse.json();
+        const worksWithGoal = works.map((work) => {
+          const trainerWork = result.find((day) =>
+            day.ID_Trains.includes(work.id)
+          );
+          const goal = trainerWork
+            ? trainerWork.Steps[trainerWork.ID_Trains.indexOf(work.id)]
+            : 0;
+          return {
+            id: work.id,
+            name: work.name,
+            description: work.description,
+            goal: goal,
+            progress: Math.floor(Math.random() * 100),
+            imageUrl: work.imageUrl,
+            videolink: work.videolink,
+            cal: work.cal,
+          };
+        });
+
+        settodayPlan(worksWithGoal);
+        setTrainedDays(result);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchWorks();
+  }, []);
+
+  useEffect(() => {
     const matchingTrains = trainedDays
-      .filter(
-        (train) =>
-          train.Day_Of_Week === formattedDate && train.ID_Trainer === ID_Trainer
-      )
+      .filter((train) => train.Day_Of_Week === formattedDate)
       .map((train) => ({ id: train.ID_Trains }));
 
     const matchingPlan = todayPlan
@@ -115,9 +152,7 @@ function TraineeExercise() {
       .map((plan) => {
         const train = trainedDays.find(
           (train) =>
-            train.ID_Trains === plan.id &&
-            train.Day_Of_Week === formattedDate &&
-            train.ID_Trainer === ID_Trainer
+            train.ID_Trains === plan.id && train.Day_Of_Week === formattedDate
         );
         return { ...plan, Steps: train.Steps, day: train.Day_Of_Week };
       });
@@ -131,7 +166,7 @@ function TraineeExercise() {
           : { ...item, isSelected: false }
       )
     );
-  }, [formattedDate, todayPlan, ID_Trainer, trainedDays]);
+  }, [formattedDate, todayPlan]);
 
   const selectDay = (selectedDay) => {
     setData((prevData) =>
@@ -143,11 +178,7 @@ function TraineeExercise() {
     );
 
     const matchingTrains = trainedDays
-      .filter(
-        (train) =>
-          train.Day_Of_Week === selectedDay.Day_Of_Week &&
-          train.ID_Trainer === ID_Trainer
-      )
+      .filter((train) => train.Day_Of_Week === selectedDay.Day_Of_Week)
       .map((train) => ({ id: train.ID_Trains }));
 
     const matchingPlan = todayPlan
@@ -156,8 +187,7 @@ function TraineeExercise() {
         const train = trainedDays.find(
           (train) =>
             train.ID_Trains === plan.id &&
-            train.Day_Of_Week === selectedDay.Day_Of_Week &&
-            train.ID_Trainer === ID_Trainer
+            train.Day_Of_Week === selectedDay.Day_Of_Week
         );
         return { ...plan, Steps: train.Steps, day: train.Day_Of_Week };
       });
@@ -190,7 +220,6 @@ function TraineeExercise() {
 
     const duplicateFound = trainedDays.some(
       (existing) =>
-        existing.ID_Trainer === ID_Trainer &&
         existing.ID_Trains === selectedExercise.id &&
         existing.Day_Of_Week === selectedDay
     );
@@ -221,12 +250,7 @@ function TraineeExercise() {
   };
   const remove = (ex) => {
     const newar1 = trainedDays.filter(
-      (train) =>
-        !(
-          train.ID_Trains === ex.id &&
-          train.ID_Trainer === ID_Trainer &&
-          train.Day_Of_Week === ex.day
-        )
+      (train) => !(train.ID_Trains === ex.id && train.Day_Of_Week === ex.day)
     );
     setTrainedDays(newar1);
     const newar2 = filteredPlan.filter((plan) => plan.id !== ex.id);
@@ -236,9 +260,7 @@ function TraineeExercise() {
   const increaseCount = (item) => {
     setTrainedDays((prevTrineday) =>
       prevTrineday.map((train) =>
-        train.ID_Trains === item.id &&
-        train.ID_Trainer === ID_Trainer &&
-        train.Day_Of_Week === item.day
+        train.ID_Trains === item.id && train.Day_Of_Week === item.day
           ? { ...train, Steps: train.Steps + 1 }
           : train
       )
@@ -253,9 +275,7 @@ function TraineeExercise() {
   const decreaseCount = (item) => {
     setTrainedDays((prevTrineday) =>
       prevTrineday.map((train) =>
-        train.ID_Trains === item.id &&
-        train.ID_Trainer === ID_Trainer &&
-        train.Day_Of_Week === item.day
+        train.ID_Trains === item.id && train.Day_Of_Week === item.day
           ? { ...train, Steps: Math.max(0, train.Steps - 1) }
           : train
       )
@@ -317,21 +337,22 @@ function TraineeExercise() {
               <h2>Add Exercise</h2>
               <select
                 value={selectedExercise?.id || ""}
-                onChange={(e) =>
-                  setSelectedExercise(
-                    todayPlan.find(
-                      (plan) => plan.id === parseInt(e.target.value, 10)
-                    )
-                  )
-                }
+                onChange={(e) => {
+                  const selectedId = e.target.value;
+                  const selected = todayPlan.find(
+                    (exercise) => exercise.id === selectedId
+                  );
+                  setSelectedExercise(selected);
+                }}
               >
-                <option value="">Select Exercise</option>
+                <option value={selectedExercise}>Select Exercise</option>
                 {todayPlan.map((exercise) => (
                   <option key={exercise.id} value={exercise.id}>
                     {exercise.name}
                   </option>
                 ))}
               </select>
+
               <input
                 type="number"
                 placeholder="Steps"

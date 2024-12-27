@@ -2,7 +2,6 @@ import React from "react";
 import "./Requests.css";
 import { useNavigate } from "react-router-dom";
 import qizeimg from "../../../img/slider-1s.jpg";
-
 import { IoChevronForwardOutline } from "react-icons/io5";
 
 function Requests() {

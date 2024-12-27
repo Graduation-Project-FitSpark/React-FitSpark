@@ -29,6 +29,7 @@ const Signin = () => {
       if (data.message) {
         const { Email } = data.user;
         localStorage.setItem("username", username);
+        localStorage.setItem("Type", data.table);
 
         navigate("/Authentication", {
           state: { username: username, Email: Email },

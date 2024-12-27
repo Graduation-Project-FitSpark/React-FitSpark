@@ -34,7 +34,13 @@ import Traineefood from "./componentes/Specialist/feature/Traineefood";
 import Inreotranineranalytics from "./componentes/Specialist/feature/Inreotranineranalytics";
 import AnalyticsSectionSpecialist from "./componentes/Specialist/feature/AnalyticsSectionSpecialist";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Uploading from "./componentes/coach/homepage/Uploading";
+import Friends from "./componentes/coach/homepage/Friends";
+import ChatCoach from "./componentes/coach/homepage/ChatCoach";
+import FriendsSpecialist from "./componentes/Specialist/homepage/FriendsSpecialist";
+import ChatSpecialist from "./componentes/Specialist/homepage/ChatSpecialist";
+import ChatTrainerCoach from "./componentes/homepage/ChatTrainerCoach";
+import ChatTrainerSpecialist from "./componentes/homepage/ChatTrainerSpecialist";
 function App() {
   return (
     <div className="App">
@@ -62,32 +68,47 @@ function App() {
             <Route path="/SuccessScreen" element={<SuccessScreen />} />
             <Route path="/SelectCoach" element={<SelectCoach />} />
             <Route path="/SelectSpecialist" element={<SelectSpecialist />} />
-              {/*coach */}
-          <Route path="/Coahhomepage" element={<Coahhomepage />} />
-          <Route path="/TraingPlan" element={<TraingPlan />} />
-          <Route path="/Traineeexercise" element={<Traineeexercise />} />
-          <Route path="/Requesttraining" element={<Requesttraining />} />
-          <Route path="/AnalyticsSection" element={<AnalyticsSection />} />
-          {/*Specialist */}
-          <Route path="/Homepagespecialist" element={<Homepagespecialist />} />
-          <Route
-            path="/RequesttrainingSpecialist"
-            element={<RequesttrainingSpecialist />}
-          />
-          <Route
-            path="/TraingPlanSpecialist"
-            element={<TraingPlanSpecialist />}
-          />
-          <Route path="/Traineefood" element={<Traineefood />} />
-          <Route
-            path="/Inreotranineranalytics"
-            element={<Inreotranineranalytics />}
-          />
-          <Route
-            path="/AnalyticsSectionSpecialist"
-            element={<AnalyticsSectionSpecialist />}
-          />
-        </Routes>
+            <Route path="/ChatTrainerCoach" element={<ChatTrainerCoach />} />
+            <Route
+              path="/ChatTrainerSpecialist"
+              element={<ChatTrainerSpecialist />}
+            />
+
+            {/*coach */}
+            <Route path="/Coahhomepage" element={<Coahhomepage />} />
+            <Route path="/TraingPlan" element={<TraingPlan />} />
+            <Route path="/Traineeexercise" element={<Traineeexercise />} />
+            <Route path="/Requesttraining" element={<Requesttraining />} />
+            <Route path="/AnalyticsSection" element={<AnalyticsSection />} />
+            <Route path="/Uploading" element={<Uploading />} />
+            <Route path="/Friends" element={<Friends />} />
+            <Route path="/ChatCoach" element={<ChatCoach />} />
+
+            {/*Specialist */}
+            <Route
+              path="/Homepagespecialist"
+              element={<Homepagespecialist />}
+            />
+            <Route
+              path="/RequesttrainingSpecialist"
+              element={<RequesttrainingSpecialist />}
+            />
+            <Route
+              path="/TraingPlanSpecialist"
+              element={<TraingPlanSpecialist />}
+            />
+            <Route path="/Traineefood" element={<Traineefood />} />
+            <Route
+              path="/Inreotranineranalytics"
+              element={<Inreotranineranalytics />}
+            />
+            <Route
+              path="/AnalyticsSectionSpecialist"
+              element={<AnalyticsSectionSpecialist />}
+            />
+            <Route path="/FriendsSpecialist" element={<FriendsSpecialist />} />
+            <Route path="/ChatSpecialist" element={<ChatSpecialist />} />
+          </Routes>
         </BrowserRouter>
       </QuizProvider>
     </div>

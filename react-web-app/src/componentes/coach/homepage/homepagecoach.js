@@ -8,6 +8,7 @@ import Notificationscoah from "./Notificationscoah";
 import Footer from "../../Welcome_Screen/Footer";
 import FAQ from "../../Welcome_Screen/FAQcomponent-section";
 import "./homepagecoach.css";
+
 function homepage() {
   return (
     <div>

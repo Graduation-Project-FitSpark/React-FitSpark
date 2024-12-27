@@ -10,6 +10,7 @@ const Authentication = () => {
 
   const [verificationCode, setVerificationCode] = useState("");
   const [verificationCodeSended, setVerificationCodeSended] = useState("");
+  const [Type, setType] = useState("");
 
   useEffect(() => {
     sendVerificationCode();
@@ -17,6 +18,7 @@ const Authentication = () => {
 
   const sendVerificationCode = async () => {
     try {
+      setType(localStorage.getItem("Type"));
       const code = Math.floor(100000 + Math.random() * 900000).toString();
       setVerificationCodeSended(code);
       console.log("Sending verification code to:", Email);
@@ -31,11 +33,53 @@ const Authentication = () => {
     }
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     console.log(verificationCode);
     console.log(verificationCodeSended);
     if (verificationCode === verificationCodeSended) {
-      navigate("/Homepage");
+      if (Type === "trainer") navigate("/Homepage");
+      else if (Type === "coach") {
+        fetch(`${URL}/getCoachDetails`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: localStorage.getItem("username"),
+          }),
+        })
+          .then((res) => res.json())
+          .then(async (data) => {
+            localStorage.setItem("ID", data.ID_Coach);
+            if (data.AcceptedDescription !== "P") navigate("/Coahhomepage");
+            else
+              Alert.alert(
+                "Error",
+                "Sorry Sir, Your Account is not being Accepted by the Admin Yet!"
+              );
+          })
+          .catch((err) => console.error(err));
+      } else if (Type === "specialist") {
+        fetch(`${URL}/getSpecialistDetails`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: localStorage.getItem("username"),
+          }),
+        })
+          .then((res) => res.json())
+          .then(async (data) => {
+            localStorage.setItem("ID", data.ID_Specialist);
+            if (!data.AcceptedDescription !== "P")
+              navigate("/Homepagespecialist");
+            else
+              Alert.alert(
+                "Error",
+                "Sorry Sir, Your Account is not being Accepted by the Admin Yet!"
+              );
+          })
+          .catch((err) => console.error(err));
+      } else if (Type === "admin") {
+        navigate("/Adminmanbur");
+      }
     } else {
       alert("Error: Verification code is invalid.");
     }

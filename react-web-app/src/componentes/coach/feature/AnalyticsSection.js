@@ -3,53 +3,16 @@ import { Bar, Pie } from "react-chartjs-2";
 import "chart.js/auto";
 import "./AnalyticsSection.css";
 import Navbarcoach from "../homepage/Navbarcoach";
+import URL from "../../../enum/enum";
+import axios from "axios";
 const AnalyticsSection = () => {
-  const [IDCoach, setIDCoach] = useState(10);
+  const [IDCoach, setIDCoach] = useState(0);
 
-  const [trainerCoachData, setTrainerCoachData] = useState([
-    { ID_Trainer: 1, ID_Coach: 10, Accepted: true },
-    { ID_Trainer: 3, ID_Coach: 10, Accepted: false },
-    { ID_Trainer: 5, ID_Coach: 6, Accepted: true },
-    { ID_Trainer: 7, ID_Coach: 8, Accepted: false },
-    { ID_Trainer: 9, ID_Coach: 10, Accepted: true },
-    { ID_Trainer: 10, ID_Coach: 11, Accepted: false },
-    { ID_Trainer: 12, ID_Coach: 10, Accepted: false },
-    { ID_Trainer: 13, ID_Coach: 10, Accepted: true },
-    { ID_Trainer: 15, ID_Coach: 16, Accepted: false },
-    { ID_Trainer: 17, ID_Coach: 18, Accepted: true },
-    { ID_Trainer: 19, ID_Coach: 20, Accepted: false },
-  ]);
+  const [trainerCoachData, setTrainerCoachData] = useState([]);
 
-  const [initialTableData, setInitialTableData] = useState([
-    {
-      ID_Trainer: 1,
-      Points: 0,
-      Username: "user_7737",
-      Age: 30,
-      Gender: "Male",
-    },
-    {
-      ID_Trainer: 3,
-      Points: 500,
-      Username: "user_7733",
-      Age: 25,
-      Gender: "Female",
-    },
-    {
-      ID_Trainer: 9,
-      Points: 100,
-      Username: "user_7737",
-      Age: 35,
-      Gender: "Male",
-    },
-  ]);
+  const [initialTableData, setInitialTableData] = useState([]);
 
-  const [fullTableDatacal, setFullTableData] = useState([
-    { ID_Trainer: 1, Calories: 100, Day: "Monday" },
-    { ID_Trainer: 1, Calories: 100, Day: "Thursday" },
-    { ID_Trainer: 3, Calories: 100, Day: "Friday" },
-    { ID_Trainer: 3, Calories: 200, Day: "Friday" },
-  ]);
+  const [fullTableDatacal, setFullTableData] = useState([]);
 
   const [filterChar, setFilterChar] = useState({
     labels: [],
@@ -189,7 +152,41 @@ const AnalyticsSection = () => {
       ],
     };
   };
+  useEffect(() => {
+    const fetchCoachDetails = async () => {
+      try {
+        const username = localStorage.getItem("username");
+        const ID = localStorage.getItem("ID");
+        setIDCoach(ID);
 
+        const response1 = await fetch(`${URL}/getTrainerSpecificDetails`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response1.ok) throw new Error(`Failed: ${response1.status}`);
+        const data1 = await response1.json();
+        setInitialTableData(data1);
+        const response2 = await fetch(`${URL}/getTrainerCoach`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response2.ok) throw new Error(`Failed: ${response2.status}`);
+        const data2 = await response2.json();
+        setTrainerCoachData(data2);
+        const response3 = await fetch(`${URL}/getTrainerClorieDetails`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response3.ok) throw new Error(`Failed: ${response3.status}`);
+        const data3 = await response3.json();
+        setFullTableData(data3);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCoachDetails();
+  }, []);
   useEffect(() => {
     setFilterChar(byPoint(trainerCoachData, IDCoach, initialTableData));
     setFilterCharCal(

@@ -9,6 +9,7 @@ import Footer from "../../Welcome_Screen/Footer";
 import FAQ from "../../Welcome_Screen/FAQcomponent-section";
 import "./homepagespecialist.css";
 function homepage() {
+  //
   return (
     <div>
       <Navbarspecialist />

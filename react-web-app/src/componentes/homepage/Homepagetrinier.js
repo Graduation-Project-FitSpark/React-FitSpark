@@ -13,7 +13,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import Calendar from "./Calender";
 import URL from "../../enum/enum";
 function Homepagetrinier() {
   const navigate = useNavigate();
@@ -69,11 +69,16 @@ function Homepagetrinier() {
               trainerId: trainerID,
             });
             navigate("/SelectCoach");
-          } //
+          } else if (coachResponse.data.message === "Trainer not found") {
+            navigate("/SelectCoach");
+          }
+
           if (specialistResponse.data.Accepted === "R") {
             const response = await axios.post(`${URL}/deleteSpecialist`, {
               trainerId: trainerID,
             });
+            navigate("/SelectSpecialist");
+          } else if (specialistResponse.data.message === "Trainer not found") {
             navigate("/SelectSpecialist");
           }
         } catch (err) {
@@ -93,6 +98,8 @@ function Homepagetrinier() {
       <Slidermotin></Slidermotin>
       {showSection ? <Gotosectiontrine /> : <Qiuzecompunent />}
       <Ibuttoninfobody></Ibuttoninfobody>
+      <Calendar></Calendar>
+
       <FAQ />
 
       <Footer></Footer>

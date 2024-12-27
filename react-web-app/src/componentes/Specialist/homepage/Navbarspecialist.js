@@ -12,13 +12,13 @@ const Navbarspecialist = () => {
     <div className="root-navbar">
       <nav className="navbar">
         <div className="navbar-logo">
-          <Link to="/">
+          <Link to="/Homepagespecialist">
             <img src={logo} />
           </Link>
         </div>
         <ul className="navbar-links">
           <li>
-            <Link to="/TraingPlanSpecialist">Traing Plan</Link>
+            <Link to="/TraingPlanSpecialist">Food Plan</Link>
           </li>
           <li>
             <Link to="/Inreotranineranalytics">Analysis Plan </Link>

@@ -1,22 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "./Pointtransfer.css";
-
+import axios from "axios";
+import URL from "../../../enum/enum";
 function PointTransformer() {
   const [transfer, setTransfer] = useState(0);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [Specialistpoints, setSpecialistPoints] = useState(193.5);
 
   useEffect(() => {
-    fetch("https://api.exchangerate-api.com/v4/latest/ILS")
-      .then((response) => response.json())
-      .then((data) => {
-        const rate = data.rates[selectedCurrency];
-        if (rate) {
-          const convertedValue = (Specialistpoints * 5 * rate).toFixed(2);
-          setTransfer(convertedValue);
-        }
-      })
-      .catch((error) => console.error("Error fetching exchange rate:", error));
+    const fetchData = async () => {
+      try {
+        const username = localStorage.getItem("username");
+        const response = await fetch(`${URL}/getSpecialistDetails`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username }),
+        });
+        const data = await response.json();
+        const points = data.Points;
+        setSpecialistPoints(points);
+      } catch (err) {
+        console.error(err);
+      }
+      fetch("https://api.exchangerate-api.com/v4/latest/ILS")
+        .then((response) => response.json())
+        .then((data) => {
+          const rate = data.rates[selectedCurrency];
+          if (rate) {
+            const convertedValue = (Specialistpoints * 5 * rate).toFixed(2);
+            setTransfer(convertedValue);
+          }
+        })
+        .catch((error) =>
+          console.error("Error fetching exchange rate:", error)
+        );
+    };
+
+    fetchData();
   }, [selectedCurrency, Specialistpoints]);
 
   return (
