@@ -1,0 +1,84 @@
+.Userstatistics {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  width: 80%;
+  max-width: 80%;
+}
+
+.card {
+  flex: 1;
+  padding: 20px 10px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-sata {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.label-sata {
+  font-size: 16px;
+  color: #000;
+}
+
+.icondiv {
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin: 8px 0;
+}
+.value-value {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  margin: 8px 0;
+  margin-bottom: 50px;
+}
+.seemore {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.button {
+  background-color: #b2f200;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #a1dc00;
+}

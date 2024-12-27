@@ -1,0 +1,125 @@
+.EditSpecialist {
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.text-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #b2f200;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 10px;
+  background-color: #b2f200;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.table-container {
+  margin: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.table-header {
+  display: flex;
+  background-color: #b2f200;
+  padding: 15px;
+}
+
+.table-header-text {
+  flex: 1;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+}
+
+.table-row {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
+}
+
+.table-row.even {
+  background-color: #f9f9f9;
+}
+
+.table-row.odd {
+  background-color: #fff;
+}
+
+.table-cell {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.picker-section {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.picker {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.reset-button {
+  background-color: #dc3545;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.reset-button:hover {
+  background-color: #c82333;
+}

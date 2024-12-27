@@ -1,0 +1,97 @@
+.Userstable {
+  padding: 20px;
+}
+.filter {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.resetButton {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.resetButton:hover {
+  background-color: #b02a37;
+}
+
+.filterUserstable {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filterRow {
+  display: flex;
+  gap: 20px;
+}
+
+.pickerUserstable {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterLabel {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.picker {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.tableHeader {
+  display: flex;
+  background-color: #b2f200;
+  padding: 10px;
+  font-weight: bold;
+  color: #000;
+}
+
+.tableHeaderText {
+  flex: 1;
+  text-align: center;
+}
+
+.tableRow {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.evenRow {
+  background-color: #f9f9f9;
+}
+
+.oddRow {
+  background-color: #fff;
+}
+
+.tableCell {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}

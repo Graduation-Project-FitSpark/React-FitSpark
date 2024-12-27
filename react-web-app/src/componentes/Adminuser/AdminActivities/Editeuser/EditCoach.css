@@ -1,0 +1,117 @@
+.edit-coach {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 150px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.edit-coach-iner {
+  width: 80%;
+}
+.back-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: space-between;
+}
+
+.filters select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.serch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.serch input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 60%;
+}
+.search-button,
+.reset-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #b2f200;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.table {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-header,
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.table-row:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.even-row {
+  background-color: #f0f0f0;
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #b2f200;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
