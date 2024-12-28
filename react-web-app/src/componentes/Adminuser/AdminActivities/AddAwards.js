@@ -2,26 +2,33 @@ import React, { useState, useEffect } from "react";
 import "./AddAwards.css";
 import Navbaradmin from "../homescreen/Navbaradmin";
 import AddAwardsModel from "./AddAwardsModel";
+import URL from "../../../enum/enum";
+import axios from "axios";
 const AddAwards = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [Awards, setAwards] = useState([
-    { point: 20, photo: "20.png", name: "Fitness Titan" },
-    { point: 40, photo: "40.png", name: "Strength Champion" },
-    { point: 60, photo: "60.png", name: "Power Icon" },
-    { point: 80, photo: "80.png", name: "Endurance Legend" },
-    { point: 100, photo: "100.png", name: "Prime Athlete" },
-    { point: 120, photo: "120.png", name: "Vitality Hero" },
-    { point: 150, photo: "150.png", name: "Peak Performer" },
-    { point: 170, photo: "170.png", name: "Muscle Maverick" },
-    { point: 200, photo: "200.png", name: "Flex Master" },
-  ]);
+  const [Awards, setAwards] = useState([]);
 
   useEffect(() => {
-    const newAward = { point: 250, photo: "250.png", name: "Core Conqueror" };
-    setAwards((prevAwards) => {
-      const exists = prevAwards.some((award) => award.point === newAward.point);
-      return exists ? prevAwards : [...prevAwards, newAward];
-    });
+    const fetchAwards = async () => {
+      try {
+        const response = await fetch(`${URL}/getAwards`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch awards");
+        }
+
+        const data = await response.json();
+        const awards = data.awards.map((award) => ({
+          ...award,
+          photo: award.photoUrl,
+        }));
+        setAwards(awards);
+        console.log(awards);
+      } catch (error) {
+        console.error("Error fetching awards:", error);
+      }
+    };
+
+    fetchAwards();
   }, []);
 
   const addNewAward = (newAward) => {

@@ -12,7 +12,7 @@ const Navbarcoach = () => {
     <div className="root-navbar">
       <nav className="navbar">
         <div className="navbar-logo">
-          <Link to="/">
+          <Link to="/AdminHomeScreen">
             <img src={logo} />
           </Link>
         </div>
@@ -30,13 +30,14 @@ const Navbarcoach = () => {
             <Link to="/Requestcoachspecialist">Applicants</Link>
           </li>
           <li>
-            <Link to="/Foodplan">Coachs Videos</Link>
+            <Link to="/CoachVideos">Coachs Videos</Link>
           </li>
           <li>
             <Link to="/Foodplan">FAQ</Link>
           </li>
           <li>
-            <Link to="/contact">Settings</Link>
+            //
+            <Link to="/ProfileAdmin">Settings</Link>
           </li>
         </ul>
         <div className="navbar-login">

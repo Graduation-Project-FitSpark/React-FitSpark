@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EditTrainees.css"; // CSS module or regular CSS file
 import EditUserModal from "./EditTraineesModel";
 import Navbaradmin from "../../homescreen/Navbaradmin";
+import axios from "axios";
+import URL from "../../../../enum/enum";
 function EditTrainees() {
   const [searchQuery, setSearchQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -12,71 +14,24 @@ function EditTrainees() {
     setModalVisible(true);
   };
 
-  const userTableData = [
-    {
-      ID_Trainer: 1,
-      First_name: "mahmoud",
-      Last_name: "Arafat",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "[37.74798825940199, -122.420727407486164]",
-      Activity_Level: "Fat",
-      Card_Number: "594949494",
-      Expression_Date: "2000-06-07 00:00:00",
-      CVC: 594,
-      Points: 23,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 0,
-      Token: null,
-      Username: "user_7737",
-      Height: 150,
-      Weight: 100,
-      Dateenter: "2024-12-06",
-      Age: 12,
-    },
-    {
-      ID_Trainer: 13,
-      First_name: "jone",
-      Last_name: "kcdcd",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "Nablus",
-      Activity_Level: "Fat",
-      Card_Number: "065061563",
-      Expression_Date: "2000-08-02 00:00:00",
-      CVC: 321,
-      Points: 500,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 5,
-      Token: null,
-      Username: "user_7733",
-      Height: 120,
-      Weight: 50,
-      Dateenter: "2024-04-06",
-      Age: 12,
-    },
-    {
-      ID_Trainer: 9,
-      First_name: "sasa",
-      Last_name: "ffdfd",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "[37.68169336082543, -122.44336623698473]",
-      Activity_Level: "Fat",
-      Card_Number: "594949494",
-      Expression_Date: "2005-06-01 00:00:00",
-      CVC: 493,
-      Points: 100,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 2,
-      Token: null,
-      Username: "user_7737",
-      Height: 150,
-      Weight: 90,
-      Dateenter: "2024-05-06",
-      Age: 12,
-    },
-  ];
+  const [userTableData, setUserTableData] = useState([]);
+  useEffect(() => {
+    const fetchTrainers = async () => {
+      try {
+        const response = await fetch(`${URL}/getTrainerSpecificDetails`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data = await response.json();
+        setUserTableData(data);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchTrainers();
+  }, []);
 
   const filteredData = userTableData.filter((row) =>
     row.Username.toLowerCase().includes(searchQuery.toLowerCase())
@@ -119,7 +74,7 @@ function EditTrainees() {
                 <div className="table-cell">{row.ID_Trainer}</div>
                 <div className="table-cell">{row.Username}</div>
                 <div className="table-cell">{row.Age}</div>
-                <div className="table-cell">{row.Dateenter}</div>
+                <div className="table-cell">{row.Dateenter.split("T")[0]}</div>
               </div>
             ))}
           </div>

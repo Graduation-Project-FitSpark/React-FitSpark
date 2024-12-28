@@ -1,0 +1,106 @@
+.profile-admin-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+}
+
+.profile-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+}
+
+.profile-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.field-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.field-input.disabled {
+  background-color: #f9f9f9;
+  color: #aaa;
+}
+
+.field-input.editable {
+  border-color: #261d74;
+  background-color: #fff;
+}
+
+.edit-button {
+  background-color: #28435f;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.update-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.update-button:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 768px) {
+  .profile-admin-container {
+    padding: 15px;
+  }
+
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .field-input {
+    font-size: 0.9rem;
+  }
+
+  .update-button {
+    font-size: 0.9rem;
+    padding: 12px 15px;
+  }
+}

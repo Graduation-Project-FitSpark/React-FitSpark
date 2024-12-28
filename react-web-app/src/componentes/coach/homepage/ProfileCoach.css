@@ -1,0 +1,82 @@
+.profile-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+.profile-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #1c1b29;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  letter-spacing: 10px;
+}
+
+.field-container {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.input.editable {
+  border-color: #1c1b29;
+  background-color: #ffffff;
+}
+
+.input.disabled {
+  border-color: #ddd;
+  background-color: #f0f0f0;
+  color: #999;
+}
+
+.toggle-button {
+  padding: 10px 15px;
+  background-color: #1c1b29;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #333;
+}
+
+.update-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #45a049;
+}

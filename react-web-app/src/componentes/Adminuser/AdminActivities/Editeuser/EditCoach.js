@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EditCoach.css";
 import EditCoachModel from "./EditCoachModel";
 import Navbaradmin from "../../homescreen/Navbaradmin";
+import axios from "axios";
+import URL from "../../../../enum/enum";
 function EditCoach() {
   const [searchQuery, setSearchQuery] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -14,24 +16,23 @@ function EditCoach() {
     setModalVisible(true);
   };
 
-  const usertableData = [
-    {
-      ID_Coach: 1,
-      Username: "Ali",
-      Email: "masdm",
-      First_Name: "Ali",
-      Last_Name: "nbasd",
-      Phone_Number: "flkj;d",
-      Age: 26,
-      Gender: "Male",
-      Location: "Nablus",
-      Points: 200,
-      Img: null,
-      YearsOfExperience: 7,
-      Dateenter: "2024-02-06",
-      AcceptedDescription: "A",
-    },
-  ];
+  const [usertableData, setUserTableData] = useState([]);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response2 = await fetch(`${URL}/getAllCoachesAdmin`);
+        if (!response2.ok) {
+          throw new Error("Failed to fetch coach details");
+        }
+        const data2 = await response2.json();
+        setUserTableData(data2);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const filteredData = usertableData.filter((row) =>
     row.Username.toLowerCase().includes(searchQuery.toLowerCase())
@@ -102,7 +103,7 @@ function EditCoach() {
                     <span>{row.ID_Coach}</span>
                     <span>{row.Username}</span>
                     <span>{row.Age}</span>
-                    <span>{row.Dateenter}</span>
+                    <span>{row.Dateenter.split("T")[0]}</span>
                   </div>
                 );
               }

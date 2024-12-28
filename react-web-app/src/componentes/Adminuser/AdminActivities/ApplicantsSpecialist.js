@@ -1,40 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./ApplicantsSpecialist.css";
 import Navbaradmin from "../homescreen/Navbaradmin";
+import URL from "../../../enum/enum";
+import axios from "axios";
 function ApplicantsSpecialist() {
   const [countSpecialists, setCountSpecialists] = useState(0);
 
-  const [specialists, setSpecialists] = useState([
-    {
-      ID_Specialist: 1,
-      Username: "Ali",
-      First_Name: "Ali",
-      Last_Name: "nbasd",
-      Age: 26,
-      Gender: "Male",
-      Location: "Nablus",
-      Points: 100,
-      Img: null,
-      YearsOfExperience: 7,
-      AcceptedDescription: "P",
-      Description: "trehthrhrthhr",
-    },
-    {
-      ID_Specialist: 2,
-      Username: "AhmadA",
-      First_Name: "Ahmad",
-      Last_Name: "A",
-      Age: 12,
-      Gender: "Female",
-      Location: "Genen",
-      Points: 0,
-      Img: null,
-      YearsOfExperience: 7,
-      AcceptedDescription: "A",
-      Description: "sdfsdfwre4t43t535",
-    },
-  ]);
+  const [specialists, setSpecialists] = useState([]);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response3 = await fetch(`${URL}/getAllSepcialistsAdmin`);
 
+        if (!response3.ok) {
+          throw new Error("Failed to fetch specialist details");
+        }
+        const data3 = await response3.json();
+        setSpecialists(data3);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []);
   useEffect(() => {
     const acceptedCount = specialists.filter(
       (specialist) => specialist.AcceptedDescription.toLowerCase() === "a"
@@ -42,24 +31,61 @@ function ApplicantsSpecialist() {
     setCountSpecialists(acceptedCount);
   }, [specialists]);
 
-  const handleAccept = (id) => {
-    setSpecialists((prevSpecialists) =>
-      prevSpecialists.map((specialist) =>
+  const handleAccept = async (id) => {
+    try {
+      const updatedSpecialists = specialists.map((specialist) =>
         specialist.ID_Specialist === id
           ? { ...specialist, AcceptedDescription: "A" }
           : specialist
-      )
-    );
+      );
+
+      setSpecialists(updatedSpecialists);
+
+      const response = await fetch(`${URL}/EditSpecialistsAdmin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedSpecialists),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update");
+      }
+
+      const data = await response.json();
+      console.log("Spec details updated:", data);
+    } catch (error) {
+      console.error("Error updating:", error);
+    }
   };
 
-  const handleReject = (id) => {
-    setSpecialists((prevSpecialists) =>
-      prevSpecialists.map((specialist) =>
+  const handleReject = async (id) => {
+    try {
+      const updatedSpecialists = specialists.map((specialist) =>
         specialist.ID_Specialist === id
           ? { ...specialist, AcceptedDescription: "R" }
           : specialist
-      )
-    );
+      );
+
+      setSpecialists(updatedSpecialists);
+      const response = await fetch(`${URL}/EditSpecialistsAdmin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(specialists),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update");
+      }
+
+      const data = await response.json();
+      console.log("Spec details updated:", data);
+    } catch (error) {
+      console.error("Error updating:", error);
+    }
   };
 
   return (
@@ -67,8 +93,8 @@ function ApplicantsSpecialist() {
       <Navbaradmin />
       <div className="specialists-container">
         <div className="header">
-          <h2>Request Specialist</h2>
-          <p>Specialists in the system: {countSpecialists}</p>
+          <h2>Request Nutration Expert</h2>
+          <p>Nutraion Experts in the system: {countSpecialists}</p>
         </div>
 
         <div className="specialists-list">

@@ -50,6 +50,12 @@ import FriendsSpecialist from "./componentes/Specialist/homepage/FriendsSpeciali
 import ChatSpecialist from "./componentes/Specialist/homepage/ChatSpecialist";
 import ChatTrainerCoach from "./componentes/homepage/ChatTrainerCoach";
 import ChatTrainerSpecialist from "./componentes/homepage/ChatTrainerSpecialist";
+import CoachVideos from "./componentes/Adminuser/homescreen/CoachVideos";
+import LocationsMap from "./componentes/Adminuser/homescreen/LocationsMap";
+import ProfileAdmin from "./componentes/Adminuser/homescreen/ProfileAdmin";
+import Profile from "./componentes/homepage/Profile";
+import ProfileCoach from "./componentes/coach/homepage/ProfileCoach";
+import ProfileSpecialist from "./componentes/Specialist/homepage/ProfileSpecialist";
 function App() {
   return (
     <div className="App">
@@ -82,6 +88,7 @@ function App() {
               path="/ChatTrainerSpecialist"
               element={<ChatTrainerSpecialist />}
             />
+            <Route path="/Profile" element={<Profile />} />
 
             {/*coach */}
             <Route path="/Coahhomepage" element={<Coahhomepage />} />
@@ -92,6 +99,7 @@ function App() {
             <Route path="/Uploading" element={<Uploading />} />
             <Route path="/Friends" element={<Friends />} />
             <Route path="/ChatCoach" element={<ChatCoach />} />
+            <Route path="/ProfileCoach" element={<ProfileCoach />} />
 
             {/*Specialist */}
             <Route
@@ -117,6 +125,8 @@ function App() {
             />
             <Route path="/FriendsSpecialist" element={<FriendsSpecialist />} />
             <Route path="/ChatSpecialist" element={<ChatSpecialist />} />
+            <Route path="/ProfileSpecialist" element={<ProfileSpecialist />} />
+
             {/*Admin */}
             <Route path="/AdminHomeScreen" element={<AdminHomeScreen />} />
             <Route path="/Chosseuser" element={<Chosseuser />} />
@@ -133,6 +143,13 @@ function App() {
               path="/ApplicantsSpecialist"
               element={<ApplicantsSpecialist />}
             />
+            <Route path="/CoachVideos" element={<CoachVideos />} />
+            <Route
+              path="/ApplicantsSpecialist"
+              element={<ApplicantsSpecialist />}
+            />
+            <Route path="/LocationsMap" element={<LocationsMap />} />
+            <Route path="/ProfileAdmin" element={<ProfileAdmin />} />
           </Routes>
         </BrowserRouter>
       </QuizProvider>

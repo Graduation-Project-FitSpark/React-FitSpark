@@ -1,23 +1,68 @@
 import React, { useState } from "react";
 import "./AddAwardsModel.css";
-
+import enumURL from "../../../enum/enum";
+import axios from "axios";
+import { Alert } from "bootstrap";
 function AddAwardsModel({ modalVisible, setModalVisible }) {
   const [imageUri, setImageUri] = useState(null);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setImageUri(URL.createObjectURL(file));
+    if (!file) {
+      alert("No file selected");
+      return;
     }
+
+    const objectUrl = URL.createObjectURL(file);
+    setUploadedImageUrl(objectUrl);
+
+    const base64Image = await blobToBase64(file);
+    setImageUri(base64Image);
+    console.log(base64Image);
   };
 
-  const handleSubmit = () => {
+  const blobToBase64 = (blob) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+  const handleSubmit = async () => {
     if (!name || !number || !imageUri) {
       alert("Please fill all fields");
-    } else {
-      alert(`Name: ${name}, Number: ${number}`);
+      return;
+    }
+
+    try {
+      const payload = {
+        point: number,
+        name: name,
+        img: imageUri,
+      };
+
+      const response = await axios.post(
+        `${enumURL}/insertPointAward`,
+        JSON.stringify(payload),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      alert("Award inserted successfully!");
+      handleCancel();
+    } catch (error) {
+      console.error(
+        "Error inserting award:",
+        error.response?.data || error.message
+      );
+      alert("Failed to insert award. Please try again.");
     }
   };
 
@@ -43,7 +88,6 @@ function AddAwardsModel({ modalVisible, setModalVisible }) {
               style={{ display: "none" }}
             />
           </label>
-          {imageUri && <img src={imageUri} alt="Preview" className="image" />}
         </div>
 
         <div className="input-container">
@@ -67,7 +111,13 @@ function AddAwardsModel({ modalVisible, setModalVisible }) {
             placeholder="Enter a number"
           />
         </div>
-
+        {uploadedImageUrl && (
+          <img
+            src={uploadedImageUrl}
+            alt="Selected Preview"
+            style={{ width: "100px", height: "100px", objectFit: "cover" }}
+          />
+        )}
         <div className="buttons-container">
           <button className="button cancel-button" onClick={handleCancel}>
             Cancel

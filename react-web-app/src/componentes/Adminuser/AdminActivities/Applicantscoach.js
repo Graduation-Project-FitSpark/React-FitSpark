@@ -1,38 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "./Applicantscoach.css";
 import Navbaradmin from "../homescreen/Navbaradmin";
+import URL from "../../../enum/enum";
+import axios from "axios";
 function Applicants() {
   const [countTrainers, setCountTrainers] = useState(0);
-  const [coaches, setCoaches] = useState([
-    {
-      ID_Coach: 1,
-      Username: "Ali",
-      First_Name: "Ali",
-      Last_Name: "nbasd",
-      Age: 26,
-      Gender: "Male",
-      Location: "Nablus",
-      Points: 200,
-      Img: null,
-      YearsOfExperience: 7,
-      AcceptedDescription: "A",
-      Description: "trehthrhrthhr",
-    },
-    {
-      ID_Coach: 2,
-      Username: "AhmadA",
-      First_Name: "Ahmad",
-      Last_Name: "A",
-      Age: 12,
-      Gender: "Female",
-      Location: "Genen",
-      Points: 0,
-      Img: null,
-      YearsOfExperience: 7,
-      AcceptedDescription: "P",
-      Description: "sdfsdfwre4t43t535",
-    },
-  ]);
+  const [coaches, setCoaches] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response2 = await fetch(`${URL}/getAllCoachesAdmin`);
+        if (!response2.ok) {
+          throw new Error("Failed to fetch coach details");
+        }
+        const data2 = await response2.json();
+        setCoaches(data2);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
     const acceptedCount = coaches.filter(
@@ -41,20 +31,57 @@ function Applicants() {
     setCountTrainers(acceptedCount);
   }, [coaches]);
 
-  const handleAccept = (id) => {
-    setCoaches((prevCoaches) =>
-      prevCoaches.map((coach) =>
+  const handleAccept = async (id) => {
+    try {
+      const updatedCoaches = coaches.map((coach) =>
         coach.ID_Coach === id ? { ...coach, AcceptedDescription: "A" } : coach
-      )
-    );
+      );
+
+      setCoaches(updatedCoaches);
+
+      const response = await fetch(`${URL}/EditCoachsAdmin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedCoaches), // Use the updated coaches list here
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update coach details");
+      }
+
+      const data = await response.json();
+      console.log("Coach details updated:", data);
+    } catch (error) {
+      console.error("Error updating coach details:", error);
+    }
   };
 
-  const handleReject = (id) => {
-    setCoaches((prevCoaches) =>
-      prevCoaches.map((coach) =>
+  const handleReject = async (id) => {
+    try {
+      const updatedCoaches = coaches.map((coach) =>
         coach.ID_Coach === id ? { ...coach, AcceptedDescription: "R" } : coach
-      )
-    );
+      );
+
+      setCoaches(updatedCoaches);
+      const response = await fetch(`${URL}/EditCoachsAdmin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(coaches),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update coach details");
+      }
+
+      const data = await response.json();
+      console.log("Coach details updated:", data);
+    } catch (error) {
+      console.error("Error updating coach details:", error);
+    }
   };
 
   return (
@@ -63,7 +90,7 @@ function Applicants() {
       <div className="applicants-container">
         <div className="header">
           <h2>Request Coach</h2>
-          <p>Coaches in the system: {countTrainers} Trainees</p>
+          <p>Coaches in the system: {countTrainers} Coaches</p>
         </div>
 
         <div className="coaches-list">

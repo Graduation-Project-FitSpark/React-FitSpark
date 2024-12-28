@@ -1,74 +1,68 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./EditSpecialistModel.css";
-
+import axios from "axios";
+import URL from "../../../../enum/enum";
 function EditSpecialistModel({ modalVisible, setModalVisible, item }) {
   const [notification, setNotification] = useState("");
   const [countTrainer, setCountTrainer] = useState(0);
 
-  const initialTableData = [
-    {
-      ID_Specialist: 1,
-      Username: "Ali",
-      Email: "JJJ",
-      First_Name: "Ali",
-      Last_Name: "nbasd",
-      Phone_Number: "flkj;d",
-      Age: 26,
-      Gender: "Male",
-      Location: "Nablus",
-      Points: 100,
-      Img: null,
-      YearsOfExperience: 7,
-    },
-    {
-      ID_Specialist: "7ce0612a-892a-4429-89cc-0d6d7aa1f72a",
-      Username: "AhmadA",
-      Email: "asjkdsI",
-      First_Name: "sdlkfJ",
-      Last_Name: "sdlkfJ",
-      Phone_Number: "06594958",
-      Age: 12,
-      Gender: "Female",
-      Location: "Genen",
-      Points: 0,
-      Img: null,
-      YearsOfExperience: 7,
-      Dateenter: "2020-04-06",
-      AcceptedDescription: "A",
-    },
-  ];
+  const [initialTableData, setInitialTableData] = useState([]);
+  const [trainerSpecialistData, setTrainerSpecialistData] = useState([]);
 
-  const trainerSpecialistData = [
-    {
-      ID_Trainer: 1,
-      ID_Specialist: 1,
-      Accepted: "t",
-      Description:
-        "Trainer 1 is paired with Specialist 1 and the request is accepted.",
-    },
-  ];
+  useEffect(() => {
+    const fetchTrainers = async () => {
+      try {
+        const response = await fetch(`${URL}/getAllSpecialists`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data = await response.json();
+        setInitialTableData(data.specialists);
+        console.log(data.specialists);
+        const response2 = await fetch(
+          `${URL}/getTrainerSpecialistWithDescription`
+        );
+
+        if (!response2.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data2 = await response2.json();
+        console.log(data2);
+        setTrainerSpecialistData(data2);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchTrainers();
+  }, []);
 
   React.useEffect(() => {
     let count = 0;
     trainerSpecialistData.forEach((data) => {
       if (
         data.ID_Specialist === item &&
-        (data.Accepted === "t" || data.Accepted === "T")
+        (data.Accepted === "a" || data.Accepted === "A")
       ) {
         count++;
       }
     });
     setCountTrainer(count);
-  }, [trainerSpecialistData, item]);
+  }, [initialTableData, item]);
 
   const userData = initialTableData.find((data) => data.ID_Specialist === item);
 
-  const deleteUser = () => {
+  const deleteUser = async () => {
+    const response = await axios.post(`${URL}/DeleteSpecialistAdmin`, {
+      ID_Specialist: item,
+    });
     const filteredData = initialTableData.filter(
       (data) => data.ID_Specialist !== item
     );
     console.log("Updated data: ", filteredData);
     setModalVisible(false);
+    window.location.reload();
   };
 
   const sendNotification = () => {
@@ -144,7 +138,7 @@ function EditSpecialistModel({ modalVisible, setModalVisible, item }) {
             </div>
           </>
         ) : (
-          <p>No data found for the selected specialist.</p>
+          <p>No data found for the selected Nutration Expert.</p>
         )}
       </div>
     </div>

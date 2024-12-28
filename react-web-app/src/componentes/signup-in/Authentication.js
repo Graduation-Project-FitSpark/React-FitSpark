@@ -79,7 +79,7 @@ const Authentication = () => {
           })
           .catch((err) => console.error(err));
       } else if (Type === "admin") {
-        navigate("/Adminmanbur");
+        navigate("/AdminHomeScreen");
       }
     } else {
       alert("Error: Verification code is invalid.");

@@ -1,107 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./EditTraineesModel.css";
-
+import URL from "../../../../enum/enum";
+import axios from "axios";
 function EditUserModal({ modalVisible, setModalVisible, item }) {
   const [notification, setNotification] = useState("");
 
-  const [initialTableData, setInitialTableData] = useState([
-    {
-      ID_Trainer: 1,
-      First_name: "mahmoud",
-      Last_name: "Arafat",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "[37.74798825940199, -122.420727407486164]",
-      Activity_Level: "Fat",
-      Card_Number: "594949494",
-      Expression_Date: "2000-06-07 00:00:00",
-      CVC: 594,
-      Points: 23,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 5,
-      Token: null,
-      Username: "user_7737",
-      Height: 150,
-      Weight: 100,
-    },
-    {
-      ID_Trainer: 13,
-      First_name: "jone",
-      Last_name: "kcdcd",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "Nablus",
-      Activity_Level: "Fat",
-      Card_Number: "065061563",
-      Expression_Date: "2000-08-02 00:00:00",
-      CVC: 321,
-      Points: 500,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 0,
-      Token: null,
-      Username: "user_7733",
-      Height: 120,
-      Weight: 50,
-    },
-    {
-      ID_Trainer: 9,
-      First_name: "sasa",
-      Last_name: "ffdfd",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "[37.68169336082543, -122.44336623698473]",
-      Activity_Level: "Fat",
-      Card_Number: "594949494",
-      Expression_Date: "2005-06-01 00:00:00",
-      CVC: 493,
-      Points: 100,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 0,
-      Token: null,
-      Username: "user_7737",
-      Height: 150,
-      Weight: 90,
-    },
-  ]);
+  const [initialTableData, setInitialTableData] = useState([]);
 
-  const [fullTableData, setFullTableData] = useState([
-    {
-      ID_Trainer: 1,
-      ID_Calorie: "0e813dde-9419-4012-b3cb-01f41b9bdcc4",
-      Calories: 100,
-      Steps: 10000,
-      Day: "Monday",
-      Date: "2024-10-28",
-      Distance: null,
-    },
-    {
-      ID_Trainer: 1,
-      ID_Calorie: "dc3cb01-83eb-48a8-9a29-de2c8284ceed",
-      Calories: 200,
-      Steps: 1000,
-      Day: "Thursday",
-      Date: "2024-11-14",
-      Distance: 400,
-    },
-    {
-      ID_Trainer: 13,
-      ID_Calorie: "752e3515-55ff-419f-947c-48c06fe037e5",
-      Calories: 100,
-      Steps: 0,
-      Day: "Friday",
-      Date: "2024-11-22",
-      Distance: 0,
-    },
-    {
-      ID_Trainer: 1,
-      ID_Calorie: "752e3515-55ff-419f-947c-48c06fe037e5",
-      Calories: 300,
-      Steps: 0,
-      Day: "Friday",
-      Date: "2024-11-22",
-      Distance: 0,
-    },
-  ]);
+  const [fullTableData, setFullTableData] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`${URL}/getTrainerSpecificDetails`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data = await response.json();
+        setInitialTableData(data);
+
+        const response2 = await fetch(`${URL}/getTrainerClorieDetails`);
+
+        if (!response2.ok) {
+          throw new Error("Failed to fetch coach details");
+        }
+        const data2 = await response2.json();
+        setFullTableData(data2);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchUsers();
+  }, [initialTableData]);
+
   useEffect(() => {
     console.log(setModalVisible);
   });
@@ -119,7 +52,10 @@ function EditUserModal({ modalVisible, setModalVisible, item }) {
     0
   );
 
-  const deleteUser = () => {
+  const deleteUser = async () => {
+    const response = await axios.post(`${URL}/DeleteTrainerAdmin`, {
+      ID_Trainer: item,
+    });
     setInitialTableData((prevData) =>
       prevData.filter((data) => data.ID_Trainer !== item)
     );
@@ -127,6 +63,7 @@ function EditUserModal({ modalVisible, setModalVisible, item }) {
       prevData.filter((data) => data.ID_Trainer !== item)
     );
     setModalVisible(false);
+    window.location.reload();
   };
 
   const sendNotification = () => {
@@ -145,7 +82,7 @@ function EditUserModal({ modalVisible, setModalVisible, item }) {
                 alt="User Avatar"
                 className="user-avatar"
               />
-              <h2>{`${userData.First_name} ${userData.Last_name}`}</h2>
+              <h2>{`${userData.First_Name} ${userData.Last_Name}`}</h2>
             </div>
 
             <div className="user-details">

@@ -9,6 +9,8 @@ import {
   IoCheckmarkDoneOutline,
   IoMedal,
 } from "react-icons/io5";
+import URL from "../../../enum/enum";
+import axios from "axios";
 
 function Userstatistics() {
   const [lengthCoach, setLengthCoach] = useState(0);
@@ -33,102 +35,49 @@ function Userstatistics() {
     { ID_Sale: 3, Sale_Name: "Sample Product", Price: 19.99 },
   ];
 
-  const coach = [
-    {
-      ID_Coach: 1,
-      Username: "Ali",
-      Dateenter: "2024-12-06",
-      AcceptedDescription: "A",
-      Points: 80,
-    },
-    {
-      ID_Coach: 2,
-      Username: "Ahmad",
-      Dateenter: "2024-12-06",
-      AcceptedDescription: "A",
-      Points: 785,
-    },
-    {
-      ID_Coach: 2,
-      Username: "Ahmad",
-      Dateenter: "2024-12-06",
-      AcceptedDescription: "A",
-      Points: 75,
-    },
-  ];
+  const [coach, setCoach] = useState([]);
 
-  const specialist = [
-    {
-      ID_Specialist: 1,
-      Username: "Ali",
-      Dateenter: "2024-12-06",
-      AcceptedDescription: "A",
-      Points: 400,
-    },
-    {
-      ID_Specialist: 2,
-      Username: "Ahmad",
-      Dateenter: "2024-12-06",
-      AcceptedDescription: "A",
-      Points: 580,
-    },
-    {
-      ID_Specialist: 2,
-      Username: "Ahmad",
-      Dateenter: "2024-12-06",
-      AcceptedDescription: "A",
-      Points: 80,
-    },
-  ];
+  const [specialist, setSpecialist] = useState([]);
 
-  const trainees = [
-    {
-      ID_Trainer: 1,
-      First_name: "mahmoud",
-      Last_name: "Arafat",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "[37.74798825940199, -122.420727407486164]",
-      Activity_Level: "Fat",
-      Card_Number: "594949494",
-      Expression_Date: "2000-06-07 00:00:00",
-      CVC: 594,
-      Points: 0,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 0,
-      Token: null,
-      Username: "user_7737",
-      Height: 150,
-      Weight: 100,
-      Dateenter: "2024-12-06",
-      Age: 12,
-    },
-    {
-      ID_Trainer: 13,
-      First_name: "jone",
-      Last_name: "kcdcd",
-      Gender: "Male",
-      Class_Type: "Cardio",
-      Location: "Nablus",
-      Activity_Level: "Fat",
-      Card_Number: "065061563",
-      Expression_Date: "2000-08-02 00:00:00",
-      CVC: 321,
-      Points: 500,
-      Image: "https://via.placeholder.com/50",
-      WatchedVideos: 5,
-      Token: null,
-      Username: "user_7733",
-      Height: 120,
-      Weight: 50,
-      Dateenter: "2024-12-06",
-      Age: 12,
-    },
-  ];
+  const [trainees, setTrainees] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`${URL}/getTrainerSpecificDetails`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data = await response.json();
+        setTrainees(data);
+
+        const response2 = await fetch(`${URL}/getAllCoachesAdmin`);
+
+        if (!response2.ok) {
+          throw new Error("Failed to fetch coach details");
+        }
+        const data2 = await response2.json();
+        setCoach(data2);
+
+        const response3 = await fetch(`${URL}/getAllSepcialistsAdmin`);
+
+        if (!response3.ok) {
+          throw new Error("Failed to fetch specialist details");
+        }
+        const data3 = await response3.json();
+        setSpecialist(data3);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
     const countCoach = coach.filter((user) => {
-      const [year, month] = user.Dateenter.split("-");
+      const [year, month] = user.Dateenter.split("T")[0].split("-");
       return (
         user.AcceptedDescription === "A" &&
         parseInt(year) === currentYear &&
@@ -138,7 +87,7 @@ function Userstatistics() {
     setLengthCoach(countCoach);
 
     const countSpecialist = specialist.filter((user) => {
-      const [year, month] = user.Dateenter.split("-");
+      const [year, month] = user.Dateenter.split("T")[0].split("-");
       return (
         user.AcceptedDescription === "A" &&
         parseInt(year) === currentYear &&
@@ -148,7 +97,7 @@ function Userstatistics() {
     setLengthSpecialist(countSpecialist);
 
     const countTrainees = trainees.filter((user) => {
-      const [year, month] = user.Dateenter.split("-");
+      const [year, month] = user.Dateenter.split("T")[0].split("-");
       return parseInt(year) === currentYear && parseInt(month) === currentMonth;
     }).length;
     setLengthTrainees(countTrainees);

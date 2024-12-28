@@ -3,7 +3,7 @@ import Navbaradmin from "./Navbaradmin";
 import TitleName from "./TitleName";
 import Userstatistics from "./Userstatistics";
 import Userstable from "./Userstable";
-
+import LocationsMap from "./LocationsMap";
 import "./Homescreen.css";
 
 import Footer from "../../Welcome_Screen/Footer";
@@ -14,10 +14,11 @@ function Homescreen() {
       <div className="title-point-name-requts">
         <TitleName></TitleName>
         <Userstatistics></Userstatistics>
+        <LocationsMap></LocationsMap>
         <Userstable></Userstable>
       </div>
       <Footer></Footer>
-    </div>
+    </div> //
   );
 }
 

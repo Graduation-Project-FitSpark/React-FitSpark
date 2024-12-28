@@ -28,7 +28,7 @@ const Navbarspecialist = () => {
           </li>
 
           <li>
-            <Link to="/contact">Settings</Link>
+            <Link to="/ProfileSpecialist">Settings</Link>
           </li>
         </ul>
         <div className="navbar-login">

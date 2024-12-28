@@ -29,7 +29,7 @@ const Navbarcoach = () => {
           </li>
 
           <li>
-            <Link to="/contact">Settings</Link>
+            <Link to="/ProfileCoach">Settings</Link>
           </li>
         </ul>
         <div className="navbar-login">

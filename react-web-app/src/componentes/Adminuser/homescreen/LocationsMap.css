@@ -1,0 +1,120 @@
+.map-container {
+  position: relative;
+  width: 80%;
+  height: 60vh;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.marker-popup {
+  text-align: center;
+}
+
+.username-text {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.popup-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  object-fit: cover;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+}
+
+@media screen and (max-width: 1024px) {
+  .map-container {
+    width: 90%;
+    height: 50vh;
+  }
+
+  .description {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .loading {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .map-container {
+    width: 95%;
+    height: 45vh;
+  }
+
+  .popup-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .username-text {
+    font-size: 12px;
+  }
+
+  .description {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .loading {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .map-container {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .description {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+
+  .loading {
+    font-size: 14px;
+  }
+}

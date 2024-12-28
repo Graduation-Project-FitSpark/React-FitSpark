@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EditCoach.css";
 import Navbaradmin from "../../homescreen/Navbaradmin";
 import EditSpecialistModel from "./EditSpecialistModel";
+import URL from "../../../../enum/enum";
+import axios from "axios";
 function EditSpecialist() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -13,57 +15,24 @@ function EditSpecialist() {
     setModalVisible(true);
   };
 
-  const usertableData = [
-    {
-      ID_Specialist: 1,
-      Username: "Ali",
-      Email: "masdm",
-      First_Name: "Ali",
-      Last_Name: "nbasd",
-      Phone_Number: "flkj;d",
-      Age: 26,
-      Gender: "Male",
-      Location: "Nablus",
-      Points: 100,
-      Img: null,
-      YearsOfExperience: 7,
-      Dateenter: "2020-04-06",
-      AcceptedDescription: "A",
-    },
-    {
-      ID_Specialist: "7ce0612a-892a-4429-89cc-0d6d7aa1f72a",
-      Username: "AhmadA",
-      Email: "asjkdsI",
-      First_Name: "sdlkfJ",
-      Last_Name: "sdlkfJ",
-      Phone_Number: "06594958",
-      Age: 12,
-      Gender: "Female",
-      Location: "Genen",
-      Points: 0,
-      Img: null,
-      YearsOfExperience: 7,
-      Dateenter: "2020-04-06",
-      AcceptedDescription: "A",
-    },
-    {
-      ID_Specialist: "924facco-b571-4611-9e70-c7a7ff2af929",
-      Username: "Umy",
-      Email: "GfKfk",
-      First_Name: "Fjfj",
-      Last_Name: "FjfJ",
-      Phone_Number: "06594958",
-      Age: 12,
-      Gender: "Female",
-      Location: "Genen",
-      Points: 10,
-      Img: null,
-      YearsOfExperience: 7,
-      Dateenter: "2020-04-06",
-      AcceptedDescription: "P",
-    },
-  ];
+  const [usertableData, setUserTableData] = useState([]);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response3 = await fetch(`${URL}/getAllSepcialistsAdmin`);
 
+        if (!response3.ok) {
+          throw new Error("Failed to fetch specialist details");
+        }
+        const data3 = await response3.json();
+        setUserTableData(data3);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []);
   const filteredData = usertableData.filter((row) =>
     row.Username.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -86,7 +55,7 @@ function EditSpecialist() {
       <div className="edit-coach">
         <div className="edit-coach-iner">
           <div className="header">
-            <h1>Specialist Info</h1>
+            <h1>Nutration Expert Info</h1>
           </div>
           <div className="serch">
             <input
@@ -130,7 +99,7 @@ function EditSpecialist() {
                     <span>{row.ID_Specialist}</span>
                     <span>{row.Username}</span>
                     <span>{row.Age}</span>
-                    <span>{row.Dateenter}</span>
+                    <span>{row.Dateenter.split("T")[0]}</span>
                   </div>
                 );
               }

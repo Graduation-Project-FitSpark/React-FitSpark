@@ -1,36 +1,39 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./EditCoachModel.css";
+import axios from "axios";
+import URL from "../../../../enum/enum";
 
 function EditCoachModel({ modalVisible, setModalVisible, iteam }) {
   const [notification, setNotification] = useState("");
   const [countTrainer, setCountTrainer] = useState(0);
 
-  const initialTableData = [
-    {
-      ID_Coach: 1,
-      Username: "Ali",
-      Email: "masdm",
-      First_Name: "Ali",
-      Last_Name: "nbasd",
-      Phone_Number: "flkj;d",
-      Age: 26,
-      Gender: "Male",
-      Location: "Nablus",
-      Points: 200,
-      Img: null,
-      YearsOfExperience: 7,
-    },
-  ];
+  const [initialTableData, setInitialTableData] = useState([]);
+  const [trainerCoachData, setTrainerCoachData] = useState([]);
 
-  const trainerCoachData = [
-    {
-      ID_Trainer: 1,
-      ID_Coach: 1,
-      Accepted: "t",
-      Description:
-        "Trainer 1 is paired with Coach 2 and the request is accepted.",
-    },
-  ];
+  useEffect(() => {
+    const fetchTrainers = async () => {
+      try {
+        const response = await fetch(`${URL}/getAllCoaches`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data = await response.json();
+        setInitialTableData(data.coaches);
+        const response2 = await fetch(`${URL}/getTrainerCoachWithDescription`);
+
+        if (!response2.ok) {
+          throw new Error("Failed to fetch trainer details");
+        }
+        const data2 = await response2.json();
+        setTrainerCoachData(data2);
+      } catch (err) {
+        console.error("Error fetching trainer details:", err);
+      }
+    };
+
+    fetchTrainers();
+  }, [initialTableData]);
 
   useEffect(() => {
     console.log(iteam);
@@ -38,7 +41,7 @@ function EditCoachModel({ modalVisible, setModalVisible, iteam }) {
     trainerCoachData.forEach((item) => {
       if (
         item.ID_Coach === iteam &&
-        (item.Accepted === "t" || item.Accepted === "T")
+        (item.Accepted === "a" || item.Accepted === "A")
       ) {
         count++;
       }
@@ -48,9 +51,16 @@ function EditCoachModel({ modalVisible, setModalVisible, iteam }) {
 
   const userData = initialTableData.find((item) => item.ID_Coach === iteam);
 
-  const deleteUser = () => {
+  const deleteUser = async () => {
+    const response = await axios.post(`${URL}/DeleteCoachAdmin`, {
+      ID_Coach: iteam,
+    });
+    setInitialTableData((prevData) =>
+      prevData.filter((data) => data.ID_Coach !== iteam)
+    );
     console.log("User deleted", iteam);
     setModalVisible(false);
+    window.location.reload();
   };
 
   const sendNotification = () => {
