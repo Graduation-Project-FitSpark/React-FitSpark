@@ -1,0 +1,67 @@
+.rowContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  width: 100%;
+}
+
+.tophadercard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgcontner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.title-seaction {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+}
+.title-seaction-Container {
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+.samltitle {
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.iteamcontainer {
+  background-color: #fff;
+  border-radius: 15px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 18%;
+  height: 95%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.imgoutofstock {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  opacity: 0.5;
+}
