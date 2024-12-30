@@ -148,8 +148,6 @@
   cursor: pointer;
 }
 
-/* Checkout.css */
-
 .checkout-outer {
   display: flex;
   flex-direction: column;

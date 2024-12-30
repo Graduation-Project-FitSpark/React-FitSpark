@@ -29,38 +29,38 @@
   width: 50%;
 }
 .info-div-h1 {
-  font-size: 60px; /* Adjusted for headline impact */
-  color: #fff; /* Sets the text color */
-  font-family: "Arial", sans-serif; /* Clean and modern font */
-  font-weight: bold; /* Makes the text bold */
-  text-align: center; /* Centers the text horizontally */
-  margin: 20px 0; /* Adds spacing above and below */
-  line-height: 1.2; /* Improves readability for multiple lines */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
-  transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+  font-size: 60px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, transform 0.3s;
   margin-bottom: 40px;
 }
 .info-div-h5 {
-  font-size: 50px; /* Adjusted for headline impact */
-  color: #fff; /* Sets the text color */
-  font-family: "Arial", sans-serif; /* Clean and modern font */
-  font-weight: bold; /* Makes the text bold */
-  text-align: center; /* Centers the text horizontally */
-  margin: 20px 0; /* Adds spacing above and below */
-  line-height: 1.2; /* Improves readability for multiple lines */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
-  transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+  font-size: 50px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, transform 0.3s;
 }
 .info-div-p {
-  font-size: 25px; /* Adjusted for headline impact */
-  color: #fff; /* Sets the text color */
-  font-family: "Arial", sans-serif; /* Clean and modern font */
-  font-weight: bold; /* Makes the text bold */
-  text-align: center; /* Centers the text horizontally */
-  margin: 20px 0; /* Adds spacing above and below */
-  line-height: 1.2; /* Improves readability for multiple lines */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
-  transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+  font-size: 25px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, transform 0.3s;
 }
 .choose-continer {
   display: flex;
@@ -74,39 +74,38 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  /* Add padding for better spacing */
 
-  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  box-sizing: border-box;
 }
 
 .serch-contenert {
   width: 80%;
-  max-width: 600px; /* Restrict the maximum width */
-  display: flex; /* Align input and button horizontally */
-  gap: 10px; /* Add spacing between input and button */
+  max-width: 600px;
+  display: flex;
+  gap: 10px;
 }
 
 .serch-contenert input {
-  flex: 1; /* Make input take up available space */
+  flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  outline: none; /* Remove outline for a cleaner look */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  outline: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .serch-contenert button {
   padding: 10px 20px;
-  background-color: #00ff48; /* Primary blue color */
-  color: #000; /* White text */
+  background-color: #00ff48;
+  color: #000;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth hover transition */
+  transition: background-color 0.3s ease;
 }
 
 .serch-contenert button:hover {
-  background-color: #5cb300; /* Darker blue on hover */
+  background-color: #5cb300;
 }
