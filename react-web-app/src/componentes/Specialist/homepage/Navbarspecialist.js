@@ -24,7 +24,7 @@ const Navbarspecialist = () => {
             <Link to="/Inreotranineranalytics">Analysis Plan </Link>
           </li>
           <li>
-            <Link to="/Foodplan">Add exercise</Link>
+            <Link to="/AddNewMeals">Add Meals</Link>
           </li>
 
           <li>

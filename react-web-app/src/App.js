@@ -56,6 +56,10 @@ import ProfileAdmin from "./componentes/Adminuser/homescreen/ProfileAdmin";
 import Profile from "./componentes/homepage/Profile";
 import ProfileCoach from "./componentes/coach/homepage/ProfileCoach";
 import ProfileSpecialist from "./componentes/Specialist/homepage/ProfileSpecialist";
+import SelectShop from "./componentes/Adminuser/homescreen/SelectShop";
+import AddItems from "./componentes/Adminuser/homescreen/AddItem";
+import SalesStatistics from "./componentes/Adminuser/homescreen/SalesStatistics";
+import AddNewMeals from "./componentes/Specialist/homepage/AddNewMeals";
 function App() {
   return (
     <div className="App">
@@ -150,6 +154,10 @@ function App() {
             />
             <Route path="/LocationsMap" element={<LocationsMap />} />
             <Route path="/ProfileAdmin" element={<ProfileAdmin />} />
+            <Route path="/SelectShop" element={<SelectShop />} />
+            <Route path="/AddItems" element={<AddItems />} />
+            <Route path="/SalesStatistics" element={<SalesStatistics />} />
+            <Route path="/AddNewMeals" element={<AddNewMeals />} />
           </Routes>
         </BrowserRouter>
       </QuizProvider>

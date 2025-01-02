@@ -1,0 +1,104 @@
+.add-items-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-items-container:hover {
+  transform: translateY(-5px);
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #333333;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #555555;
+  margin-top: 15px;
+  display: block;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333333;
+  transition: border-color 0.3s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #006400;
+  outline: none;
+}
+
+.textarea {
+  height: 100px;
+  resize: none;
+}
+
+.image-preview {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+}
+
+.add-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #006400;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 20px;
+}
+
+.add-button:hover {
+  background-color: #004d00;
+  transform: scale(1.02);
+}
+
+.add-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .add-items-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .input,
+  .textarea {
+    font-size: 13px;
+  }
+
+  .add-button {
+    font-size: 15px;
+  }
+}

@@ -18,7 +18,7 @@ const Navbarcoach = () => {
         </div>
         <ul className="navbar-links">
           <li>
-            <Link to="/TraingPlan">Store</Link>
+            <Link to="/SelectShop">Store</Link>
           </li>
           <li>
             <Link to="/Chosseuser">User Tables </Link>

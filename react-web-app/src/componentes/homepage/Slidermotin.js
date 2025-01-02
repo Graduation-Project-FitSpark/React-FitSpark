@@ -3,19 +3,12 @@ import "./Slideshow.css";
 import img1 from "../../img/slider-2.jpg";
 import img2 from "../../img/slider-1.png";
 import img3 from "../../img/slider-3.png";
+
 function Slidermotin() {
-  const [slideIndex, setSlideIndex] = useState(1);
+  const [slideIndex, setSlideIndex] = useState(3); // Initially set to show the third image
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIndex((prevIndex) => (prevIndex === 3 ? 1 : prevIndex + 1));
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    showSlides(slideIndex);
+    showSlides(slideIndex); // Always show the third slide
   }, [slideIndex]);
 
   const showSlides = (n) => {
@@ -23,32 +16,33 @@ function Slidermotin() {
     const dots = document.getElementsByClassName("dot");
 
     for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+      slides[i].style.display = "none"; // Hide all slides
     }
+
     for (let i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
-    if (slides[slideIndex - 1]) {
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].className += " active";
+
+    // Show only the third slide and make it active
+    if (slides[2]) {
+      // The third slide is at index 2
+      slides[2].style.display = "block";
+      dots[2].className += " active"; // Activate the third dot
     }
   };
 
   return (
     <div>
       <div className="slideshow-container">
-        <div className="mySlides fade">
-          <div className="numbertext">1 / 3</div>
+        <div className="mySlides">
           <img src={img1} style={{ width: "100%" }} alt="Nature" />
         </div>
 
-        <div className="mySlides fade">
-          <div className="numbertext">2 / 3</div>
+        <div className="mySlides">
           <img src={img2} style={{ width: "100%" }} alt="Snow" />
         </div>
 
-        <div className="mySlides fade">
-          <div className="numbertext">3 / 3</div>
+        <div className="mySlides">
           <img src={img3} style={{ width: "100%" }} alt="Mountains" />
         </div>
       </div>

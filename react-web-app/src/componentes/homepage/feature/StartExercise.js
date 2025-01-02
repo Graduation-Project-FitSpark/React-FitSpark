@@ -14,13 +14,13 @@ function StartExercise() {
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(0);
   const [time, setTime] = useState(0); // Remaining time
-  const [pointsIncremented, setPointsIncremented] = useState(false); // Track points increment status
+  const [pointsIncremented, setPointsIncremented] = useState(false); 
 
   useEffect(() => {
     const updateProgress = setInterval(() => {
       if (video.current) {
-        const currentPosition = video.current.currentTime * 1000; // Convert to milliseconds
-        const videoDuration = video.current.duration * 1000; // Convert to milliseconds
+        const currentPosition = video.current.currentTime * 1000; 
+        const videoDuration = video.current.duration * 1000; 
 
         setPosition(currentPosition);
         setDuration(videoDuration);
@@ -38,15 +38,14 @@ function StartExercise() {
           !pointsIncremented
         ) {
           setPointsIncremented(true);
-          handleVideoWatched(); // Call the function when the video ends
+          handleVideoWatched(); 
         }
       }
     }, 1000);
 
-    return () => clearInterval(updateProgress); // Cleanup the interval when component unmounts
+    return () => clearInterval(updateProgress); 
   }, [pointsIncremented]);
 
-  // Function to handle video watched and update points
   const handleVideoWatched = async () => {
     try {
       const trainerId = localStorage.getItem("ID");

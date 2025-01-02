@@ -15,8 +15,8 @@ function Workout() {
   const maxcal = 5;
   const maxsteps = 2000;
   const maxmeters = 1000;
-  const howmuchvideoshow = 23;
-  const MAXhowmuchvideoshow = 23;
+  const howmuchvideoshow = 0;
+  const MAXhowmuchvideoshow = 20;
 
   const today = new Date();
   const date = new Date();
@@ -188,29 +188,11 @@ function Workout() {
       <Navbarhomepage />
       <div className="containerTreinarPlan-iner">
         <header className="header1">
-          <h1>Treinar Plan</h1>
+          <h1>Trainee Plan</h1>
         </header>
         <section className="stats">
           <div className="stats-box-cal-outer">
             <div className="stats-box-cal">
-              <div
-                className="stats-box-cal-iner"
-                style={{ backgroundColor: "#D8E6EC" }}
-              >
-                <h2>Calories</h2>
-                <p>{cal} Cal</p>
-                <div className="progress-container-trner ">
-                  <div
-                    className="progress-circle-1 progress-circle-2"
-                    style={{
-                      background: `conic-gradient(
-                        #bbf246 ${percentagecal * 3.6}deg,
-                        #fff ${percentagecal * 3.6}deg
-                      )`,
-                    }}
-                  ></div>
-                </div>
-              </div>
               <div
                 className="stats-box-cal-iner"
                 style={{ backgroundColor: "#F9B9B9" }}
@@ -234,7 +216,7 @@ function Workout() {
               className="stats-box-trine"
               style={{ backgroundColor: "#EAECFF" }}
             >
-              <h2>Treinar</h2>
+              <h2>Videos</h2>
               <p>
                 {howmuchvideoshow}/{MAXhowmuchvideoshow}
               </p>
