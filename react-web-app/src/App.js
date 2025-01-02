@@ -42,6 +42,11 @@ import AddAwards from "./componentes/Adminuser/AdminActivities/AddAwards";
 import Requestcoachspecialist from "./componentes/Adminuser/AdminActivities/Requestcoachspecialist";
 import Applicantscoach from "./componentes/Adminuser/AdminActivities/Applicantscoach";
 import ApplicantsSpecialist from "./componentes/Adminuser/AdminActivities/ApplicantsSpecialist";
+import Aerobicexercises from "./componentes/homepage/feature/Aerobicexercises";
+import Firstexercises from "./componentes/homepage/feature/AerobicExercises/Firstexercises";
+import Shop from "./componentes/homepage/Shop";
+import Iteamshop from "./componentes/homepage/Iteamshop";
+import Cart from "./componentes/homepage/Cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Uploading from "./componentes/coach/homepage/Uploading";
 import Friends from "./componentes/coach/homepage/Friends";
@@ -158,6 +163,11 @@ function App() {
             <Route path="/AddItems" element={<AddItems />} />
             <Route path="/SalesStatistics" element={<SalesStatistics />} />
             <Route path="/AddNewMeals" element={<AddNewMeals />} />
+            <Route path="/Aerobicexercises" element={<Aerobicexercises />} />
+            <Route path="/Firstexercises" element={<Firstexercises />} />
+            <Route path="/Shop" element={<Shop />} />
+            <Route path="/Iteamshop" element={<Iteamshop />} />
+            <Route path="/Cart" element={<Cart />} />
           </Routes>
         </BrowserRouter>
       </QuizProvider>

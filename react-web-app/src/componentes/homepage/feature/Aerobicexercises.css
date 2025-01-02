@@ -1,0 +1,111 @@
+.choose-exercises {
+  width: 60%;
+  border-radius: 20px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 20px;
+  background-color: #f8f8f8;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+.contner-outer {
+  padding-top: 120px;
+}
+.choose-exercises:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.info-div {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 50%;
+}
+.info-div-h1 {
+  font-size: 60px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, transform 0.3s;
+  margin-bottom: 40px;
+}
+.info-div-h5 {
+  font-size: 50px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, transform 0.3s;
+}
+.info-div-p {
+  font-size: 25px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, transform 0.3s;
+}
+.choose-continer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+}
+.serch-contenert-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+.serch-contenert {
+  width: 80%;
+  max-width: 600px;
+  display: flex;
+  gap: 10px;
+}
+
+.serch-contenert input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.serch-contenert button {
+  padding: 10px 20px;
+  background-color: #00ff48;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.serch-contenert button:hover {
+  background-color: #5cb300;
+}
