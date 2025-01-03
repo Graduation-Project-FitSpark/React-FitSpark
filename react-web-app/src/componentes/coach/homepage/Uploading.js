@@ -39,7 +39,7 @@ const CoachUpload = () => {
     }
     const formData = new FormData();
     formData.append("trainName", selectedTrain);
-    formData.append("video", videoFile, `${username}_${fileN}.mp4`);
+    formData.append("video", videoFile, `${username}@@@${fileN}.mp4`);
 
     try {
       const response = await axios.post(`${enumURL}/uploadingVideo`, formData, {

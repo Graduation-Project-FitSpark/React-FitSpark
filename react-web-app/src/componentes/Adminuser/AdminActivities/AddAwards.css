@@ -1,11 +1,11 @@
-.container {
+.container-ADDD {
   background-color: #fff;
   width: 100%;
   height: 100vh;
   padding: 20px;
 }
 
-.scroll-container {
+.scroll-container-ADDD {
   padding: 20px;
   width: 100%;
   display: flex;
@@ -15,64 +15,64 @@
   padding-top: 150px;
 }
 
-.header {
+.header-ADDD {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
   padding-right: 10px;
 }
 
-.inner-header {
+.inner-header-ADDD {
   display: flex;
   gap: 20px;
 }
 
-.back-button {
+.back-button-ADDD {
   background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-.text-header {
+.text-header-ADDD {
   font-size: 24px;
   font-weight: bold;
 }
 
-.batch-container {
+.batch-container-ADDD {
   margin-bottom: 10px;
   display: flex;
-  gap: 10px;
+  gap: 80px;
 }
 
-.outer {
+.outer-ADDD {
   margin-bottom: 10px;
 }
 
-.outer-item {
+.outer-item-ADDD {
   padding: 10px;
 }
 
-.point-img {
+.point-img-ADDD {
   width: 90px;
   height: 90px;
 }
 
-.name-point {
+.name-point-ADDD {
   text-align: center;
 }
 
-.name-awards {
+.name-awards-ADDD {
   font-size: 10px;
 }
 
-.point-of {
+.point-of-ADDD {
   font-size: 12px;
   color: #818181;
   margin-top: 5px;
 }
 
-.add-award-button {
+.add-award-button-ADDD {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -87,7 +87,7 @@
   border: none;
 }
 
-.modal {
+.modal-ADDD {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -98,7 +98,7 @@
   z-index: 1000;
 }
 
-.close-modal {
+.close-modal-ADDD {
   background: none;
   border: none;
   font-size: 20px;

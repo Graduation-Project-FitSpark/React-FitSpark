@@ -28,13 +28,6 @@ function Userstatistics() {
   const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
 
-  const saleData = [
-    { ID_Sale: 1, Sale_Name: "Sample Product", Price: 19.99 },
-    { ID_Sale: 2, Sale_Name: "Sample Product", Price: 19.99 },
-    { ID_Sale: 3, Sale_Name: "Sample Product", Price: 19.99 },
-    { ID_Sale: 3, Sale_Name: "Sample Product", Price: 19.99 },
-  ];
-
   const [coach, setCoach] = useState([]);
 
   const [specialist, setSpecialist] = useState([]);
@@ -78,6 +71,7 @@ function Userstatistics() {
   useEffect(() => {
     const countCoach = coach.filter((user) => {
       const [year, month] = user.Dateenter.split("T")[0].split("-");
+
       return (
         user.AcceptedDescription === "A" &&
         parseInt(year) === currentYear &&
@@ -88,6 +82,7 @@ function Userstatistics() {
 
     const countSpecialist = specialist.filter((user) => {
       const [year, month] = user.Dateenter.split("T")[0].split("-");
+
       return (
         user.AcceptedDescription === "A" &&
         parseInt(year) === currentYear &&
@@ -101,8 +96,14 @@ function Userstatistics() {
       return parseInt(year) === currentYear && parseInt(month) === currentMonth;
     }).length;
     setLengthTrainees(countTrainees);
+    const acceptedCoaches = coach.filter(
+      (user) => user.AcceptedDescription === "A"
+    ).length;
+    const acceptedSpecialists = specialist.filter(
+      (user) => user.AcceptedDescription === "A"
+    ).length;
 
-    setTotalUsers(coach.length + specialist.length + trainees.length);
+    setTotalUsers(acceptedCoaches + acceptedSpecialists + trainees.length);
 
     const watchedVideos = trainees.reduce(
       (sum, user) => sum + user.WatchedVideos,
@@ -134,16 +135,14 @@ function Userstatistics() {
     });
     setMaxPointSpecialist(topSpecialist);
     setValueMaxPointSpecialist(maxSpecialistPoints);
-
-    setSale(saleData.length);
-  }, [currentMonth, currentYear]);
+  }, [currentMonth, currentYear, coach, trainees, specialist]);
 
   return (
     <div className="Userstatistics">
       <div className="row">
         <div className="card">
           <div className="title-sata">
-            <p className="label-sata">Total Trainees</p>
+            <p className="label-sata">Total Trainees This Month</p>
             <div className="icondiv" style={{ backgroundColor: "#94E075" }}>
               <IoBarbell size={16} color="#fff" />
             </div>
@@ -152,7 +151,7 @@ function Userstatistics() {
         </div>
         <div className="card">
           <div className="title-sata">
-            <p className="labe-sata">Total Coaches</p>
+            <p className="labe-sata">Total Coaches This Month</p>
             <div className="icondiv" style={{ backgroundColor: "#E19083" }}>
               <IoPersonAdd size={16} color="#fff" />
             </div>
@@ -161,7 +160,7 @@ function Userstatistics() {
         </div>
         <div className="card">
           <div className="title-sata">
-            <p className="label-sata">Total Specialists</p>
+            <p className="label-sata">Total Nutrations This Month</p>
             <div className="icondiv" style={{ backgroundColor: "#E0DB87" }}>
               <IoPersonAdd size={16} color="#fff" />
             </div>
@@ -179,15 +178,6 @@ function Userstatistics() {
         </div>
       </div>
       <div className="row">
-        <div className="card">
-          <div className="title-sata">
-            <p className="label-sata">Store Sales</p>
-            <div className="icondiv" style={{ backgroundColor: "#44AAFC" }}>
-              <IoBasket size={16} color="#fff" />
-            </div>
-          </div>
-          <div className="value-value">{sale}</div>
-        </div>
         <div className="card">
           <div className="title-sata">
             <p className="label-sata">Active Users</p>
@@ -214,7 +204,7 @@ function Userstatistics() {
         </div>
         <div className="card">
           <div className="title-sata">
-            <p className="label-sata">Best Specialist</p>
+            <p className="label-sata">Best Nutration Expert</p>
             <div className="icondiv" style={{ backgroundColor: "#FC4488" }}>
               <IoMedal size={16} color="#fff" />
             </div>

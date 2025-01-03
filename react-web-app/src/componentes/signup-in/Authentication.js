@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import URL from "../../enum/enum.js";
 import "./auth.css";
-import { Alert } from "bootstrap";
+import { Alert } from "@mui/material";
 const Authentication = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -52,8 +52,7 @@ const Authentication = () => {
             localStorage.setItem("ID", data.ID_Coach);
             if (data.AcceptedDescription !== "P") navigate("/Coahhomepage");
             else
-              Alert.alert(
-                "Error",
+              alert(
                 "Sorry Sir, Your Account is not being Accepted by the Admin Yet!"
               );
           })
@@ -72,8 +71,7 @@ const Authentication = () => {
             if (!data.AcceptedDescription !== "P")
               navigate("/Homepagespecialist");
             else
-              Alert.alert(
-                "Error",
+              alert(
                 "Sorry Sir, Your Account is not being Accepted by the Admin Yet!"
               );
           })

@@ -74,7 +74,7 @@ function ApplicantsSpecialist() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(specialists),
+        body: JSON.stringify(updatedSpecialists),
       });
 
       if (!response.ok) {

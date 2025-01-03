@@ -33,6 +33,9 @@ const Navbar = () => {
             <Link to="/Aerobicexercises">Aerobic exercises</Link>
           </li>
           <li>
+            <Link to="/WeeklyPlan">Weekly Plan</Link>
+          </li>
+          <li>
             <Link to="/Profile">Settings</Link>
           </li>
         </ul>

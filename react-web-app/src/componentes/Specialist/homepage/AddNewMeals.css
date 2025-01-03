@@ -1,18 +1,42 @@
-.container {
+.containerdd {
   max-width: 100%;
   height: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
+  padding-top: 150px;
 }
 
+.search-container {
+  position: relative;
+  width: 50%;
+  margin-bottom: 20px;
+}
+.search-container-outer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
 .search-bar {
   width: 100%;
-  padding: 15px;
+  padding: 15px 40px 15px 15px;
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.search-button-add-meales {
+  background-color: #25d9af;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 2%;
+  margin-top: 5px;
 }
 
 .meal-grid {
@@ -21,33 +45,51 @@
   gap: 20px;
   margin-bottom: 20px;
   width: 100%;
+  margin-left: 2%;
 }
 
 .meal-card {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #f0f0f3, #ffffff);
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1),
+    -4px -4px 8px rgba(255, 255, 255, 0.7);
+  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.6s, box-shadow 0.3s;
-  perspective: 1000px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 80%;
+  margin-top: 20px;
 }
 
 .meal-card:hover {
-  transform: rotateY(360deg) scale(1.15);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
 }
 
 .meal-image {
   width: 100%;
-  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.meal-card:hover .meal-image {
+  transform: scale(1.05);
 }
 
 .meal-card h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  color: #333;
   text-align: center;
-  margin: 10px 0;
+  padding: 15px;
+  background: linear-gradient(145deg, #e8e8e8, #ffffff);
+  margin: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.modal-content {
+.modal-contentddd {
   padding: 30px;
   background-color: white;
   border-radius: 10px;
@@ -58,10 +100,12 @@
   top: 5%;
   align-items: center;
 }
-
-.modal-image {
+.modal-class-title {
+  text-align: left;
+}
+.modal-image-add {
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   margin-bottom: 20px;
 }
 
@@ -84,13 +128,15 @@
 }
 
 .search-title {
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #25d9af;
   text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  margin-bottom: 10%;
-  letter-spacing: 6px;
+  letter-spacing: 0.5px;
+  margin: 10px 0;
+  text-transform: capitalize;
+  margin-bottom: 50px;
 }
 
 .ingredient-item {
@@ -110,9 +156,14 @@
   font-size: 14px;
   margin-top: 5px;
 }
-
-.add-meal-button {
-  background-color: #388e3c;
+.add-clance-class-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+.add-meal-button-api {
+  background-color: #25d9af;
   color: white;
   padding: 10px 20px;
   font-size: 18px;
@@ -123,10 +174,23 @@
   margin-bottom: 2%;
 }
 
-.add-meal-button:hover {
-  background-color: #2c6e2e;
+.add-meal-button-api:hover {
+  background-color: #009e79;
 }
-
+.outlined-Close {
+  background-color: #dc7a6e;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 2%;
+}
+.outlined-Close:hover {
+  background-color: #e14b37;
+}
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;

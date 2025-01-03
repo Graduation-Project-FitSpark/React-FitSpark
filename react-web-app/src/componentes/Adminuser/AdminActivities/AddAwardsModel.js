@@ -76,10 +76,10 @@ function AddAwardsModel({ modalVisible, setModalVisible }) {
   if (!modalVisible) return null;
 
   return (
-    <div className="overlay">
-      <div className="modal-container">
-        <div className="image-upload">
-          <label className="button">
+    <div className="overlay-ADDD">
+      <div className="modal-container-ADDD">
+        <div className="image-upload-ADDD">
+          <label className="button-ADDD-upload">
             Upload Image
             <input
               type="file"
@@ -90,22 +90,22 @@ function AddAwardsModel({ modalVisible, setModalVisible }) {
           </label>
         </div>
 
-        <div className="input-container">
-          <label className="label">Name:</label>
+        <div className="input-container-ADDD">
+          <label className="label-ADDD">Name:</label>
           <input
             type="text"
-            className="input"
+            className="input-ADDD"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
           />
         </div>
 
-        <div className="input-container">
-          <label className="label">Number:</label>
+        <div className="input-container-ADDD">
+          <label className="label-ADDD">Number:</label>
           <input
             type="number"
-            className="input"
+            className="input-ADDD"
             value={number}
             onChange={(e) => setNumber(e.target.value)}
             placeholder="Enter a number"
@@ -118,11 +118,11 @@ function AddAwardsModel({ modalVisible, setModalVisible }) {
             style={{ width: "100px", height: "100px", objectFit: "cover" }}
           />
         )}
-        <div className="buttons-container">
-          <button className="button cancel-button" onClick={handleCancel}>
+        <div className="buttons-container-ADDD">
+          <button className="button cancel-button-ADDD" onClick={handleCancel}>
             Cancel
           </button>
-          <button className="button submit-button" onClick={handleSubmit}>
+          <button className="button submit-button-ADDD" onClick={handleSubmit}>
             Submit
           </button>
         </div>

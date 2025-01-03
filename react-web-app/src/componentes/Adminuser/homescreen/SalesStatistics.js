@@ -35,16 +35,18 @@ function SalesStatistics() {
   useEffect(() => {
     const fetchSalesData = async () => {
       try {
-        const response = await fetch(`${URL}/getAllSalesTrainers`);
-        const data = await response.json();
-        setSelsData(data.sales);
+        const response1 = await fetch(`${URL}/getAllSalesTrainers`);
+        const data1 = await response1.json();
+        setSelsData(data1.sales);
+
         const response2 = await fetch(`${URL}/getAllSales`);
-        const data2 = await response.json();
+        const data2 = await response2.json();
         setSakeItems(data2.sales);
       } catch (error) {
         console.error("Error fetching sales data:", error);
       }
     };
+
     fetchSalesData();
   }, []);
 
@@ -64,10 +66,10 @@ function SalesStatistics() {
         (el) => el.Product_Name === value.Product_Name
       );
       if (element) {
-        element.count_value += value.Quantity_User;
+        element.count_value += value.Quantity;
       }
     });
-
+    console.log(sakeItems);
     const maxValue = Math.max(...count.map((item) => item.count_value));
     const maxProduct = count.find((item) => item.count_value === maxValue);
 
@@ -79,13 +81,13 @@ function SalesStatistics() {
     let countMonthlyDollar = 0;
 
     selsdata.forEach((item) => {
-      const itemDate = new Date(item.Dateenter.split(" ")[0]);
+      const itemDate = new Date(item.Dateenter.split("T")[0]);
       const itemMonth = itemDate.getMonth() + 1;
       const itemYear = itemDate.getFullYear();
 
       if (itemMonth === currentMonth && itemYear === currentYear) {
-        countMonthly += item.Quantity_User;
-        countMonthlyDollar += item.Price * item.Quantity_User;
+        countMonthly += item.Quantity;
+        countMonthlyDollar += item.Price * item.Quantity;
       }
     });
 
@@ -236,7 +238,7 @@ function SalesStatistics() {
               <th>Product Name</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Username</th>
+              <th>Description</th>
               <th>Date</th>
             </tr>
           </thead>
@@ -250,9 +252,9 @@ function SalesStatistics() {
                 <td>{row.ID_Sale}</td>
                 <td>{row.Product_Name}</td>
                 <td>{row.Price}</td>
-                <td>{row.Quantity_User}</td>
-                <td>{row.Username}</td>
-                <td>{row.Dateenter.split(" ")[0]}</td>
+                <td>{row.Quantity}</td>
+                <td>{row.Description}</td>
+                <td>{row.Dateenter.split("T")[0]}</td>
               </tr>
             ))}
           </tbody>

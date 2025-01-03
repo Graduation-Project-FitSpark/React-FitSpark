@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ProfileAdmin.css";
 import axios from "axios";
 import URL from "../../../enum/enum";
-
+import Navbaradmin from "./Navbaradmin";
 const ProfileAdmin = () => {
   const [adminDetails, setAdminDetails] = useState({});
   const [editableFields, setEditableFields] = useState({});
@@ -76,31 +76,41 @@ const ProfileAdmin = () => {
     }
   };
 
+  const fieldPairs = [
+    ["Email", "Password"],
+    ["First_Name", "Last_Name"],
+    ["Phone_Number", "Age"],
+  ];
+
   return (
-    <div className="profile-admin-container">
-      <h1 className="profile-title">Admin Profile</h1>
-      <div className="profile-fields">
-        {Object.keys(editableFields).map((field) => (
-          <div key={field} className="field-container">
-            <label className="field-label">{field.replace(/_/g, " ")}</label>
-            <input
-              type="text"
-              className={`field-input ${
-                isEditing[field] ? "editable" : "disabled"
-              }`}
-              value={editableFields[field]?.toString() || ""}
-              disabled={!isEditing[field]}
-              onChange={(e) => handleFieldChange(field, e.target.value)}
-            />
-            <button
-              className="edit-button"
-              onClick={() => toggleEditing(field)}
-            >
-              {isEditing[field] ? "Save" : "Edit"}
-            </button>
+    <div>
+      <Navbaradmin />
+      <div className="profile-containerCADDD">
+        <h1 className="profile-titleADDD">Admin Profile</h1>
+        {fieldPairs.map((pair, index) => (
+          <div key={index} className="field-rowFADDD">
+            {pair.map((field) => (
+              <div key={field} className="field-containerADDD">
+                <label className="labelADDD">{field.replace(/_/g, " ")}</label>
+                <input
+                  className={`inputADDD ${
+                    isEditing[field] ? "editable" : "disabled"
+                  }`}
+                  value={editableFields[field] || ""}
+                  readOnly={!isEditing[field]}
+                  onChange={(e) => handleFieldChange(field, e.target.value)}
+                />
+                <button
+                  className="toggle-buttonNADDD"
+                  onClick={() => toggleEditing(field)}
+                >
+                  {isEditing[field] ? "Save" : "Change"}
+                </button>
+              </div>
+            ))}
           </div>
         ))}
-        <button className="update-button" onClick={updateAdminDetails}>
+        <button className="update-buttonADDD" onClick={updateAdminDetails}>
           Update Profile
         </button>
       </div>

@@ -66,6 +66,7 @@ import AddItems from "./componentes/Adminuser/homescreen/AddItem";
 import SalesStatistics from "./componentes/Adminuser/homescreen/SalesStatistics";
 import AddNewMeals from "./componentes/Specialist/homepage/AddNewMeals";
 import MyProvider from "./MyProvider";
+import WeeklyPlan from "./componentes/homepage/WeeklyPlan";
 function App() {
   return (
     <div className="App">
@@ -74,6 +75,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route index element={<Hello />} />
+              <Route path="/WeeklyPlan" element={<WeeklyPlan />} />
               <Route path="/Homepage" element={<Homepage />} />
               <Route path="/firstpage" element={<Hello />} />
               <Route path="/Signin" element={<Signin />} />

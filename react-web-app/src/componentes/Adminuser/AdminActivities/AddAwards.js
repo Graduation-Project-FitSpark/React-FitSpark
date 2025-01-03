@@ -40,14 +40,18 @@ const AddAwards = () => {
     for (let i = 0; i < Awards.length; i += 6) {
       const batch = Awards.slice(i, i + 6);
       elements.push(
-        <div key={i} className="batch-container">
+        <div key={i} className="batch-container-ADDD">
           {batch.map((item, index) => (
-            <div key={index} className="outer">
-              <div className="outer-item">
-                <img className="point-img" src={item.photo} alt={item.name} />
-                <div className="name-point">
-                  <p className="name-awards">{item.name}</p>
-                  <p className="point-of">{item.point}</p>
+            <div key={index} className="outer-ADDD">
+              <div className="outer-item-ADDD">
+                <img
+                  className="point-img-ADDD"
+                  src={item.photo}
+                  alt={item.name}
+                />
+                <div className="name-point-ADDD">
+                  <p className="name-awards-ADDD">{item.name}</p>
+                  <p className="point-of-ADDD">{item.point}</p>
                 </div>
               </div>
             </div>
@@ -62,16 +66,16 @@ const AddAwards = () => {
     <div>
       <Navbaradmin />
 
-      <div className="container">
-        <div className="scroll-container">
-          <div className="header">
-            <div className="inner-header">
-              <h2 className="text-header">Awards</h2>
+      <div className="container-ADDD">
+        <div className="scroll-container-ADDD">
+          <div className="header-ADDD">
+            <div className="inner-header-ADDD">
+              <h2 className="text-header-ADDD">Awards</h2>
             </div>
           </div>
           <div>{pointAwards()}</div>
           <button
-            className="add-award-button"
+            className="add-award-button-ADDD"
             onClick={() => setModalVisible(true)}
           >
             +

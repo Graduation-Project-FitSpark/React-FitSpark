@@ -70,7 +70,7 @@ function Applicants() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(coaches),
+        body: JSON.stringify(updatedCoaches),
       });
 
       if (!response.ok) {

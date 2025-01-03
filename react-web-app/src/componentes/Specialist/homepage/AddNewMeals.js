@@ -3,6 +3,16 @@ import { Modal, Button } from "@mui/material";
 import "./AddNewMeals.css";
 import URL from "../../../enum/enum";
 import { Alert } from "bootstrap";
+import Navbarhomepage from "./Navbarspecialist";
+import {
+  IoBarbell,
+  IoPersonAdd,
+  IoFastFood,
+  IoPeople,
+  IoBasket,
+  IoCheckmarkDoneOutline,
+  IoSearchSharp,
+} from "react-icons/io5";
 const apiKey = "d8c55e3ae4fa4d45ba3f548c64c7d71b";
 
 const AddNewMeals = () => {
@@ -42,7 +52,7 @@ const AddNewMeals = () => {
   };
 
   const handleMealClick = async (meal) => {
-    console.log("Meal clicked:", meal); 
+    console.log("Meal clicked:", meal);
     setSelectedMeal(meal);
     await fetchIngredientsDetails(meal.id);
   };
@@ -118,58 +128,76 @@ const AddNewMeals = () => {
   );
 
   return (
-    <div className="container">
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search for meals"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && fetchMeals()}
-      />
-      <h2 className="search-title">
-        Search and Add whatever meal you want to the system!
-      </h2>
-
-      <div className="meal-grid">
-        {mealResults.map((meal) => (
-          <div
-            key={meal.id}
-            className="meal-card"
-            onClick={() => handleMealClick(meal)}
-          >
-            <img src={meal.image} alt={meal.title} className="meal-image" />
-            <h3>{meal.title}</h3>
+    <div>
+      <Navbarhomepage />
+      <div className="containerdd">
+        <h2 className="search-title">Search and add any meal</h2>
+        <div className="search-container-outer">
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search for meals"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && fetchMeals()}
+            />
           </div>
-        ))}
-      </div>
 
-      <Modal
-        open={!!selectedMeal}
-        onClose={() => setSelectedMeal(null)}
-        aria-labelledby="meal-details-modal"
-      >
-        <div className="modal-content">
-          <img
-            src={selectedMeal?.image}
-            alt={selectedMeal?.title}
-            className="modal-image"
-          />
-          <h3>{selectedMeal?.title}</h3>
-          <h4>Ingredients:</h4>
-          {renderIngredients()}
-          <Button
-            className="add-meal-button"
-            variant="contained"
-            onClick={handleAddMeal}
-          >
-            Add Meal
-          </Button>
-          <Button variant="outlined" onClick={() => setSelectedMeal(null)}>
-            Close
-          </Button>
+          <div className="search-button-add-meales">
+            <IoSearchSharp size={25} color="#fff" />
+          </div>
         </div>
-      </Modal>
+
+        <div className="meal-grid">
+          {mealResults.map((meal) => (
+            <div
+              key={meal.id}
+              className="meal-card"
+              onClick={() => handleMealClick(meal)}
+            >
+              <img src={meal.image} alt={meal.title} className="meal-image" />
+              <h3>{meal.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        <Modal
+          open={!!selectedMeal}
+          onClose={() => setSelectedMeal(null)}
+          aria-labelledby="meal-details-modal"
+        >
+          <div className="modal-contentddd">
+            <img
+              src={selectedMeal?.image}
+              alt={selectedMeal?.title}
+              className="modal-image-add"
+            />
+            <h1>{selectedMeal?.title}</h1>
+            <div className="modal-class-title">
+              <h4>Ingredients:</h4>
+            </div>
+
+            {renderIngredients()}
+            <div className="add-clance-class-button">
+              <div
+                className="add-meal-button-api"
+                variant="contained"
+                onClick={handleAddMeal}
+              >
+                Add Meal
+              </div>
+              <div
+                variant="outlined"
+                onClick={() => setSelectedMeal(null)}
+                className="outlined-Close "
+              >
+                Close
+              </div>
+            </div>
+          </div>
+        </Modal>
+      </div>
     </div>
   );
 };
