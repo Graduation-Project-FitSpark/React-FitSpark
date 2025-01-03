@@ -11,8 +11,31 @@ function ChatTrainerCoach() {
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
   const navigate = useNavigate();
+  const insertNotification = async () => {
+    const username = localStorage.getItem("username");
+    const currentDate = new Date().toISOString().split("T")[0];
 
+    try {
+      const notificationData = {
+        Description: "Check Out Your Messages!",
+        Date: currentDate,
+        Msg_To: username,
+      };
+
+      const response = await axios.post(
+        `${URL}/insertNotification`,
+        notificationData
+      );
+
+      console.log(response.data.message);
+      return response.data.message;
+    } catch (error) {
+      console.error("Error inserting notification:", error);
+      return "Failed to insert notification";
+    }
+  };
   useEffect(() => {
+    insertNotification();
     const getIds = async () => {
       try {
         const trainer = localStorage.getItem("ID");

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { sendMessage, useMessages } from "../../../firebase";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-
+import axios from "axios";
+import URL from "../../../enum/enum";
 function ChatSpecialist() {
   const { state } = useLocation();
   const { trainerDetails } = state || {};

@@ -14,6 +14,8 @@ import {
   IoCart,
 } from "react-icons/io5";
 import { RiVisaLine } from "react-icons/ri";
+import URL from "../../enum/enum";
+import axios from "axios";
 import complet from "../../img/7efs-maker-unscreen.gif";
 function Cart() {
   const { sharedValue } = useContext(MyContext);
@@ -23,16 +25,38 @@ function Cart() {
   const [setshowvias, setsetshowvias] = useState(false);
   const [showcash, setshowcash] = useState(false);
   const [showpaypal, setshowpaypal] = useState(false);
-  const [ID_Trainer, setID_Trainer] = useState(10); //جيب الاي دي تا الي داخل منو الحساب
+  const [ID_Trainer, setID_Trainer] = useState(10);
   const [showcompletl, setshowcompletl] = useState(false);
-
+  const [location, setLocation] = useState([]);
+  const [CVC, setCVC] = useState("");
+  const [ExpirationDate, setExpirationDate] = useState("");
+  const [CN, setCN] = useState("");
+  const [name, setName] = useState("");
   useEffect(() => {
+    async function getID() {
+      let id = localStorage.getItem("ID");
+      setID_Trainer(id);
+      const username = localStorage.getItem("username");
+      const trainerResponse = await axios.post(`${URL}/getTrainerDetails`, {
+        username,
+      });
+
+      setCN(trainerResponse.data.trainer.Card_Number);
+      setCVC(trainerResponse.data.trainer.CVC);
+      setExpirationDate(trainerResponse.data.trainer.Expression_Date);
+      setLocation(trainerResponse.data.trainer.Location);
+      setName(
+        `${trainerResponse.data.trainer.First_Name} ${trainerResponse.data.trainer.Last_Name}`
+      );
+    }
+    getID();
     let calculatedTotal = 0;
     Items.forEach((item) => {
       calculatedTotal += item.Price * item.Quantity;
     });
     setTotal(calculatedTotal);
   }, [Items]);
+
   useEffect(() => {
     if (showcompletl) {
       const timer = setTimeout(() => {
@@ -46,7 +70,7 @@ function Cart() {
   const deliveryCost = 10.0;
   const finalTotal = total + deliveryCost;
 
-  const finalpay = () => {
+  const finalpay = async () => {
     const currentDate = new Date().toISOString();
 
     const updatedItems = Items.map((item) => ({
@@ -55,8 +79,34 @@ function Cart() {
       Dateenter: currentDate,
     }));
 
+    console.log("====================================");
     console.log("Updated Items with additional properties:", updatedItems);
-    setshowcompletl(true);
+    console.log("Checkout button pressed");
+
+    try {
+      const response = await fetch(`${URL}/uploadOrder`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Items: updatedItems,
+          ID_Trainer: ID_Trainer,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        alert("The order has been Done!");
+        navigate("/Shop");
+      } else {
+        throw new Error("Something went wrong while uploading the order.");
+      }
+    } catch (error) {
+      console.error("Error uploading order:", error);
+      alert(error.message);
+    }
   };
 
   useEffect(() => {
@@ -229,13 +279,20 @@ function Cart() {
             {setshowvias && (
               <div>
                 <label className="label">CARDHOLDER'S NAME</label>
-                <input className="input" placeholder="John Doe" />
+                <input
+                  className="input"
+                  placeholder="John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
 
                 <label className="label">CARD NUMBER</label>
                 <input
                   className="input"
                   placeholder="•••• •••• •••• 1234"
                   type="text"
+                  value={CN}
+                  onChange={(e) => setCN(e.target.value)}
                 />
 
                 <div className="row">
@@ -245,11 +302,19 @@ function Cart() {
                       className="input"
                       placeholder="MM/YYYY"
                       type="text"
+                      value={ExpirationDate.split("T")[0]}
+                      onChange={(e) => setExpirationDate(e.target.value)}
                     />
                   </div>
                   <div className="column">
                     <label className="label">CVC/CVV2</label>
-                    <input className="input" placeholder="•••" type="text" />
+                    <input
+                      className="input"
+                      placeholder="•••"
+                      type="text"
+                      value={CVC}
+                      onChange={(e) => setCVC(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>

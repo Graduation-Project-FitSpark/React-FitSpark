@@ -54,19 +54,9 @@
   border-radius: 10px;
 }
 
-.title-text {
-  font-size: 20px;
+.title-texT {
+  font-size: 50px;
   color: #ffffff;
   font-weight: bold;
   margin-bottom: 10px;
-}
-
-.button-textRequests {
-  font-size: 18px;
-  color: #1c1b29;
-  background-color: #b2f200;
-  padding: 5px 8px;
-  border: none;
-  border-bottom-right-radius: 10;
-  cursor: pointer;
 }

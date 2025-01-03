@@ -5,7 +5,7 @@ const CounterPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { videolink, cal } = location.state || {};
+  const { videolink, cal, goal } = location.state || {};
   const ss = "rrrr";
   const [count, setCount] = useState(0);
 
@@ -23,7 +23,7 @@ const CounterPage = () => {
     if (count === 3) {
       const timeout = setTimeout(() => {
         console.log("Video data in CounterPage:", videolink);
-        navigate("/StartExercise", { state: { videolink, cal } });
+        navigate("/StartExercise", { state: { videolink, cal, goal } });
       }, 1000);
 
       return () => clearTimeout(timeout);

@@ -12,20 +12,41 @@ function Workout() {
   const [cal, setCal] = useState(0);
   const [steps, setSteps] = useState(0);
   const [meters, setMeters] = useState(0);
+  const [video, setVideo] = useState(0);
+
   const maxcal = 5;
   const maxsteps = 2000;
   const maxmeters = 1000;
   const howmuchvideoshow = 0;
   const MAXhowmuchvideoshow = 20;
-
   const today = new Date();
   const date = new Date();
 
   const percentagecal = (cal / maxcal) * 100;
-  const percentagevideo = (howmuchvideoshow / MAXhowmuchvideoshow) * 100;
+  const percentagevideo = (video / MAXhowmuchvideoshow) * 100;
   const percentagesteps = (steps / maxsteps) * 100;
   const percentagemeters = (meters / maxmeters) * 100;
+  useEffect(() => {
+    const fetchTrainerDetails = async () => {
+      const username = localStorage.getItem("username");
+      const trainerResponse = await axios.post(`${URL}/getTrainerDetails`, {
+        username,
+      });
 
+      setVideo(trainerResponse.data.trainer.WatchedVideos);
+      const response = await axios.get(`${URL}/getTrainerClorieDetails`);
+      let ID_Trainer = localStorage.getItem("ID");
+
+      const matchedTrainer = response.data.find(
+        (item) => item.ID_Trainer === ID_Trainer
+      );
+      setCal(matchedTrainer ? matchedTrainer.Calories : 0);
+      setMeters(matchedTrainer ? matchedTrainer.Distance : 0);
+      setSteps(matchedTrainer ? matchedTrainer.Steps : 0);
+    };
+
+    fetchTrainerDetails();
+  }, []);
   const formattedDate = date.toLocaleDateString("en-US", {
     weekday: "long",
   });
@@ -218,7 +239,7 @@ function Workout() {
             >
               <h2>Videos</h2>
               <p>
-                {howmuchvideoshow}/{MAXhowmuchvideoshow}
+                {video}/{MAXhowmuchvideoshow}
               </p>
               <div className="progress-container-trner ">
                 <div
@@ -291,14 +312,14 @@ function Workout() {
           {filteredPlan.length > 0 ? (
             filteredPlan.map((planItem) => (
               <div
-                className="exercise-card"
+                className="exercise-card-traniner"
                 key={planItem.id}
                 onClick={() => navigate("/Exercise", { state: planItem })}
               >
                 <img src={planItem.imageUrl} alt={planItem.name} />
                 <div className="details">
                   <h3>{planItem.name}</h3>
-                  <p>{planItem.goal}</p>
+                  <p>{planItem.goal} Steps</p>
                   <div className="progress-bar">
                     <div
                       className="progress"

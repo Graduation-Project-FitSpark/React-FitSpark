@@ -8,7 +8,10 @@ function Requests() {
   const navigate = useNavigate();
 
   return (
-    <div className="container-requests">
+    <div
+      className="container-requests"
+      onClick={() => navigate("/Requesttraining")}
+    >
       <div className="container-requests-inner">
         <div
           className="image-background"
@@ -16,18 +19,11 @@ function Requests() {
         >
           <div className="text-container-outer">
             <div className="text-container">
-              <p className="title-text">Training Requests</p>
+              <p className="title-texT">Training Requests</p>
             </div>
             <div className="container-button-text">
               <div className="fake-container"></div>
-              <div className="button-container">
-                <button
-                  className="button-textRequests"
-                  onClick={() => navigate("/Requesttraining")}
-                >
-                  <IoChevronForwardOutline size={25} />
-                </button>
-              </div>
+              <div className="button-container"></div>
             </div>
           </div>
         </div>

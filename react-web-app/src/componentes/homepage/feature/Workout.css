@@ -130,23 +130,28 @@
   margin-top: 40px;
 }
 
-.exercise-card {
+.exercise-card-traniner {
   display: flex;
   align-items: center;
   background-color: #eaf3fc;
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 10px;
-  width: 50%;
+  width: 20%;
+  min-width: 50%;
 }
 
-.exercise-card img {
+.exercise-card-traniner img {
   width: 70px;
   height: 70px;
   border-radius: 5px;
   margin-right: 10px;
 }
-
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
 .details h3 {
   margin: 0;
   text-align: left;

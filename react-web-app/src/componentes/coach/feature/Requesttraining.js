@@ -91,20 +91,20 @@ function RequestTraining() {
   };
 
   return (
-    <div className="request-training">
+    <div className="request-trainingCoach">
       <Navbarcoach />
-      <div className="requstcontenr">
-        <div className="header">
+      <div className="requstcontenrCoach">
+        <div className="headerCoachR">
           <h1>Request Trainer</h1>
         </div>
 
-        <div className="info">
-          <div className="count">
+        <div className="infoCoachR">
+          <div className="countCoachR">
             <span>Number of trainees you train:</span>
             <strong>{countTrainers} Trainees</strong>
           </div>
 
-          <div className="trainer-requests">
+          <div className="trainer-requestsCoachR">
             {trainerCoachData
               .filter(
                 (item) => item.ID_Coach === IDCoach && item.Accepted === "P"
@@ -116,20 +116,20 @@ function RequestTraining() {
                 if (!trainerInfo) return null;
 
                 return (
-                  <div key={item.ID_Trainer} className="trainer-box">
-                    <div className="trainer-details">
+                  <div key={item.ID_Trainer} className="trainer-boxCoachR">
+                    <div className="trainer-detailsCoachR">
                       <img
                         src={trainerInfo.img}
                         alt={trainerInfo.name}
-                        className="trainer-image"
+                        className="trainer-imageCoachR"
                       />
                       <div>
                         <p>Name: {trainerInfo.name}</p>
                         <p>Age: {trainerInfo.Age}</p>
                       </div>
                     </div>
-                    <p className="description">{item.Description}</p>
-                    <div className="actions">
+                    <p className="descriptionCoachR">{item.Description}</p>
+                    <div className="actionsCoachR">
                       <button
                         className="accept-button"
                         onClick={() => acceptRequest(item.ID_Trainer)}

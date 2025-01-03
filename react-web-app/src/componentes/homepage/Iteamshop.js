@@ -1,8 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { MyContext } from "../../MyProvider";
 import "./Iteamshop.css";
 import Navbarhomepage from "./Navbarhomepage";
+import URL from "../../enum/enum";
+import axios from "axios";
 import {
   IoBarbell,
   IoPersonAdd,

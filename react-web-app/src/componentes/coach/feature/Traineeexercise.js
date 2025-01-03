@@ -304,7 +304,7 @@ function TraineeExercise() {
             <p>Age: {Age}</p>
           </div>
         </div>
-        <div className="scroll-container">
+        <div className="scroll-containerCoach">
           {data.map((item, index) => (
             <div
               key={index}

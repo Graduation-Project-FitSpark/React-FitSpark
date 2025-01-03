@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import URL from "../../../enum/enum";
 import "./ProfileCoach.css";
-import { Alert } from "bootstrap";
+import Navbarhomepage from "./Navbarcoach";
+
 const ProfileCoach = ({ route, navigation }) => {
   const [coachDetails, setCoachDetails] = useState({});
   const [editableFields, setEditableFields] = useState({});
@@ -41,7 +42,7 @@ const ProfileCoach = ({ route, navigation }) => {
       }
     } catch (error) {
       console.error("Error fetching coach details:", error);
-      Alert.alert("Error", "Unable to fetch coach details.");
+      alert("Unable to fetch coach details.");
     }
   };
 
@@ -62,7 +63,7 @@ const ProfileCoach = ({ route, navigation }) => {
     }, {});
 
     if (Object.keys(updatedFields).length === 0) {
-      Alert.alert("No Changes", "No fields have been updated.");
+      alert("No fields have been updated.");
       return;
     }
 
@@ -72,40 +73,57 @@ const ProfileCoach = ({ route, navigation }) => {
         ...updatedFields,
       });
       if (response.status === 200) {
-        Alert.alert("Success", "Coach details updated successfully.");
+        alert("Coach details updated successfully.");
         fetchTrainerDetails();
       } else {
-        Alert.alert("Error", "Failed to update coach details.");
+        alert("Failed to update coach details.");
       }
     } catch (error) {
       console.error("Error updating coach details:", error);
-      Alert.alert("Error", "Unable to update coach details.");
+      alert("Unable to update coach details.");
     }
   };
 
+  const fieldPairs = [
+    ["Email", "Password"],
+    ["First_Name", "Last_Name"],
+    ["Phone_Number", "Age"],
+    ["Card_Number", "Expression_Date"],
+    ["CVC"],
+  ];
+
   return (
-    <div className="profile-container">
-      <h1 className="profile-title">Profile</h1>
-      {Object.keys(editableFields).map((field) => (
-        <div key={field} className="field-container">
-          <label className="label">{field.replace(/_/g, " ")}</label>
-          <input
-            className={`input ${isEditing[field] ? "editable" : "disabled"}`}
-            value={editableFields[field] || ""}
-            onChange={(e) => handleFieldChange(field, e.target.value)}
-            disabled={!isEditing[field]}
-          />
-          <button
-            className="toggle-button"
-            onClick={() => toggleEditing(field)}
-          >
-            {isEditing[field] ? "Save" : "Edit"}
-          </button>
-        </div>
-      ))}
-      <button className="update-button" onClick={updateCoachDetails}>
-        Update Profile
-      </button>
+    <div>
+      <Navbarhomepage />
+      <div className="profile-containerC">
+        <h1 className="profile-title">Profile</h1>
+        {fieldPairs.map((pair, index) => (
+          <div key={index} className="field-rowF">
+            {pair.map((field) => (
+              <div key={field} className="field-container">
+                <label className="label">{field.replace(/_/g, " ")}</label>
+                <input
+                  className={`input ${
+                    isEditing[field] ? "editable" : "disabled"
+                  }`}
+                  value={editableFields[field] || ""}
+                  readOnly={!isEditing[field]}
+                  onChange={(e) => handleFieldChange(field, e.target.value)}
+                />
+                <button
+                  className="toggle-buttonN"
+                  onClick={() => toggleEditing(field)}
+                >
+                  {isEditing[field] ? "Save" : "Change"}
+                </button>
+              </div>
+            ))}
+          </div>
+        ))}
+        <button className="update-button" onClick={updateCoachDetails}>
+          Update
+        </button>
+      </div>
     </div>
   );
 };

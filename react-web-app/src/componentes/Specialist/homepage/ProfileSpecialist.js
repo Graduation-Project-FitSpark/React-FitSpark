@@ -8,8 +8,34 @@ const ProfileSpecialist = ({ route, navigation }) => {
   const [specialistDetails, setspecialistDetails] = useState({});
   const [editableFields, setEditableFields] = useState({});
   const [isEditing, setIsEditing] = useState({});
+  const insertNotification = async () => {
+    const username = localStorage.getItem("username");
+    const currentDate = new Date().toISOString().split("T")[0];
 
+    try {
+      const notificationData = {
+        Description:
+          Math.random() > 0.5
+            ? "Remember you can Add new Meals to the system"
+            : "Don't forget to update the system with the latest meals",
+        Date: currentDate,
+        Msg_To: username,
+      };
+
+      const response = await axios.post(
+        `${URL}/insertNotification`,
+        notificationData
+      );
+
+      console.log(response.data.message);
+      return response.data.message;
+    } catch (error) {
+      console.error("Error inserting notification:", error);
+      return "Failed to insert notification";
+    }
+  };
   useEffect(() => {
+    insertNotification();
     fetchTrainerDetails();
   }, []);
 

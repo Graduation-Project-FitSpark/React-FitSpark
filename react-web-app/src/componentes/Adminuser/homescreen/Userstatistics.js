@@ -148,7 +148,7 @@ function Userstatistics() {
               <IoBarbell size={16} color="#fff" />
             </div>
           </div>
-          <div className="value">{lengthTrainees}</div>
+          <div className="valueV">{lengthTrainees}</div>
         </div>
         <div className="card">
           <div className="title-sata">
@@ -157,7 +157,7 @@ function Userstatistics() {
               <IoPersonAdd size={16} color="#fff" />
             </div>
           </div>
-          <div className="value">{lengthCoach}</div>
+          <div className="valueV">{lengthCoach}</div>
         </div>
         <div className="card">
           <div className="title-sata">
@@ -166,7 +166,7 @@ function Userstatistics() {
               <IoPersonAdd size={16} color="#fff" />
             </div>
           </div>
-          <div className="value">{lengthSpecialist}</div>
+          <div className="valueV">{lengthSpecialist}</div>
         </div>
         <div className="card">
           <div className="title-sata">
@@ -175,7 +175,7 @@ function Userstatistics() {
               <IoPeople size={16} color="#fff" />
             </div>
           </div>
-          <div className="value">{totalUsers}</div>
+          <div className="valueV">{totalUsers}</div>
         </div>
       </div>
       <div className="row">
@@ -204,7 +204,7 @@ function Userstatistics() {
               <IoMedal size={16} color="#fff" />
             </div>
           </div>
-          <div className="value">
+          <div className="valueV">
             {coach.find((user) => user.ID_Coach === maxPointCoach)?.Username ||
               "Not found"}
           </div>
@@ -219,7 +219,7 @@ function Userstatistics() {
               <IoMedal size={16} color="#fff" />
             </div>
           </div>
-          <div className="value">
+          <div className="valueV">
             {specialist.find(
               (user) => user.ID_Specialist === maxPointSpecialist
             )?.Username || "Not found"}

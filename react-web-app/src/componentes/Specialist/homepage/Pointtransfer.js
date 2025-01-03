@@ -6,8 +6,34 @@ function PointTransformer() {
   const [transfer, setTransfer] = useState(0);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [Specialistpoints, setSpecialistPoints] = useState(193.5);
+  const insertNotification = async () => {
+    const username = localStorage.getItem("username");
+    const currentDate = new Date().toISOString().split("T")[0];
 
+    try {
+      const notificationData = {
+        Description:
+          Math.random() > 0.5
+            ? "Ckeck the New Trainees Requests!"
+            : "Don't forget to update the system with the new trainees",
+        Date: currentDate,
+        Msg_To: username,
+      };
+
+      const response = await axios.post(
+        `${URL}/insertNotification`,
+        notificationData
+      );
+
+      console.log(response.data.message);
+      return response.data.message;
+    } catch (error) {
+      console.error("Error inserting notification:", error);
+      return "Failed to insert notification";
+    }
+  };
   useEffect(() => {
+    insertNotification();
     const fetchData = async () => {
       try {
         const username = localStorage.getItem("username");

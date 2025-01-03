@@ -1,61 +1,132 @@
-.container {
+.coach-upload-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
   justify-content: center;
-  height: auto;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
 }
 
-.heading {
-  font-size: 24px;
+.coach-upload-title-container {
+  display: flex;
+  text-align: left;
+  width: 100%;
+  flex-direction: column;
+}
+
+.coach-upload-title {
+  text-align: center;
+  font-size: 28px;
   font-weight: bold;
+  color: #0fe842;
   margin-bottom: 20px;
-  letter-spacing: 10px;
 }
 
-.card {
-  width: 400px;
-  border: 1px solid #ccc;
+.coach-upload-description {
+  font-size: 20px;
+  color: #ccc;
+}
+
+.coach-upload-box {
+  width: 60%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  height: 60%;
+}
+
+.coach-upload-dropzone {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.coach-upload-file-input {
+  border: 2px dashed #ccc;
   border-radius: 8px;
   padding: 20px;
   background-color: #f9f9f9;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
-  align-items: center;
+  width: 50%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-}
-
-.dropdown {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  align-items: center;
+  color: #0fe842;
+  font-family: Arial, sans-serif;
   font-size: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
 }
 
-.file-input {
+.coach-upload-file-input:hover {
+  background-color: #e8f5e9;
+}
+
+.coach-upload-file-input input[type="file"] {
+  opacity: 0;
+  position: absolute;
   width: 100%;
-  margin-bottom: 20px;
+  height: 100%;
+  cursor: pointer;
 }
 
-.file-name {
-  margin-bottom: 20px;
+.coach-upload-icon {
+  font-size: 48px;
+  color: #0fe842;
+  margin-bottom: 10px;
+}
+
+.coach-upload-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.coach-upload-browse-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0fe842;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   font-size: 14px;
-  color: #555;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.button {
-  width: 100%;
+.coach-upload-right-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.coach-upload-dropdown {
+  width: 80%;
   padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.coach-upload-button {
+  width: 80%;
+  padding: 12px;
   font-size: 16px;
   background-color: #0fe842;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-.button:hover {
-  background-color: #0fe842;
+.coach-upload-button:hover {
+  background-color: #0dc435;
 }

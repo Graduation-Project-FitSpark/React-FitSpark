@@ -1,10 +1,30 @@
-.profile-container {
+.field-rowF {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  align-content: center;
+}
+
+.field-container {
+  flex: 1;
+  align-items: center;
+  align-content: center;
+}
+
+.field-container:last-child {
+  margin-left: 10px;
+}
+
+.profile-containerC {
+  width: 100%;
   padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 20px auto 0;
+  margin-bottom: 20px;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  padding-top: 150px;
 }
 
 .profile-title {
@@ -15,18 +35,6 @@
   text-transform: uppercase;
   margin-bottom: 30px;
   letter-spacing: 10px;
-}
-
-.field-container {
-  margin-bottom: 20px;
-}
-
-.label {
-  display: block;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
 }
 
 .input {
@@ -49,18 +57,21 @@
   color: #999;
 }
 
-.toggle-button {
-  padding: 10px 15px;
-  background-color: #1c1b29;
-  color: #fff;
+.toggle-buttonN {
+  background-color: #94e075;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+  width: fit-content;
 }
 
-.toggle-button:hover {
-  background-color: #333;
+.toggle-buttonN:hover {
+  background-color: #80c065;
 }
 
 .update-button {

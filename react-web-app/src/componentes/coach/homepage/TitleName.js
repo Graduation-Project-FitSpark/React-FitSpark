@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TitleName.css";
 
 function TitleName() {
@@ -13,7 +13,9 @@ function TitleName() {
     month: "long",
     year: "numeric",
   });
-
+  useEffect(() => {
+    setnameofuser(localStorage.getItem("username"));
+  }, []);
   return (
     <div className="welcome">
       <p>{greeting}</p>

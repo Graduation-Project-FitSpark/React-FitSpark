@@ -48,7 +48,7 @@ function Shop() {
                 onChangeText(e.target.value);
                 setsherchtext(e.target.value);
               }}
-              placeholder="Find shoes"
+              placeholder="Find"
               onKeyPress={(e) => {
                 if (e.key === "Enter") _handleSubmitEditing(sherchtext);
               }}

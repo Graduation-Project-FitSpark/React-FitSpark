@@ -60,7 +60,7 @@ function Exercise() {
         <button
           className="exercise-start-button"
           onClick={() =>
-            navigate("/Counttostart", { state: { videolink, cal } })
+            navigate("/Counttostart", { state: { videolink, cal, goal } })
           }
         >
           <span className="exercise-start-text">Start</span>

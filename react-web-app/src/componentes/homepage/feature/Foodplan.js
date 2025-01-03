@@ -16,11 +16,28 @@ function Foodplan() {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(null);
   const [foodData, setFoodData] = useState([]);
+  const [appetizer, setappetizer] = useState([
+    {
+      id: 1,
+      name: "Water",
+      details: "A baked sweet potato seasoned with cinnamon.",
+      img: "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg",
+      min: 1,
+      cal: 0,
+    },
+    {
+      id: 2,
+      name: "Diet chocolate",
+      details: "Almond butter spread on whole-grain toast.",
+      img: "https://breadsandsweets.com/wp-content/uploads/2022/08/choc-pudding-sq-1-of-1.jpg",
+      min: 15,
+      cal: 30,
+    },
+  ]);
 
   const [mealPlan, setMealPlan] = useState([
     { idTrainer: 1, idFood: 1, dayOfWeek: "Monday", time: "Breakfast" },
     { idTrainer: 1, idFood: 2, dayOfWeek: "Monday", time: "Dinner" },
-    // Add more meals as needed...
   ]);
 
   const [daysOfWeek, setDaysOfWeek] = useState([
@@ -155,7 +172,7 @@ function Foodplan() {
         <header className="header">
           <h1 className="title">Find The Best Food For You</h1>
         </header>
-        <div className="scroll-container">
+        <div className="scroll-containerS">
           {daysOfWeek.map((item) => (
             <button
               key={`${item.day}-${item.dayOfWeek}`}
@@ -237,7 +254,7 @@ function Foodplan() {
 
         <h2 className="section-title">Appetizers:</h2>
         <div className="appetizer-list">
-          {foodData.map((item, index) => (
+          {appetizer.map((item, index) => (
             <div
               key={item.id}
               className="food-item"

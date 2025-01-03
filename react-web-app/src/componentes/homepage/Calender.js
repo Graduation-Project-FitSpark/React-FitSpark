@@ -46,14 +46,14 @@ const Calendar = () => {
   };
 
   const styles = {
-    container: {
+    containerChat: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
       justifyContent: "center",
       padding: "20px",
-      backgroundColor: "#f7f7f7",
+      backgroundColor: "#fff",
       alignItems: "center",
     },
     box: {
@@ -92,7 +92,7 @@ const Calendar = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.containerChat}>
       <div style={styles.box} onClick={handleCoachChat}>
         <div
           style={{

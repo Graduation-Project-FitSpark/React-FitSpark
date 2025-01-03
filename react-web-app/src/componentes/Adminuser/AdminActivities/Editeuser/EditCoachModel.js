@@ -63,7 +63,27 @@ function EditCoachModel({ modalVisible, setModalVisible, iteam }) {
     window.location.reload();
   };
 
-  const sendNotification = () => {
+  const sendNotification = async (username) => {
+    const currentDate = new Date().toISOString().split("T")[0];
+
+    try {
+      const notificationData = {
+        Description: notification,
+        Date: currentDate,
+        Msg_To: username,
+      };
+
+      const response = await axios.post(
+        `${URL}/insertNotification`,
+        notificationData
+      );
+
+      console.log(response.data.message);
+      return response.data.message;
+    } catch (error) {
+      console.error("Error inserting notification:", error);
+      return "Failed to insert notification";
+    }
     alert(`Notification Sent: ${notification}`);
     setNotification("");
   };
@@ -118,7 +138,10 @@ function EditCoachModel({ modalVisible, setModalVisible, iteam }) {
             value={notification}
             onChange={(e) => setNotification(e.target.value)}
           />
-          <button onClick={sendNotification} className="send-button">
+          <button
+            onClick={() => sendNotification(userData.Username)}
+            className="send-button"
+          >
             Send
           </button>
         </div>

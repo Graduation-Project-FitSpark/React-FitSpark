@@ -3,6 +3,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import "./Notifications.css";
 import { FaBell } from "react-icons/fa";
 import axios from "axios";
+import URL from "../../enum/enum";
 function Notificationspage() {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -16,7 +17,7 @@ function Notificationspage() {
         });
 
         const data = response.data.notifications.map((item) => ({
-          id: item.Date,
+          id: item.Date.split("T")[0],
           name: item.Description,
         }));
 

@@ -2,45 +2,57 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  height: 100%;
+  background-color: #fff;
   margin: 0;
 }
 
 .quiz-container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 30px;
+  font-family: "Roboto", sans-serif;
   max-width: 600px;
   width: 100%;
-  background-color: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   margin: 0 20px;
-  height: 80vh;
   overflow-y: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .quiz-container h1 {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 24px;
+  font-size: 28px;
   color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .quiz-container p {
   font-size: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   color: #555;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .quiz-container .MuiFormControl-root {
   display: block;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .quiz-container .MuiFormControlLabel-root {
   margin-bottom: 10px;
+}
+
+.quiz-container .MuiRadio-root {
+  color: #4caf50;
+}
+
+.quiz-container .MuiRadio-root.Mui-checked {
+  color: #388e3c;
 }
 
 .quiz-container .MuiTextField-root {
@@ -50,38 +62,39 @@
 .quiz-container button {
   align-self: center;
   margin-top: 20px;
-  font-weight: 700;
-  letter-spacing: 1ch;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .quiz-container .MuiButton-root {
   background-color: #4caf50;
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 12px 24px;
+  border-radius: 6px;
   font-size: 16px;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  text-transform: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .quiz-container .MuiButton-root:hover {
-  background-color: #45a049;
+  background-color: #388e3c;
+}
+
+.quiz-container .MuiButton-root:disabled {
+  background-color: #b0bec5;
+  color: #fff;
 }
 
 .quiz-container::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
-.quiz-container::-webkit-scrollbar-thumb {
-  background-color: #4caf50;
-  border-radius: 10px;
-  border: 2px solid #fff;
+.quiz-container .MuiTextField-root input {
+  font-size: 16px;
+  color: #333;
 }
 
-.quiz-container::-webkit-scrollbar-thumb:hover {
-  background-color: #45a049;
-}
-
-.quiz-container::-webkit-scrollbar-track {
-  background-color: #f4f4f4;
-  border-radius: 10px;
+.quiz-container .MuiFormControlLabel-root span {
+  font-weight: 400;
 }

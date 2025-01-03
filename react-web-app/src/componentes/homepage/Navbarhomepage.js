@@ -27,14 +27,13 @@ const Navbar = () => {
             <Link to="/Foodplan">Meals</Link>
           </li>
           <li>
-            <Link to="/Profile">Settings</Link>
             <Link to="/Shop">Shop</Link>
           </li>
           <li>
             <Link to="/Aerobicexercises">Aerobic exercises</Link>
           </li>
           <li>
-            <Link to="/contact">Settings</Link>
+            <Link to="/Profile">Settings</Link>
           </li>
         </ul>
         <div className="navbar-login">

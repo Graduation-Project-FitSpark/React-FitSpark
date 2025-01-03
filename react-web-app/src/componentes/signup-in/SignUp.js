@@ -279,7 +279,7 @@ const SignUp = ({ navigation }) => {
         <option value="Nutrition expert">Nutrition expert</option>
       </select>
 
-      <button onClick={handleNextStep} className="button">
+      <button onClick={handleNextStep} className="button-next">
         Next
       </button>
     </div>
@@ -449,7 +449,7 @@ const SignUp = ({ navigation }) => {
           <p>Selected Activity Level: {activityLevel}</p>
         </>
       )}
-      <button onClick={handleNextStep} className="button">
+      <button onClick={handleNextStep} className="button-next">
         Submit
       </button>
     </div>

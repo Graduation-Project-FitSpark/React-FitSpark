@@ -6,21 +6,21 @@ import URL from "../../../enum/enum";
 function StartExercise() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { videolink = "", cal = 0 } = location.state || {};
+  const { videolink = "", cal = 0, goal = 0 } = location.state || {};
 
   const video = useRef(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [time, setTime] = useState(0); // Remaining time
-  const [pointsIncremented, setPointsIncremented] = useState(false); 
+  const [time, setTime] = useState(0);
+  const [pointsIncremented, setPointsIncremented] = useState(false);
 
   useEffect(() => {
     const updateProgress = setInterval(() => {
       if (video.current) {
-        const currentPosition = video.current.currentTime * 1000; 
-        const videoDuration = video.current.duration * 1000; 
+        const currentPosition = video.current.currentTime * 1000;
+        const videoDuration = video.current.duration * 1000;
 
         setPosition(currentPosition);
         setDuration(videoDuration);
@@ -38,12 +38,12 @@ function StartExercise() {
           !pointsIncremented
         ) {
           setPointsIncremented(true);
-          handleVideoWatched(); 
+          handleVideoWatched();
         }
       }
     }, 1000);
 
-    return () => clearInterval(updateProgress); 
+    return () => clearInterval(updateProgress);
   }, [pointsIncremented]);
 
   const handleVideoWatched = async () => {
@@ -112,16 +112,10 @@ function StartExercise() {
         <div className="start-exercise-calories">
           <span>KCAL BURNED</span>
           <div className="start-exercise-calories-value">
-            <span className="start-exercise-calories-text">{cal}</span>
+            <span className="start-exercise-calories-text">{cal * goal}</span>
             <i className="start-exercise-icon-fire">🔥</i>
           </div>
         </div>
-        <button
-          className="start-exercise-close-button"
-          onClick={() => navigate(-2)}
-        >
-          ✖
-        </button>
       </div>
 
       <div className="start-exercise-video-section">
@@ -138,13 +132,11 @@ function StartExercise() {
       <div className="start-exercise-controls">
         <div className="start-exercise-timer-section">
           <p className="start-exercise-main-timer">{formatTime(time)}</p>{" "}
-          {/* Display remaining time */}
           <div className="start-exercise-timer-info">
             <div className="start-exercise-timer-values">
               <p className="start-exercise-time-text">
                 {formatTime(duration / 1000)}
               </p>{" "}
-              {/* Total duration */}
               <p className="start-exercise-percentage-text">
                 {percentageCompleted}%
               </p>

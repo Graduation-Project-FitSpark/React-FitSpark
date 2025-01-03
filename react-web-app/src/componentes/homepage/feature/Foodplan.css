@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-.scroll-container {
+.scroll-containerS {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;

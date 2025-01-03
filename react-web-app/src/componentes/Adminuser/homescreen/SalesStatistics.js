@@ -79,7 +79,7 @@ function SalesStatistics() {
     let countMonthlyDollar = 0;
 
     selsdata.forEach((item) => {
-      const itemDate = new Date(item.Dateenter);
+      const itemDate = new Date(item.Dateenter.split(" ")[0]);
       const itemMonth = itemDate.getMonth() + 1;
       const itemYear = itemDate.getFullYear();
 
@@ -252,7 +252,7 @@ function SalesStatistics() {
                 <td>{row.Price}</td>
                 <td>{row.Quantity_User}</td>
                 <td>{row.Username}</td>
-                <td>{row.Dateenter}</td>
+                <td>{row.Dateenter.split(" ")[0]}</td>
               </tr>
             ))}
           </tbody>

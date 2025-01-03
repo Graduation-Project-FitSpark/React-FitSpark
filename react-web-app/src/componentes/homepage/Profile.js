@@ -2,13 +2,38 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import URL from "../../enum/enum";
 import "./Profile.css";
-
+import Navbarhomepage from "./Navbarhomepage";
 const Profile = ({ route, navigation }) => {
   const [trainerDetails, setTrainerDetails] = useState({});
   const [editableFields, setEditableFields] = useState({});
   const [isEditing, setIsEditing] = useState({});
 
+  const insertNotification = async () => {
+    const username = localStorage.getItem("username");
+    const currentDate = new Date().toISOString().split("T")[0];
+
+    try {
+      const notificationData = {
+        Description: "Remember you can Add new meals ",
+        Date: currentDate,
+        Msg_To: username,
+      };
+
+      const response = await axios.post(
+        `${URL}/insertNotification`,
+        notificationData
+      );
+
+      console.log(response.data.message);
+      return response.data.message;
+    } catch (error) {
+      console.error("Error inserting notification:", error);
+      return "Failed to insert notification";
+    }
+  };
+
   useEffect(() => {
+    insertNotification();
     fetchTrainerDetails();
   }, []);
 
@@ -84,29 +109,46 @@ const Profile = ({ route, navigation }) => {
     }
   };
 
+  const fieldPairs = [
+    ["Email", "Password"],
+    ["First_Name", "Last_Name"],
+    ["Phone_Number", "Age"],
+    ["Card_Number", "Expression_Date"],
+    ["CVC"],
+  ];
+
   return (
-    <div className="profile-container">
-      <h1 className="profile-title">Profile</h1>
-      {Object.keys(editableFields).map((field) => (
-        <div key={field} className="field-container">
-          <label className="label">{field.replace(/_/g, " ")}</label>
-          <input
-            className={`input ${isEditing[field] ? "editable" : "disabled"}`}
-            value={editableFields[field]?.toString() || ""}
-            readOnly={!isEditing[field]}
-            onChange={(e) => handleFieldChange(field, e.target.value)}
-          />
-          <button
-            className="toggle-button"
-            onClick={() => toggleEditing(field)}
-          >
-            {isEditing[field] ? "Save" : "Change"}
-          </button>
-        </div>
-      ))}
-      <button className="update-button" onClick={updateTrainerDetails}>
-        Update
-      </button>
+    <div>
+      <Navbarhomepage />
+      <div className="profile-containerC">
+        <h1 className="profile-title">Profile</h1>
+        {fieldPairs.map((pair, index) => (
+          <div key={index} className="field-rowF">
+            {pair.map((field) => (
+              <div key={field} className="field-container">
+                <label className="label">{field.replace(/_/g, " ")}</label>
+                <input
+                  className={`input ${
+                    isEditing[field] ? "editable" : "disabled"
+                  }`}
+                  value={editableFields[field]?.toString() || ""}
+                  readOnly={!isEditing[field]}
+                  onChange={(e) => handleFieldChange(field, e.target.value)}
+                />
+                <button
+                  className="toggle-buttonN"
+                  onClick={() => toggleEditing(field)}
+                >
+                  {isEditing[field] ? "Save" : "Change"}
+                </button>
+              </div>
+            ))}
+          </div>
+        ))}
+        <button className="update-button" onClick={updateTrainerDetails}>
+          Update
+        </button>
+      </div>
     </div>
   );
 };

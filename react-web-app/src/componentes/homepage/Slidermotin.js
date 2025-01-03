@@ -1,64 +1,35 @@
 import React, { useState, useEffect } from "react";
 import "./Slideshow.css";
-import img1 from "../../img/slider-2.jpg";
-import img2 from "../../img/slider-1.png";
-import img3 from "../../img/slider-3.png";
 
 function Slidermotin() {
-  const [slideIndex, setSlideIndex] = useState(3); // Initially set to show the third image
-
-  useEffect(() => {
-    showSlides(slideIndex); // Always show the third slide
-  }, [slideIndex]);
-
-  const showSlides = (n) => {
-    const slides = document.getElementsByClassName("mySlides");
-    const dots = document.getElementsByClassName("dot");
-
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none"; // Hide all slides
-    }
-
-    for (let i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    // Show only the third slide and make it active
-    if (slides[2]) {
-      // The third slide is at index 2
-      slides[2].style.display = "block";
-      dots[2].className += " active"; // Activate the third dot
-    }
-  };
-
   return (
-    <div>
-      <div className="slideshow-container">
-        <div className="mySlides">
-          <img src={img1} style={{ width: "100%" }} alt="Nature" />
-        </div>
-
-        <div className="mySlides">
-          <img src={img2} style={{ width: "100%" }} alt="Snow" />
-        </div>
-
-        <div className="mySlides">
-          <img src={img3} style={{ width: "100%" }} alt="Mountains" />
-        </div>
-      </div>
-      <br />
-
-      <div
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "550px",
+        backgroundImage: `url(${"https://theironoffice.com/cdn/shop/files/Gym_12.23-19.jpg?v=1701994187&width=3840"})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        textAlign: "center",
+        color: "white",
+        fontSize: "3rem",
+        fontWeight: "bold",
+        textShadow: "2px 2px 5px rgba(0, 0, 0, 0.7)",
+        fontFamily: "'Poppins', sans-serif",
+        animation: "fadeIn 2s ease-in-out",
+      }}
+    >
+      <p
         style={{
-          marginTop: -50,
-          zIndex: 1,
-          position: "absolute",
+          textDecoration: "underline",
+          textDecorationColor: "#DB6539",
+          textDecorationThickness: "4px",
         }}
       >
-        <span className="dot" onClick={() => setSlideIndex(1)}></span>
-        <span className="dot" onClick={() => setSlideIndex(2)}></span>
-        <span className="dot" onClick={() => setSlideIndex(3)}></span>
-      </div>
+        Trainee Home Page
+      </p>
     </div>
   );
 }

@@ -1,63 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Seaction.css";
-
+import URL from "../../enum/enum";
+import axios from "axios";
 const Seaction = ({ seactionname, name, find }) => {
   const navigate = useNavigate();
-  const [sakeItems, setSakeItems] = useState([
-    {
-      ID_Sale: 1,
-      Salee_Name: "Protein",
-      Price: 22,
-      Quantity: 10,
-      Description: "A traditional Japanese rice wine with fruity flavors.",
-      Product_Name: "Protein_mahmoud",
-      Size: "large",
-    },
-    {
-      ID_Sale: 2,
-      Salee_Name: "Protein",
-      Price: 22,
-      Quantity: 5,
-      Description: "A smooth and rich sake, perfect for pairing with seafood.",
-      Product_Name: "Protein_mahmoud",
-      Size: "large",
-    },
-    {
-      ID_Sale: 3,
-      Salee_Name: "Vitamins",
-      Price: 18,
-      Quantity: 8,
-      Description: "A premium sake with floral aroma and a crisp finish.",
-      Product_Name: "Protein_mahmoud",
-      Size: "large",
-    },
-    {
-      ID_Sale: 4,
-      Salee_Name: "Protein",
-      Price: 25,
-      Quantity: 3,
-      Description: "Aged sake with a complex flavor profile and a golden hue.",
-      Product_Name: "Protein_mahmoud",
-      Size: "large",
-    },
-  ]);
+  const [sakeItems, setSakeItems] = useState([]);
 
   useEffect(() => {
-    const newsakeItems = [
-      ...sakeItems,
-      {
-        ID_Sale: 5,
-        Salee_Name: "Protein",
-        Price: 100,
-        Quantity: 5,
-        Description: "mahmoud is better then ahmad , ahmad is hmar",
-        Product_Name: "Protein_mahmoud",
-        Size: "large",
-      },
-    ];
-
-    setSakeItems(newsakeItems);
+    const fetchSales = async () => {
+      try {
+        const response = await axios.get(`${URL}/getAllSales`);
+        setSakeItems(response.data.sales);
+      } catch (error) {
+        console.error("Error fetching sales data:", error);
+      }
+    };
+    fetchSales();
   }, []);
 
   const renderItems = (filteredItems) => {
