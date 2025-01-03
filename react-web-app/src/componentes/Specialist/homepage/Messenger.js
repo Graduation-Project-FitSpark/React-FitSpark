@@ -8,7 +8,10 @@ function Messenger() {
   const navigate = useNavigate();
 
   return (
-    <div className="container-messenger">
+    <div
+      className="container-messenger"
+      onClick={() => navigate("/FriendsSpecialist")}
+    >
       <div className="container-messenger-inner">
         <div
           className="image-background1"
@@ -20,14 +23,7 @@ function Messenger() {
             </div>
             <div className="container-button-text">
               <div className="fake-container"></div>
-              <div className="button-container">
-                <button
-                  className="button-textMessenger1"
-                  onClick={() => navigate("/FriendsSpecialist")}
-                >
-                  <IoChevronForwardOutline size={25} />
-                </button>
-              </div>
+              <div className="button-container"></div>
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
-.request-training {
+.request-trainingSP {
   font-family: "Arial", sans-serif;
 
   padding: 20px;
   color: #333333;
   height: 100%;
 }
-.requstcontenr {
+.requstcontenrSP {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -14,14 +14,14 @@
   padding-top: 130px;
 }
 
-.header {
+.headerSP {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.header h1 {
+.headerSP h1 {
   font-size: 24px;
   font-weight: bold;
   color: #333333;
@@ -42,7 +42,7 @@
   background-color: #a6d63d;
 }
 
-.info {
+.infoSP {
   width: 70%;
   background: #333333;
   padding: 20px;
@@ -50,7 +50,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.info .count {
+.infoSP .countSP {
   margin-bottom: 20px;
   font-size: 18px;
   display: flex;
@@ -59,18 +59,18 @@
   color: #fff;
 }
 
-.info .count strong {
+.infoSP .countSP strong {
   color: #fff;
 }
 
-.trainer-requests {
+.trainer-requestsSP {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   width: 100%;
 }
 
-.trainer-box {
+.trainer-boxSP {
   background: #ffffff;
   border-radius: 8px;
   padding: 15px;
@@ -80,18 +80,18 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.trainer-box:hover {
+.trainer-boxSP:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.trainer-details {
+.trainer-detailsSP {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.trainer-image {
+.trainer-imageSP {
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -100,24 +100,24 @@
   border: 3px solid #bbf246;
 }
 
-.trainer-details p {
+.trainer-detailsSP p {
   margin: 5px 0;
   color: #333333;
 }
 
-.description {
+.descriptionSP {
   margin-bottom: 10px;
   font-size: 14px;
   color: #666;
 }
 
-.actions {
+.actionsSP {
   display: flex;
   justify-content: space-between;
 }
 
-.accept-button,
-.reject-button {
+.accept-buttonSP,
+.reject-buttonSP {
   padding: 10px 15px;
   font-size: 14px;
   border: none;
@@ -126,20 +126,20 @@
   transition: background-color 0.3s ease;
 }
 
-.accept-button {
+.accept-buttonSP {
   background-color: #bbf246;
   color: #333333;
 }
 
-.accept-button:hover {
+.accept-buttonSP:hover {
   background-color: #a6d63d;
 }
 
-.reject-button {
+.reject-buttonSP {
   background-color: #ff5252;
   color: #ffffff;
 }
 
-.reject-button:hover {
+.reject-buttonSP:hover {
   background-color: #ff1744;
 }

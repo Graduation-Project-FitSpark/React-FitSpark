@@ -160,7 +160,7 @@ const styles = {
     alignItems: "center",
   },
   container: {
-    width: "70%",
+    width: "100%",
     height: "100%",
     backgroundColor: "rgba(255, 255, 255, 0.9)",
     display: "flex",

@@ -119,13 +119,28 @@ const AnalyticsSection = () => {
     };
   };
 
-  const byAge = (initialTableData) => {
+  const byAge = (IDCoach, initialTableData, trainerCoachData) => {
+    const trainers = trainerCoachData.filter(
+      (train) => train.ID_Coach === IDCoach
+    );
+
+    const data = trainers.map((train) => {
+      const trainerData = initialTableData.find(
+        (entry) => entry.ID_Trainer === train.ID_Trainer
+      );
+
+      return {
+        Username: trainerData?.Username || "Unknown",
+        Age: trainerData?.Age || 0,
+      };
+    });
+
     return {
-      labels: initialTableData.map((trainer) => trainer.Username),
+      labels: data.map((entry) => entry.Username),
       datasets: [
         {
           label: "Age",
-          data: initialTableData.map((trainer) => trainer.Age),
+          data: data.map((entry) => entry.Age),
           backgroundColor: "rgba(255,206,86,0.4)",
           borderColor: "rgba(255,206,86,1)",
           borderWidth: 1,
@@ -133,12 +148,24 @@ const AnalyticsSection = () => {
       ],
     };
   };
-
   const byGender = (initialTableData) => {
-    const maleCount = initialTableData.filter(
+    const trainers = trainerCoachData.filter(
+      (train) => train.ID_Coach === IDCoach
+    );
+    const data = trainers.map((train) => {
+      const trainerData = initialTableData.find(
+        (entry) => entry.ID_Trainer === train.ID_Trainer
+      );
+
+      return {
+        Username: trainerData?.Username || "Unknown",
+        Gender: trainerData?.Gender || 0,
+      };
+    });
+    const maleCount = data.filter(
       (trainer) => trainer.Gender === "Male"
     ).length;
-    const femaleCount = initialTableData.filter(
+    const femaleCount = data.filter(
       (trainer) => trainer.Gender === "Female"
     ).length;
 
@@ -192,7 +219,7 @@ const AnalyticsSection = () => {
     setFilterCharCal(
       byCal(trainerCoachData, IDCoach, initialTableData, fullTableDatacal)
     );
-    setAgeData(byAge(initialTableData));
+    setAgeData(byAge(IDCoach, initialTableData, trainerCoachData));
     setGenderData(byGender(initialTableData));
   }, [trainerCoachData, IDCoach, initialTableData, fullTableDatacal]);
 
@@ -203,7 +230,7 @@ const AnalyticsSection = () => {
         <h1>Analysis Plan</h1>
         <div className="analytics-container">
           <div className="analytics-section">
-            <h4>Age by Trainer</h4>
+            <h4>Age by Trainee</h4>
             <div className="analytics-chart">
               <Bar data={ageData} options={{ responsive: true }} />
             </div>
@@ -215,13 +242,13 @@ const AnalyticsSection = () => {
             </div>
           </div>
           <div className="analytics-section">
-            <h4>Points by Trainer</h4>
+            <h4>Points by Trainee</h4>
             <div className="analytics-chart">
               <Bar data={filterChar} options={{ responsive: true }} />
             </div>
           </div>
           <div className="analytics-section">
-            <h4>Calories by Trainer</h4>
+            <h4>Calories by Trainee</h4>
             <div className="analytics-chart">
               <Bar data={filterCharCal} options={{ responsive: true }} />
             </div>

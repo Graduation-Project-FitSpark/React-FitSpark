@@ -60,20 +60,28 @@ const AnalyticsSectionSpecialist = () => {
   }, []);
 
   const calculateChartData = useCallback(() => {
-    const filteredData = fullTableData.filter(
-      (item) => item.ID_Trainer === ID_Trainer
-    );
+    const groupedData = fullTableData.reduce((acc, item) => {
+      if (item.ID_Trainer === ID_Trainer) {
+        if (!acc[item.Day]) {
+          acc[item.Day] = 0;
+        }
+        acc[item.Day] += item.Calories;
+      }
+      return acc;
+    }, {});
+
     const chartData = {
-      labels: filteredData.map((item) => item.Day),
+      labels: Object.keys(groupedData),
       datasets: [
         {
           label: "Calories",
-          data: filteredData.map((item) => item.Calories),
+          data: Object.values(groupedData),
           backgroundColor: "#bbf246",
           hoverBackgroundColor: "#333333",
         },
       ],
     };
+
     setFilterChartData(chartData);
   }, [fullTableData, ID_Trainer]);
 

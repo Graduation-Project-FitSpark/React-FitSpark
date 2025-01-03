@@ -3,7 +3,7 @@ import axios from "axios";
 import URL from "../../../enum/enum";
 import "./ProfileSpecialist.css";
 import { Alert } from "bootstrap";
-
+import Navbarspecialist from "./Navbarspecialist";
 const ProfileSpecialist = ({ route, navigation }) => {
   const [specialistDetails, setspecialistDetails] = useState({});
   const [editableFields, setEditableFields] = useState({});
@@ -109,30 +109,45 @@ const ProfileSpecialist = ({ route, navigation }) => {
       alert("Error", "Unable to update specialist details.");
     }
   };
-
+  const fieldPairs = [
+    ["Email", "Password"],
+    ["First_Name", "Last_Name"],
+    ["Phone_Number", "Age"],
+    ["Card_Number", "Expression_Date"],
+    ["CVC"],
+  ];
   return (
-    <div className="profile-container">
-      <h1 className="profile-title">Profile</h1>
-      {Object.keys(editableFields).map((field) => (
-        <div key={field} className="field-container">
-          <label className="label">{field.replace(/_/g, " ")}</label>
-          <input
-            className={`input ${isEditing[field] ? "editable" : "disabled"}`}
-            value={editableFields[field] || ""}
-            onChange={(e) => handleFieldChange(field, e.target.value)}
-            disabled={!isEditing[field]}
-          />
-          <button
-            className="toggle-button"
-            onClick={() => toggleEditing(field)}
-          >
-            {isEditing[field] ? "Save" : "Edit"}
-          </button>
-        </div>
-      ))}
-      <button className="update-button" onClick={updatespecialistDetails}>
-        Update Profile
-      </button>
+    <div>
+      <Navbarspecialist />
+      <div className="profile-containerSP">
+        <h1 className="profile-titleSP">Profile</h1>
+        {fieldPairs.map((pair, index) => (
+          <div key={index} className="field-rowF">
+            {pair.map((field) => (
+              <div key={field} className="field-containerSP">
+                <label className="label">{field.replace(/_/g, " ")}</label>
+                <input
+                  className={`input ${
+                    isEditing[field] ? "editable" : "disabled"
+                  }`}
+                  value={editableFields[field] || ""}
+                  readOnly={!isEditing[field]}
+                  onChange={(e) => handleFieldChange(field, e.target.value)}
+                />
+                <button
+                  className="toggle-buttonNSP"
+                  onClick={() => toggleEditing(field)}
+                >
+                  {isEditing[field] ? "Save" : "Edit"}
+                </button>
+              </div>
+            ))}
+          </div>
+        ))}
+        <button className="update-buttonSP" onClick={updatespecialistDetails}>
+          Update Profile
+        </button>
+      </div>
     </div>
   );
 };
