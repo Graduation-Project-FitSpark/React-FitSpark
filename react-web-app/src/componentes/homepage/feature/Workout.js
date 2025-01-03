@@ -34,15 +34,27 @@ function Workout() {
       });
 
       setVideo(trainerResponse.data.trainer.WatchedVideos);
-      const response = await axios.get(`${URL}/getTrainerClorieDetails`);
-      let ID_Trainer = localStorage.getItem("ID");
+      try {
+        const response = await axios.post(`${URL}/getTodayCalories`, {
+          trainerId: localStorage.getItem("ID"),
+        });
 
-      const matchedTrainer = response.data.find(
-        (item) => item.ID_Trainer === ID_Trainer
-      );
-      setCal(matchedTrainer ? matchedTrainer.Calories : 0);
-      setMeters(matchedTrainer ? matchedTrainer.Distance : 0);
-      setSteps(matchedTrainer ? matchedTrainer.Steps : 0);
+        if (response.data.message === "No entry found for today") {
+          setCal(0);
+          setMeters(0);
+          setSteps(0);
+        } else {
+          const { Calories, Distance, Steps } = response.data;
+          setCal(Calories || 0);
+          setMeters(Distance || 0);
+          setSteps(Steps || 0);
+        }
+      } catch (error) {
+        console.error("Error fetching today's calories:", error);
+        setCal(0);
+        setMeters(0);
+        setSteps(0);
+      }
     };
 
     fetchTrainerDetails();
