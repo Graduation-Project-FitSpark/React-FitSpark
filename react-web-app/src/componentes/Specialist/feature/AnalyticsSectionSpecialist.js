@@ -167,7 +167,7 @@ const AnalyticsSectionSpecialist = () => {
         <div className="chart-section">
           {filterChartData.labels.length ? (
             <>
-              <h2>Calories by Trainer / Weekly</h2>
+              <h2>Calories by Trainer</h2>
               <Bar
                 data={filterChartData}
                 options={{
