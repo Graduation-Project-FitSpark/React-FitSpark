@@ -27,7 +27,6 @@ const Authentication = () => {
         Email: Email,
         code: code,
       });
-      alert("Verification code sent to your email!");
     } catch (error) {
       console.error("Error sending verification code:", error);
       alert("Error: Failed to send verification code.");

@@ -25,6 +25,7 @@ function Iteamshop() {
     Description,
     Product_Name,
     Size,
+    Img,
   } = location.state;
 
   const [selectedValue, setSelectedValue] = useState("Small");
@@ -43,6 +44,7 @@ function Iteamshop() {
         Size,
         Description,
         Product_Name,
+        Img,
       },
     ];
 
@@ -74,11 +76,7 @@ function Iteamshop() {
         <div className="Iteamshop-info-all">
           <div className="info-section-Iteamshop">
             <div className="item-img">
-              <img
-                src="https://p7.hiclipart.com/preview/548/366/440/dietary-supplement-whey-protein-isolate-optimum-nutrition-gold-standard-100-whey-protein-thumbnail.jpg"
-                alt="Product"
-                className="image"
-              />
+              <img src={Img} alt="Product" className="image" />
             </div>
           </div>
           <div className="info-section-part2">
@@ -87,7 +85,7 @@ function Iteamshop() {
                 <h2 className="item-name">{Product_Name}</h2>
               </div>
               <div className="iteam-info-dela">
-                <p className="description">Description:{Description}</p>
+                <p className="descriptionShop">Description:{Description}</p>
 
                 <p className="price">
                   Retail Price: <strong>${Price}</strong>

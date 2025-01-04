@@ -40,6 +40,7 @@ const Seaction = ({ seactionname, name, find }) => {
                     Description: category.Description,
                     Product_Name: category.Product_Name,
                     Size: category.Size,
+                    Img: category.Img,
                   },
                 })
               }
@@ -54,11 +55,7 @@ const Seaction = ({ seactionname, name, find }) => {
                 <span className="samltitle">{category.Product_Name}</span>
               </div>
               <div className="imgcontner">
-                <img
-                  src="https://p7.hiclipart.com/preview/548/366/440/dietary-supplement-whey-protein-isolate-optimum-nutrition-gold-standard-100-whey-protein-thumbnail.jpg"
-                  alt="Product"
-                  className="image"
-                />
+                <img src={`${category.Img}`} alt="Product" className="image" />
               </div>
               <div className="title-seaction-Container">
                 <span className="title-seaction">{category.Salee_Name}</span>

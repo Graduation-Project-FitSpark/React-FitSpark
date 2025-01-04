@@ -124,6 +124,7 @@ function Cart() {
               Size: sharedValue.size,
               Description: sharedValue.description,
               Product_Name: sharedValue.Product_Name,
+              Img: sharedValue.Img,
             },
           ];
 
@@ -212,7 +213,7 @@ function Cart() {
                     </div>
                   </div>
                   <img
-                    src="https://p7.hiclipart.com/preview/548/366/440/dietary-supplement-whey-protein-isolate-optimum-nutrition-gold-standard-100-whey-protein-thumbnail.jpg"
+                    src={item.Img}
                     alt="Product"
                     className="item-image-cart"
                   />

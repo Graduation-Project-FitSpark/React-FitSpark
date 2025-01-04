@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./AddItem.css";
 import URL from "../../../enum/enum";
+import Navbaradmin from "./Navbaradmin";
 const AddItems = () => {
   const [saleName, setSaleName] = useState("");
   const [price, setPrice] = useState("");
@@ -63,72 +64,79 @@ const AddItems = () => {
   };
 
   return (
-    <div className="add-items-container">
-      <h1 className="title">Add New Product</h1>
+    <div>
+      <Navbaradmin />
+      <div className="add-items-containerADD">
+        <h1 className="titleADD">Add New Product</h1>
+        <div className="AllContainerDDD">
+          <label className="labelADD">Category Name</label>
+          <input
+            className="inputADD"
+            type="text"
+            placeholder="Enter Category name"
+            value={saleName}
+            onChange={(e) => setSaleName(e.target.value)}
+          />
 
-      <label className="label">Sale Name</label>
-      <input
-        className="input"
-        type="text"
-        placeholder="Enter sale name"
-        value={saleName}
-        onChange={(e) => setSaleName(e.target.value)}
-      />
+          <label className="labelADD">Price</label>
+          <input
+            className="inputADD"
+            type="number"
+            placeholder="Enter price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
 
-      <label className="label">Price</label>
-      <input
-        className="input"
-        type="number"
-        placeholder="Enter price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
+          <label className="labelADD">Quantity</label>
+          <input
+            className="inputADD"
+            type="number"
+            placeholder="Enter quantity"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
 
-      <label className="label">Quantity</label>
-      <input
-        className="input"
-        type="number"
-        placeholder="Enter quantity"
-        value={quantity}
-        onChange={(e) => setQuantity(e.target.value)}
-      />
+          <label className="labelADD">Description</label>
+          <textarea
+            className="textareaADD"
+            placeholder="Enter description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
 
-      <label className="label">Description</label>
-      <textarea
-        className="textarea"
-        placeholder="Enter description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      ></textarea>
+          <label className="labelADD">Product Name</label>
+          <input
+            className="inputADD"
+            type="text"
+            placeholder="Enter product name"
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+          />
 
-      <label className="label">Product Name</label>
-      <input
-        className="input"
-        type="text"
-        placeholder="Enter product name"
-        value={productName}
-        onChange={(e) => setProductName(e.target.value)}
-      />
+          <label className="labelADD">Size</label>
+          <input
+            className="inputADD"
+            type="text"
+            placeholder="Enter size (e.g., Small, Medium, Large)"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          />
 
-      <label className="label">Size</label>
-      <input
-        className="input"
-        type="text"
-        placeholder="Enter size (e.g., Small, Medium, Large)"
-        value={size}
-        onChange={(e) => setSize(e.target.value)}
-      />
-
-      <label className="label">Product Image</label>
-      {uploadedImageUrl ? (
-        <img src={uploadedImageUrl} alt="Preview" className="image-preview" />
-      ) : (
-        <input type="file" accept="image/*" onChange={pickImage} />
-      )}
-
-      <button className="add-button" onClick={handleAddItem}>
-        Add Product
-      </button>
+          <label className="labelADD">Product Image</label>
+          {uploadedImageUrl ? (
+            <img
+              src={uploadedImageUrl}
+              alt="Preview"
+              className="image-previewADD"
+            />
+          ) : (
+            <input type="file" accept="image/*" onChange={pickImage} />
+          )}
+        </div>
+        <button className="add-buttonADD" onClick={handleAddItem}>
+          Add Product
+        </button>
+      </div>
     </div>
   );
 };
